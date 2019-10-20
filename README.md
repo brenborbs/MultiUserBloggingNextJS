@@ -10,3 +10,7 @@ Front-end:
 
 - Completed Next.js project set-up
 - Added Navbar with links
+
+2nd commit :
+
+- Completed front-end signin/signout with authentication actions
