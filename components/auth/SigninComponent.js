@@ -4,8 +4,8 @@ import Router from "next/router";
 
 const SigninComponent = () => {
   const [values, setValues] = useState({
-    email: "ryan@gmail.com",
-    password: "rrrrrr",
+    email: "",
+    password: "",
     error: "",
     loading: false,
     message: "",
@@ -33,7 +33,11 @@ const SigninComponent = () => {
         // save user info to localstorage
         // authenticate user
         authenticate(data, () => {
-          Router.push(`/`);
+          if (isAuth() && isAuth().role === 1) {
+            Router.push(`/admin`);
+          } else {
+            Router.push(`/user`);
+          }
         });
       }
     });
