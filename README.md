@@ -14,3 +14,8 @@ Front-end:
 2nd commit :
 
 - Completed front-end signin/signout with authentication actions
+
+3rd commit:
+
+- Added NProgress loading feature on Header.js component
+- Added NProgress CDN on \_document.js

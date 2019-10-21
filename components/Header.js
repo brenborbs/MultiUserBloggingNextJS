@@ -1,21 +1,27 @@
 import { useState } from "react";
 import Link from "next/link";
 import Router from "next/router";
+import NProgress from "nprogress";
 import { APP_NAME } from "../config";
 import { signout, isAuth } from "../actions/auth";
 import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
+  // NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
+  NavLink
+  // UncontrolledDropdown,
+  // DropdownToggle,
+  // DropdownMenu,
+  // DropdownItem
 } from "reactstrap";
+
+// Check Router(Routing) Events from NextJS docs
+Router.onRouteChangeStart = url => NProgress.start();
+Router.onRouteChangeComplete = url => NProgress.done();
+Router.onRouteChangeError = url => NProgress.done();
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
