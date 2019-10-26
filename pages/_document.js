@@ -19,6 +19,10 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
           <link rel="stylesheet" href="/static/css/styles.css" />
+          <link
+            rel="stylesheet"
+            href="//cdn.quilljs.com/1.2.6/quill.snow.css"
+          ></link>
         </Head>
         <body>
           <Main />

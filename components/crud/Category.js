@@ -86,10 +86,10 @@ const Category = () => {
         setValues({
           ...values,
           error: false,
-          success: false,
-          name: "",
-          removed: !removed,
-          reload: !reload
+          success: true,
+          name: ""
+          // removed: !removed,
+          // reload: !reload
         });
       }
     });

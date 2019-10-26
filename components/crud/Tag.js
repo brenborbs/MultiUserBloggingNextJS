@@ -3,6 +3,7 @@ import Link from "next/link";
 import Router from "next/router";
 import { getCookie } from "../../actions/auth";
 import { create, getTags, removeTag } from "../../actions/tag";
+import { Alert } from "reactstrap";
 
 const Tag = () => {
   const [values, setValues] = useState({
@@ -81,10 +82,10 @@ const Tag = () => {
         setValues({
           ...values,
           error: false,
-          success: false,
-          name: "",
-          removed: !removed,
-          reload: !reload
+          success: true,
+          name: ""
+          // removed: !removed,
+          // reload: !reload
         });
       }
     });
@@ -102,19 +103,19 @@ const Tag = () => {
 
   const showSuccess = () => {
     if (success) {
-      return <p className="text-success">Tag is created</p>;
+      return <Alert color="success">Tag has been added</Alert>;
     }
   };
 
   const showError = () => {
     if (error) {
-      return <p className="text-danger">Tag already exist</p>;
+      return <Alert color="warning">Tag already existed!</Alert>;
     }
   };
 
   const showRemoved = () => {
     if (removed) {
-      return <p className="text-danger">Tag is removed</p>;
+      return <Alert color="danger">Tag has been removed!</Alert>;
     }
   };
 

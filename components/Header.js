@@ -31,14 +31,24 @@ const Header = () => {
   };
 
   return (
-    <div>
-      <Navbar color="light" light expand="md">
+    <React.Fragment>
+      <Navbar className="navbar fixed-top navbar-expand-md navbar-dark">
         <Link href="/">
-          <NavLink className="font-weight-bold">{APP_NAME}</NavLink>
+          <NavLink className="font-weight-bold" style={{ color: "white" }}>
+            {APP_NAME}
+          </NavLink>
         </Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
+            <React.Fragment>
+              <NavItem>
+                <Link href="/blogs">
+                  <NavLink>Blogs</NavLink>
+                </Link>
+              </NavItem>
+            </React.Fragment>
+
             {!isAuth() && (
               <React.Fragment>
                 <NavItem>
@@ -83,7 +93,7 @@ const Header = () => {
           </Nav>
         </Collapse>
       </Navbar>
-    </div>
+    </React.Fragment>
   );
 };
 

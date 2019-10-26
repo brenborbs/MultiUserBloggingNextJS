@@ -19,3 +19,13 @@ Front-end:
 
 - Added NProgress loading feature on Header.js component
 - Added NProgress CDN on \_document.js
+
+4th commit:
+
+- Added CRUD Categories and Tag components and functionality
+
+5th commit:
+
+- Added CRUD Blogs front-end UI and func
+- Added Related Blogs front-end and func
+- SEO to Blogs and singleBlog pages
