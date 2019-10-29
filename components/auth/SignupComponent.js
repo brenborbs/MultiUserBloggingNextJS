@@ -59,6 +59,7 @@ const SignupComponent = () => {
     return (
       <form onSubmit={handleSubmit}>
         <div className="form-group">
+          <label htmlFor="NameInput">Name</label>
           <input
             value={name}
             onChange={handleChange("name")}
@@ -69,6 +70,7 @@ const SignupComponent = () => {
         </div>
 
         <div className="form-group">
+          <label htmlFor="EmailInput">Email</label>
           <input
             value={email}
             onChange={handleChange("email")}
@@ -79,6 +81,7 @@ const SignupComponent = () => {
         </div>
 
         <div className="form-group">
+          <label htmlFor="PasswordInput">Password</label>
           <input
             value={password}
             onChange={handleChange("password")}
@@ -89,7 +92,7 @@ const SignupComponent = () => {
         </div>
 
         <div>
-          <button className="btn btn-primary">Sign Up</button>
+          <button className="btn btn-outline">Sign Up</button>
         </div>
       </form>
     );

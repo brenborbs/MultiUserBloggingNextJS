@@ -23,6 +23,10 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="//cdn.quilljs.com/1.2.6/quill.snow.css"
           ></link>
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+          />
         </Head>
         <body>
           <Main />

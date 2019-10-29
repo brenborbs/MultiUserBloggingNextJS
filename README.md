@@ -29,3 +29,9 @@ Front-end:
 - Added CRUD Blogs front-end UI and func
 - Added Related Blogs front-end and func
 - SEO to Blogs and singleBlog pages
+
+6th commit:
+
+- Improve UI on signin/signout components
+- Completed Update/Delete on front-end func
+- Added simple footer

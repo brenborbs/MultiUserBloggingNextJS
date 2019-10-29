@@ -58,6 +58,7 @@ const SigninComponent = () => {
     return (
       <form onSubmit={handleSubmit}>
         <div className="form-group">
+          <label htmlFor="EmailInput">Email</label>
           <input
             value={email}
             onChange={handleChange("email")}
@@ -65,9 +66,13 @@ const SigninComponent = () => {
             className="form-control"
             placeholder="Type your email"
           />
+          <small className="form-text text-muted">
+            We'll never share your email with anyone else.
+          </small>
         </div>
 
         <div className="form-group">
+          <label htmlFor="PasswordInput">Password</label>
           <input
             value={password}
             onChange={handleChange("password")}
@@ -78,7 +83,7 @@ const SigninComponent = () => {
         </div>
 
         <div>
-          <button className="btn btn-primary">Sign In</button>
+          <button className="btn btn-outline">Sign In</button>
         </div>
       </form>
     );
