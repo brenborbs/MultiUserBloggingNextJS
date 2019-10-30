@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/link";
+// import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -11,26 +11,21 @@ const Footer = () => {
               <strong className="footer-title">MARINEBLOGGER</strong>
             </h1>
             <div className="footer-icons mt-3 d-flex justify-content-around flex-wrap">
-              <Link>
-                <a className="footer-icon" href="/">
-                  <i className="fa fa-facebook-official" aria-hidden="true"></i>
-                </a>
-              </Link>
-              <Link>
-                <a className="footer-icon" href="/">
-                  <i className="fa fa-twitter"></i>
-                </a>
-              </Link>
-              <Link>
-                <a className="footer-icon" href="/">
-                  <i className="fa fa-instagram"></i>
-                </a>
-              </Link>
-              <Link>
-                <a className="footer-icon" href="/">
-                  <i className="fa fa-google-plus"></i>
-                </a>
-              </Link>
+              <a className="footer-icon" href="/">
+                <i className="fa fa-facebook-official" aria-hidden="true"></i>
+              </a>
+
+              <a className="footer-icon" href="/">
+                <i className="fa fa-twitter"></i>
+              </a>
+
+              <a className="footer-icon" href="/">
+                <i className="fa fa-instagram"></i>
+              </a>
+
+              <a className="footer-icon" href="/">
+                <i className="fa fa-google-plus"></i>
+              </a>
             </div>
           </div>
           <div className="col-md-6 footer-contact text-center text-capitalize p-5">

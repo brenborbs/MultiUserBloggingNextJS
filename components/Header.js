@@ -17,6 +17,8 @@ import {
   // DropdownMenu,
   // DropdownItem
 } from "reactstrap";
+import ".././node_modules/nprogress/nprogress.css";
+import Search from "./blog/Search";
 
 // Check Router(Routing) Events from NextJS docs
 Router.onRouteChangeStart = url => NProgress.start();
@@ -93,6 +95,7 @@ const Header = () => {
           </Nav>
         </Collapse>
       </Navbar>
+      <Search />
     </React.Fragment>
   );
 };

@@ -35,3 +35,9 @@ Front-end:
 - Improve UI on signin/signout components
 - Completed Update/Delete on front-end func
 - Added simple footer
+
+7th commit:
+
+- Added Search blogs functionality
+- Change back signin/signout UI
+- Completed Tags and Categories slug.js

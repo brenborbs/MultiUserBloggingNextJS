@@ -5,7 +5,7 @@ const Layout = ({ children }) => {
   return (
     <React.Fragment>
       <Header />
-      <div style={{ marginTop: "70px" }}>{children}</div>
+      <div>{children}</div>
       <Footer />
     </React.Fragment>
   );
