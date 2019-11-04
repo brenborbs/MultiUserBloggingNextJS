@@ -46,3 +46,8 @@ Front-end:
 
 - Added User Public profile UI
 - Creating blogs by authenticated user UI
+
+9th commit:
+
+- Added DisqusThread comment system
+- Added Token expiry to local storage

@@ -48,9 +48,11 @@ const Category = ({ category, blogs, query }) => {
           <div className="container-fluid text-center">
             <header>
               <div className="col-md-12 pt-3">
-                <h1 className="display-4 font-weight-bold">
-                  CATEGORIES: {category.name}
-                </h1>
+                <h1 className="display-4 font-weight-bold">CATEGORIES</h1>
+                <p className="lead">
+                  Below you'll find a list of all posts that have been
+                  categorized as <strong>"{category.name}"</strong>
+                </p>
                 {blogs.map((b, i) => (
                   <div key={i}>
                     <Card key={i} blog={b} />

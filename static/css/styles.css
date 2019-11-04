@@ -1,11 +1,19 @@
 body {
-  font-family: "Open Sans Condensed";
-  /* padding: 20px 40px; */
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
 }
 a {
   color: #004e64;
 }
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Prata", serif;
+  text-transform: uppercase;
+}
 /* navbar */
 .navbar {
   background-color: #004e64;
@@ -64,7 +72,9 @@ a:hover {
   border-color: #004e64;
   font-weight: bold;
   letter-spacing: 0.05em;
-  border-radius: 0;
+  /* border-radius: 0; */
+  border-radius: 1000000px;
+  padding: 9px 20px 10px;
 }
 .btn-outline:hover,
 .btn-outline:active,

@@ -122,9 +122,9 @@ const Blogs = ({
           <div className="container-fluid">
             <header>
               <div className="col-md-12 pt-3">
-                <h1 className="display-4 font-weight-bold text-center">
+                <h2 className="display-4 font-weight-bold text-center">
                   Shipbuilding News and Maritime Matters
-                </h1>
+                </h2>
               </div>
               <section>
                 <div className="pb-5 text-center">
