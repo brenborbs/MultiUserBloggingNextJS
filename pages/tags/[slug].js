@@ -48,7 +48,7 @@ const Tag = ({ tag, blogs, query }) => {
           <div className="container-fluid text-center">
             <header>
               <div className="col-md-12 pt-3">
-                <h1 className="display-4 font-weight-bold">{tag.name}</h1>
+                <h1 className="display-4 font-weight-bold">TAGS: {tag.name}</h1>
                 {blogs.map((b, i) => (
                   <div key={i}>
                     <Card key={i} blog={b} />

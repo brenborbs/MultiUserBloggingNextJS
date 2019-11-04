@@ -41,3 +41,8 @@ Front-end:
 - Added Search blogs functionality
 - Change back signin/signout UI
 - Completed Tags and Categories slug.js
+
+8th commit:
+
+- Added User Public profile UI
+- Creating blogs by authenticated user UI
