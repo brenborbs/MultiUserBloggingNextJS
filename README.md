@@ -51,3 +51,7 @@ Front-end:
 
 - Added DisqusThread comment system
 - Added Token expiry to local storage
+
+10th commit:
+
+- Added react-share social media blog sharing

@@ -75,7 +75,7 @@ const Search = () => {
   );
 
   return (
-    <div className="container-fluid bg-light" style={{ paddingTop: "60px" }}>
+    <div className="container-fluid bg-light">
       <div className="pt-3 pb-5">{searchForm()}</div>
       {searched && (
         <div style={{ marginTop: "-120px", marginBottom: "-80px" }}>

@@ -119,10 +119,10 @@ const Blogs = ({
       {head()}
       <Layout>
         <main>
-          <div className="container-fluid">
+          <div className="container-fluid bg-camera">
             <header>
               <div className="col-md-12 pt-3">
-                <h2 className="display-4 font-weight-bold text-center">
+                <h2 className="display-4 font-weight-bold text-center fg-custom">
                   Shipbuilding News and Maritime Matters
                 </h2>
               </div>
@@ -135,7 +135,13 @@ const Blogs = ({
               </section>
             </header>
           </div>
-          <div className="container-fluid">{showAllBlogs()}</div>
+          <div className="container-fluid">
+            <div style={{ paddingTop: "30px", textAlign: "center" }}>
+              <h2>Latest Posts</h2>
+            </div>
+            <hr />
+            {showAllBlogs()}
+          </div>
           <div className="container-fluid">{showLoadedBlogs()}</div>
           <div className="text-center pt-5 pb-5">{loadMoreButton()}</div>
         </main>
@@ -147,7 +153,7 @@ const Blogs = ({
 // getInitialProps can only be used in pages not components! same as componentWillMount
 Blogs.getInitialProps = () => {
   let skip = 0;
-  let limit = 2;
+  let limit = 3;
   return listBlogsWithCategoriesAndTags(skip, limit).then(data => {
     if (data.error) {
       console.log(data.error);

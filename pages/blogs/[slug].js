@@ -9,6 +9,20 @@ import moment from "moment";
 import SmallCard from "../../components/blog/SmallCard";
 import DisqusThread from "../../components/DisqusThread";
 
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  FacebookShareCount,
+  TwitterShareButton,
+  TwitterIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+  EmailShareButton,
+  EmailIcon,
+  WhatsappShareButton,
+  WhatsappIcon
+} from "react-share";
+
 const SingleBlog = ({ blog, query }) => {
   const [related, setRelated] = useState([]);
 
@@ -84,6 +98,69 @@ const SingleBlog = ({ blog, query }) => {
     );
   };
 
+  const showReactShareIcons = () => {
+    return (
+      <div className="Demo__container">
+        <div className="Demo__some-network">
+          <FacebookShareButton
+            url={`${API}/blog/${blog.slug}`}
+            quote={blog.title}
+            className="Demo__some-network__share-button"
+          >
+            <FacebookIcon size={32} round={false} />
+          </FacebookShareButton>
+          <FacebookShareCount
+            url={`${API}/blog/${blog.slug}`}
+            className="Demo__some-network__share-count"
+          >
+            {count => count}
+          </FacebookShareCount>
+        </div>
+        <div className="Demo__some-network">
+          <TwitterShareButton
+            url={`${API}/blog/${blog.slug}`}
+            quote={blog.title}
+            className="Demo__some-network__share-button"
+          >
+            <TwitterIcon size={32} round={false} />
+          </TwitterShareButton>
+        </div>
+        <div className="Demo__some-network">
+          <LinkedinShareButton
+            url={`${API}/blog/${blog.slug}`}
+            windowWidth={750}
+            windowHeight={600}
+            className="Demo__some-network__share-button"
+          >
+            <LinkedinIcon size={32} round={false} />
+          </LinkedinShareButton>
+        </div>
+        <div className="Demo__some-network">
+          <EmailShareButton
+            url={`${API}/blog/${blog.slug}`}
+            subject={blog.title}
+            body="body"
+            className="Demo__some-network__share-button"
+          >
+            <EmailIcon size={32} round={false} />
+          </EmailShareButton>
+        </div>
+        <div className="Demo__some-network">
+          <WhatsappShareButton
+            url={`${API}/blog/${blog.slug}`}
+            title={blog.title}
+            separator=":: "
+            className="Demo__some-network__share-button"
+          >
+            <WhatsappIcon size={32} round={false} />
+          </WhatsappShareButton>
+
+          <div className="Demo__some-network__share-count">&nbsp;</div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <React.Fragment>
       {head()}
@@ -115,10 +192,11 @@ const SingleBlog = ({ blog, query }) => {
                   </p>
 
                   <div className="pb-3">
-                    {showBlogCategories(blog)}
+                    {/* {showBlogCategories(blog)}
                     {showBlogTags(blog)}
-                    <br />
-                    <br />
+                    <br /> */}
+                    {/* <br /> */}
+                    {showReactShareIcons()}
                   </div>
                 </div>
               </section>
@@ -127,6 +205,9 @@ const SingleBlog = ({ blog, query }) => {
             <div className="container">
               <section>
                 <div className="col-md-12 lead">{renderHTML(blog.body)}</div>
+                <hr />
+                {showBlogCategories(blog)}
+                {showBlogTags(blog)}
               </section>
             </div>
 

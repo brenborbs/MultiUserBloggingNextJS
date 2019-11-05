@@ -2,15 +2,53 @@ body {
   font-family: "Lato", sans-serif;
   font-weight: 300;
 }
+.bg-custom {
+  background: #4ca1af; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #c4e0e5,
+    #4ca1af
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #c4e0e5,
+    #4ca1af
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.fg-custom {
+  background: #82828287;
+  color: #ffffff;
+  padding: 20px 20px;
+  display: table;
+}
+.bg-camera {
+  min-height: 60vh;
+  background: url(../images/analog-camera-antique-aperture-3113527.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 20px 0 80px 0;
+}
+.bg-cust {
+  background: #e0eafc; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #cfdef3,
+    #e0eafc
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #cfdef3,
+    #e0eafc
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 a {
   color: #004e64;
 }
 h1,
 h2,
-h3,
-h4,
-h5,
-h6 {
+h3 {
   font-family: "Prata", serif;
   text-transform: uppercase;
 }
@@ -104,4 +142,21 @@ a:hover {
 }
 .footer-icon:hover {
   color: #f15025;
+}
+/* React share icons styling */
+.Demo__some-network {
+  vertical-align: top;
+  display: inline-block;
+  margin-right: 15px;
+  text-align: center;
+}
+.Demo__some-network__share-button {
+  cursor: pointer;
+}
+.Demo__some-network__share-count {
+  margin-top: 3px;
+  font-size: 12px;
+}
+.Demo__some-network__share-button:hover:not(:active) {
+  opacity: 0.75;
 }
