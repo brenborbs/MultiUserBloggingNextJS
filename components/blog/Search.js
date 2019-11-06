@@ -44,7 +44,7 @@ const Search = () => {
           return (
             <div key={i}>
               <Link href={`/blogs/${blog.slug}`}>
-                <a className="text-secondary">{blog.title}</a>
+                <a>{blog.title}</a>
               </Link>
             </div>
           );

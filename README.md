@@ -55,3 +55,7 @@ Front-end:
 10th commit:
 
 - Added react-share social media blog sharing
+
+11th commit:
+
+- added forgot password actions and pages

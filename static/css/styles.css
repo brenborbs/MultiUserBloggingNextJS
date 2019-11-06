@@ -1,6 +1,10 @@
 body {
   font-family: "Lato", sans-serif;
   font-weight: 300;
+  background-color: beige;
+}
+.mark-custom {
+  background-color: navajowhite;
 }
 .bg-custom {
   background: #4ca1af; /* fallback for old browsers */

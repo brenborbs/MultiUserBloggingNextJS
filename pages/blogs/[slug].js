@@ -183,7 +183,7 @@ const SingleBlog = ({ blog, query }) => {
                   <h1 className="display-2 pb-3 pt-3 text-center font-weight-bold">
                     {blog.title}
                   </h1>
-                  <p className="lead mt-3 mark">
+                  <p className="lead mt-3 mark-custom">
                     Written by{" "}
                     <Link href={`/profile/${blog.postedBy.username}`}>
                       <a>{blog.postedBy.username}</a>
