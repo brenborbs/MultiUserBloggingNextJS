@@ -45,6 +45,10 @@ const UserProfile = ({ user, blogs, query }) => {
     });
   };
 
+  const photoURL = user.username
+    ? `${API}/user/photo/${user.username}`
+    : "/static/images/avatar.jpg";
+
   return (
     <React.Fragment>
       {head()}
@@ -59,10 +63,13 @@ const UserProfile = ({ user, blogs, query }) => {
                 <div className="row">
                   <div className="col-4 col-md-3 m-auto">
                     <img
-                      src={`${API}/user/photo/${user.username}`}
+                      src={photoURL}
                       className="rounded-circle"
                       style={{ width: "100%" }}
                       alt="user profile"
+                      onError={i =>
+                        (i.target.src = "/static/images/avatar.jpg")
+                      }
                     />
                   </div>
                 </div>

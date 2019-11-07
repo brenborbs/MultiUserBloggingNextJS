@@ -1,6 +1,22 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig();
 
 class MyDocument extends Document {
+  // google analytics
+  setGoogleTags() {
+    if (publicRuntimeConfig.PRODUCTION) {
+      return {
+        __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'UA-151770423-1');
+        `
+      };
+    }
+  }
   render() {
     return (
       <Html lang="en">
@@ -27,6 +43,13 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
           />
+          <React.Fragment>
+            <script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=UA-151770423-1"
+            ></script>
+            <script dangerouslySetInnerHTML={this.setGoogleTags()} />
+          </React.Fragment>
         </Head>
         <body>
           <Main />

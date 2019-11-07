@@ -44,6 +44,7 @@ const ProfileUpdate = () => {
           name: data.name,
           email: data.email,
           about: data.about
+          // photo: data.photo
         });
       }
     });
@@ -86,6 +87,7 @@ const ProfileUpdate = () => {
             name: data.name,
             email: data.email,
             about: data.about,
+            // photo: data.photo,
             password: "",
             success: true,
             loading: false
@@ -188,6 +190,10 @@ const ProfileUpdate = () => {
     </div>
   );
 
+  const photoURL = username
+    ? `${API}/user/photo/${username}`
+    : "/static/images/avatar.jpg";
+
   return (
     <React.Fragment>
       <div
@@ -197,10 +203,11 @@ const ProfileUpdate = () => {
         <div className="row">
           <div className="col-md-4">
             <img
-              src={`${API}/user/photo/${username}`}
+              src={photoURL}
               className="img img-fluid img-thumbnail mb-3"
               style={{ maxHeight: "auto", maxWidth: "100%" }}
               alt="user profile"
+              onError={i => (i.target.src = "/static/images/avatar.jpg")}
             />
           </div>
           <div className="col-md-8">

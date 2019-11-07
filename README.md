@@ -59,3 +59,16 @@ Front-end:
 11th commit:
 
 - added forgot password actions and pages
+
+12th commit:
+
+- added account activation on sign-up pages
+- added Google sign-in UI
+- added Google analytics set-up
+- Improved index.js landing page UI
+
+To-Do list Bugs:
+
+- On ProfileUpdate.js, whenever the Username is changed, the photo goes to error or disappears
+- On profile [username].js, if user has no profile, the page just keeps on loading. But when stop on browser, the default image is shown
+- On Categories & Tags [slug].js, username profile is undefined

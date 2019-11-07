@@ -1,10 +1,9 @@
 body {
   font-family: "Lato", sans-serif;
   font-weight: 300;
-  background-color: beige;
 }
 .mark-custom {
-  background-color: navajowhite;
+  background-color: cornsilk;
 }
 .bg-custom {
   background: #4ca1af; /* fallback for old browsers */
@@ -54,7 +53,7 @@ h1,
 h2,
 h3 {
   font-family: "Prata", serif;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 /* navbar */
 .navbar {
@@ -163,4 +162,171 @@ a:hover {
 }
 .Demo__some-network__share-button:hover:not(:active) {
   opacity: 0.75;
+}
+
+/* banner cover index */
+.max-height {
+  min-height: calc(100vh - 76px);
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("../images/seasidejpg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  position: relative;
+}
+/* about section */
+.about-img__container {
+  position: relative;
+}
+.about-img__container::before {
+  content: "";
+  position: absolute;
+  top: -24px;
+  top: -1.5rem;
+  left: -27.2px;
+  left: -1.7rem;
+  width: 100%;
+  height: 100%;
+  outline: 8px solid rgb(249, 228, 148);
+  outline: 0.5rem solid rgb(249, 228, 148);
+  z-index: -1;
+  -webkit-transition: all 1s linear;
+  transition: all 1s linear;
+}
+.about-img__container:hover:before {
+  top: 0;
+  left: 0;
+}
+.banner {
+  color: #fff;
+  margin-top: -64px;
+  margin-top: -4rem;
+}
+.banner-title {
+  color: tomato;
+  font-size: 64px;
+  font-size: 4rem;
+}
+.banner-link {
+  font-size: 24px;
+  font-size: 1.5rem;
+  color: #000;
+  border: 3.2px solid #000;
+  border: 0.2rem solid #000;
+}
+.banner-link:hover {
+  background: #000;
+  color: #ef7998;
+}
+/* store */
+.store {
+  background: rgb(238, 238, 238);
+}
+.single-item {
+  -webkit-transition: all 0.3 linear;
+  transition: all 0.3 linear;
+}
+.single-item:hover {
+  -webkit-box-shadow: 0 10px 15px rgb(0, 0, 0);
+  box-shadow: 0 10px 15px rgb(0, 0, 0);
+}
+.img-container {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.store-img {
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+.img-container:hover .store-img {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.img-container:hover {
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+/**
+ * card index page
+ */
+
+.flip {
+  position: relative;
+}
+.flip > .front,
+.flip > .back {
+  display: block;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition-duration: 0.5s;
+  transition-property: transform, opacity;
+}
+.flip > .front {
+  transform: rotateY(0deg);
+}
+.flip > .back {
+  position: absolute;
+  opacity: 0;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  transform: rotateY(-180deg);
+}
+.flip:hover > .front {
+  transform: rotateY(180deg);
+}
+.flip:hover > .back {
+  opacity: 1;
+  transform: rotateY(0deg);
+}
+.flip.flip-vertical > .back {
+  transform: rotateX(-180deg);
+}
+.flip.flip-vertical:hover > .front {
+  transform: rotateX(180deg);
+}
+.flip.flip-vertical:hover > .back {
+  transform: rotateX(0deg);
+}
+.flip {
+  position: relative;
+  display: inline-block;
+  margin-right: 2px;
+  margin-bottom: 1em;
+  width: 100%;
+  /*width: 400px;*/
+}
+.flip > .front,
+.flip > .back {
+  display: block;
+  color: white;
+  width: inherit;
+  background-size: cover !important;
+  background-position: center !important;
+  height: 220px;
+  padding: 1em 2em;
+  background: #313131;
+  border-radius: 10px;
+}
+.flip > .front p,
+.flip > .back p {
+  font-size: 0.9125rem;
+  line-height: 160%;
+  color: #999;
+}
+.text-shadow {
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.04), 2px 2px rgba(0, 0, 0, 0.04),
+    3px 3px rgba(0, 0, 0, 0.04), 4px 4px rgba(0, 0, 0, 0.04),
+    0.125rem 0.125rem rgba(0, 0, 0, 0.04), 6px 6px rgba(0, 0, 0, 0.04),
+    7px 7px rgba(0, 0, 0, 0.04), 8px 8px rgba(0, 0, 0, 0.04),
+    9px 9px rgba(0, 0, 0, 0.04), 0.3125rem 0.3125rem rgba(0, 0, 0, 0.04),
+    11px 11px rgba(0, 0, 0, 0.04), 12px 12px rgba(0, 0, 0, 0.04),
+    13px 13px rgba(0, 0, 0, 0.04), 14px 14px rgba(0, 0, 0, 0.04),
+    0.625rem 0.625rem rgba(0, 0, 0, 0.04), 16px 16px rgba(0, 0, 0, 0.04),
+    17px 17px rgba(0, 0, 0, 0.04), 18px 18px rgba(0, 0, 0, 0.04),
+    19px 19px rgba(0, 0, 0, 0.04), 1.25rem 1.25rem rgba(0, 0, 0, 0.04);
 }
