@@ -3,30 +3,20 @@ body {
   font-weight: 300;
 }
 .mark-custom {
-  background-color: cornsilk;
+  background-color: #f8ecec;
 }
 .bg-custom {
-  background: #4ca1af; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #c4e0e5,
-    #4ca1af
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #c4e0e5,
-    #4ca1af
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #5b696a;
 }
-.fg-custom {
+/* .fg-custom {
   background: #82828287;
-  color: #ffffff;
+  color: #3e4659;
   padding: 20px 20px;
   display: table;
-}
+} */
 .bg-camera {
   min-height: 60vh;
-  background: url(../images/analog-camera-antique-aperture-3113527.jpg);
+  background: url(../images/dawn.jpg);
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -34,20 +24,10 @@ body {
   padding: 20px 0 80px 0;
 }
 .bg-cust {
-  background: #e0eafc; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #cfdef3,
-    #e0eafc
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #cfdef3,
-    #e0eafc
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #888d90;
 }
 a {
-  color: #004e64;
+  color: #382a1f;
 }
 h1,
 h2,
@@ -57,10 +37,16 @@ h3 {
 }
 /* navbar */
 .navbar {
-  background-color: #004e64;
+  background-color: #cbd1d7;
 }
 .navbar-dark .navbar-nav .nav-link {
-  color: white;
+  color: black;
+}
+.nav-link {
+  font-size: 18px;
+  padding: 10px 15px;
+  margin: 0 10px;
+  font-weight: bold;
 }
 /* * {
   box-sizing: border-box;
@@ -71,7 +57,8 @@ h3 {
   object-fit: cover;
 }
 #nprogress .bar {
-  height: 6px !important;
+  height: 4px !important;
+  background: #6f3637 !important ;
 }
 .signup_text {
   padding-top: 10px;
@@ -97,20 +84,21 @@ h3 {
 
 a:hover {
   text-decoration: underline;
+  color: #b35340;
 }
 
 .category {
-  background-color: lightseagreen;
+  background-color: #39484d;
 }
 
 .tags {
-  background-color: lightsteelblue;
+  background-color: #9a8a84;
 }
 /* Card Button */
 .btn-outline {
   color: #fff;
-  background-color: #004e64;
-  border-color: #004e64;
+  background-color: #9aacb8;
+  border-color: #9aacb8;
   font-weight: bold;
   letter-spacing: 0.05em;
   /* border-radius: 0; */
@@ -121,31 +109,21 @@ a:hover {
 .btn-outline:active,
 .btn-outline:focus,
 .btn-outline.active {
-  background: #003d4f;
-  color: #ffffff;
-  border-color: #003d4f;
+  background: #dde2e3;
+  color: black;
+  border-color: #dde2e3;
+}
+.btn-head {
+  color: #fff;
+  background-color: #465151;
+  border-color: #465151;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  /* border-radius: 0; */
+  border-radius: 100000px;
+  /* padding: 9px 20px 10px; */
 }
 
-/* footer*/
-.footer-title {
-  background: #242a33;
-  color: #fff;
-}
-.footer-contact {
-  background: #242a33;
-  color: #fff;
-  /* rgb(238, 238, 238); */
-}
-.footer-icon {
-  font-size: 24px;
-  font-size: 1.5rem;
-  color: #fff;
-  -webkit-transition: all 0.4 ease-in-out;
-  transition: all 0.4 ease-in-out;
-}
-.footer-icon:hover {
-  color: #f15025;
-}
 /* React share icons styling */
 .Demo__some-network {
   vertical-align: top;
@@ -188,8 +166,8 @@ a:hover {
   left: -1.7rem;
   width: 100%;
   height: 100%;
-  outline: 8px solid rgb(249, 228, 148);
-  outline: 0.5rem solid rgb(249, 228, 148);
+  outline: 8px solid #465151;
+  outline: 0.5rem solid #465151;
   z-index: -1;
   -webkit-transition: all 1s linear;
   transition: all 1s linear;
@@ -204,7 +182,7 @@ a:hover {
   margin-top: -4rem;
 }
 .banner-title {
-  color: tomato;
+  color: #271e2a;
   font-size: 64px;
   font-size: 4rem;
 }
@@ -220,6 +198,9 @@ a:hover {
   color: #ef7998;
 }
 /* store */
+main {
+  background: rgb(238, 238, 238);
+}
 .store {
   background: rgb(238, 238, 238);
 }
@@ -250,10 +231,56 @@ a:hover {
   transform: translate(0, 0);
 }
 
-/**
- * card index page
- */
+.title-card {
+  font-size: 1.25rem;
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-top: 0;
+}
 
+/* footer */
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #607d8b;
+  color: #fff;
+  padding: 20px 0;
+}
+
+footer ul {
+  display: flex;
+  list-style: none;
+}
+
+footer ul li {
+  margin-left: 16px;
+}
+
+footer p {
+  text-transform: uppercase;
+  font-size: 14px;
+  opacity: 0.6;
+  align-self: center;
+}
+
+@media (max-width: 1100px) {
+  footer {
+    flex-direction: column;
+  }
+
+  footer p {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  footer ul li {
+    margin: 0 8px;
+  }
+}
+
+/* index card flip */
 .flip {
   position: relative;
 }
@@ -309,14 +336,14 @@ a:hover {
   background-position: center !important;
   height: 220px;
   padding: 1em 2em;
-  background: #313131;
+  background: #dbab61;
   border-radius: 10px;
 }
 .flip > .front p,
 .flip > .back p {
   font-size: 0.9125rem;
   line-height: 160%;
-  color: #999;
+  color: white;
 }
 .text-shadow {
   text-shadow: 1px 1px rgba(0, 0, 0, 0.04), 2px 2px rgba(0, 0, 0, 0.04),

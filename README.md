@@ -67,6 +67,11 @@ Front-end:
 - added Google analytics set-up
 - Improved index.js landing page UI
 
+13th commit:
+
+- deleted search.js file
+- improved UI on all pages. change colors
+
 To-Do list Bugs:
 
 - On ProfileUpdate.js, whenever the Username is changed, the photo goes to error or disappears

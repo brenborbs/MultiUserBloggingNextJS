@@ -6,6 +6,7 @@ import { useState } from "react";
 import { listBlogsWithCategoriesAndTags } from "../../actions/blog";
 import Card from "../../components/blog/Card";
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
+import Search from "../../components/blog/Search";
 
 const Blogs = ({
   blogs,
@@ -82,35 +83,38 @@ const Blogs = ({
     return blogs.map((blog, i) => {
       // ()
       return (
-        <article key={i}>
+        <div className="col-sm-6 pb-4" key={i}>
           <Card blog={blog} />
-          <hr />
-        </article>
+        </div>
       );
     });
   };
 
   const showAllCategories = () => {
     return categories.map((c, i) => (
-      <Link href={`/categories/${c.slug}`} key={i}>
-        <a className="tag category">{c.name}</a>
-      </Link>
+      <div className="col-lg-6" key={i}>
+        <Link href={`/categories/${c.slug}`} key={i}>
+          <a className="tag category">{c.name}</a>
+        </Link>
+      </div>
     ));
   };
 
   const showAllTags = () => {
     return tags.map((t, i) => (
-      <Link href={`/tags/${t.slug}`} key={i}>
-        <a className="tag tags">{t.name}</a>
-      </Link>
+      <div className="col-lg-6" key={i}>
+        <Link href={`/tags/${t.slug}`} key={i}>
+          <a className="tag tags">{t.name}</a>
+        </Link>
+      </div>
     ));
   };
 
   const showLoadedBlogs = () => {
     return loadedBlogs.map((blog, i) => (
-      <article key={i}>
+      <div className="col-sm-6 pb-4" key={i}>
         <Card blog={blog} />
-      </article>
+      </div>
     ));
   };
 
@@ -123,27 +127,47 @@ const Blogs = ({
             <header>
               <div className="col-md-12 pt-3">
                 <h2 className="display-4 font-weight-bold text-center fg-custom">
-                  Shipbuilding News and Maritime Matters
+                  {/*  */}
                 </h2>
               </div>
-              <section>
-                <div className="pb-5 text-center">
-                  {showAllCategories()}
-                  <br />
-                  {showAllTags()}
-                </div>
-              </section>
             </header>
           </div>
-          <div className="container-fluid">
-            <div style={{ paddingTop: "30px", textAlign: "center" }}>
-              <h2>Latest Posts</h2>
-            </div>
+          {/* Blog starts here */}
+          <div className="container">
+            <h1 className="mt-4">Latest Posts</h1>
             <hr />
-            {showAllBlogs()}
+            <div className="row">
+              {/* main div */}
+              <div className="col-lg-8">
+                <div className="row">{showAllBlogs()}</div>
+                <div className="row">{showLoadedBlogs()}</div>
+
+                <div className="text-center pt-5 pb-5">{loadMoreButton()}</div>
+              </div>
+
+              <div className="col-md-4">
+                {/* Search Widget */}
+                <Search />
+                {/* Categories */}
+                <div className="card my-4">
+                  <h5 className="card-header">Categories</h5>
+                  <div className="card-body">
+                    <div className="row">{showAllCategories()}</div>
+                  </div>
+                </div>
+                <div className="card my-4">
+                  <h5 className="card-header">Tags</h5>
+                  <div className="card-body">
+                    <div className="row">{showAllTags()}</div>
+                  </div>
+                </div>
+                {/* Categories */}
+                {/* end right side */}
+              </div>
+              {/* main row ends here */}
+            </div>
+            {/* Blog ends here */}
           </div>
-          <div className="container-fluid">{showLoadedBlogs()}</div>
-          <div className="text-center pt-5 pb-5">{loadMoreButton()}</div>
         </main>
       </Layout>
     </React.Fragment>
@@ -153,7 +177,7 @@ const Blogs = ({
 // getInitialProps can only be used in pages not components! same as componentWillMount
 Blogs.getInitialProps = () => {
   let skip = 0;
-  let limit = 3;
+  let limit = 4;
   return listBlogsWithCategoriesAndTags(skip, limit).then(data => {
     if (data.error) {
       console.log(data.error);

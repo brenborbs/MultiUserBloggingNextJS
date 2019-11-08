@@ -37,8 +37,8 @@ const Search = () => {
 
   const searchedBlogs = (results = []) => {
     return (
-      <div className="jumbotron bg-white">
-        {message && <p className="pt-4 text-muted font-italic">{message}</p>}
+      <div className="bg-white text-center pb-2">
+        {message && <p className="text-muted font-italic">{message}</p>}
 
         {results.map((blog, i) => {
           return (
@@ -55,33 +55,29 @@ const Search = () => {
 
   const searchForm = () => (
     <form onSubmit={searchSubmit}>
-      <div className="row">
-        <div className="col-md-8">
+      <div className="card-body">
+        <div className="input-group">
           <input
             type="search"
             className="form-control"
             placeholder="Advance Search"
             onChange={handleChange}
           />
-        </div>
-
-        <div className="col-md-4">
-          <button className="btn btn-block btn-outline-secondary" type="submit">
-            Search
-          </button>
+          <span className="input-group-btn">
+            <button className="btn btn-head" type="submit">
+              Go!
+            </button>
+          </span>
         </div>
       </div>
     </form>
   );
 
   return (
-    <div className="container-fluid bg-light">
-      <div className="pt-3 pb-5">{searchForm()}</div>
-      {searched && (
-        <div style={{ marginTop: "-120px", marginBottom: "-80px" }}>
-          {searchedBlogs(results)}
-        </div>
-      )}
+    <div className="card my-4">
+      <h5 className="card-header">Search</h5>
+      {searchForm()}
+      {searched && <div>{searchedBlogs(results)}</div>}
     </div>
   );
 };

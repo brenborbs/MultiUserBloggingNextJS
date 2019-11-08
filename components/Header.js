@@ -42,20 +42,20 @@ const Header = () => {
         </Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="ml-auto" navbar>
-            {isAuth() && (
+          <Nav className="navbar-nav ml-auto" navbar>
+            {/* {isAuth() && (
               <NavItem>
                 <a href="/user/crud/blog" className="btn btn-info text-light">
                   Write a blog
                 </a>
               </NavItem>
-            )}
+            )} */}
             <React.Fragment>
-              <NavItem>
+              {/* <NavItem>
                 <Link href="/search">
                   <NavLink>Search</NavLink>
                 </Link>
-              </NavItem>
+              </NavItem> */}
               <NavItem>
                 <Link href="/blogs">
                   <NavLink>Blogs</NavLink>
@@ -67,23 +67,6 @@ const Header = () => {
                 </Link>
               </NavItem>
             </React.Fragment>
-
-            {!isAuth() && (
-              <React.Fragment>
-                <NavItem>
-                  <Link href="/signin">
-                    <NavLink>Signin</NavLink>
-                  </Link>
-                </NavItem>
-                <NavItem>
-                  <Link href="/signup">
-                    <NavLink className="btn btn-info text-light">
-                      Signup
-                    </NavLink>
-                  </Link>
-                </NavItem>
-              </React.Fragment>
-            )}
 
             {isAuth() && isAuth().role === 0 && (
               <NavItem>
@@ -100,7 +83,24 @@ const Header = () => {
                 </Link>
               </NavItem>
             )}
-
+          </Nav>
+          <Nav className="navbar-nav ml-auto" navbar>
+            {!isAuth() && (
+              <React.Fragment>
+                <NavItem>
+                  <Link href="/signin">
+                    <NavLink>Signin</NavLink>
+                  </Link>
+                </NavItem>
+                <NavItem>
+                  <Link href="/signup">
+                    <NavLink className="btn btn-head text-light">
+                      Signup
+                    </NavLink>
+                  </Link>
+                </NavItem>
+              </React.Fragment>
+            )}
             {isAuth() && (
               <NavItem>
                 <NavLink

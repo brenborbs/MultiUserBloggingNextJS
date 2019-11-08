@@ -53,12 +53,16 @@ const Tag = ({ tag, blogs, query }) => {
                   Below you'll find a list of all posts that have been tagged as{" "}
                   <strong>"{tag.name}"</strong>
                 </p>
-                {blogs.map((b, i) => (
-                  <div key={i}>
-                    <Card key={i} blog={b} />
-                    <hr />
+                <hr />
+                <div className="col-lg-12">
+                  <div className="row">
+                    {blogs.map((b, i) => (
+                      <div className="col-sm-4 pb-3" key={i}>
+                        <Card key={i} blog={b} />
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
             </header>
           </div>

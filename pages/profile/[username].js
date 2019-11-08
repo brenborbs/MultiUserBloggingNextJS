@@ -55,7 +55,10 @@ const UserProfile = ({ user, blogs, query }) => {
       <Layout>
         <div
           className="container"
-          style={{ paddingTop: "40px", marginBottom: "30px" }}
+          style={{
+            paddingTop: "40px",
+            paddingBottom: "40px"
+          }}
         >
           <div className="row">
             <div className="col-md-12">
@@ -86,7 +89,7 @@ const UserProfile = ({ user, blogs, query }) => {
           {/* Bio */}
           <div className="row">
             <div className="col-md-12">
-              <div className="card card-body bg-cust mb-3">
+              <div className="card card-body bg-cust mb-3 text-light">
                 <h3 className="text-center">{user.name}'s Bio</h3>
                 <p className="lead">{user.about}</p>
               </div>

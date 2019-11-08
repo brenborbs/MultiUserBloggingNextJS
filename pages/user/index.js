@@ -6,7 +6,7 @@ const UserIndex = () => {
   return (
     <Layout>
       <Private>
-        <div className="container-fluid" style={{ marginBottom: "30px" }}>
+        <div className="container-fluid" style={{ marginBottom: "12em" }}>
           <div className="row">
             <div className="col-md-12 pt-5 pb-5">
               <h2>User Dashboard</h2>
