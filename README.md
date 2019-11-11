@@ -2,7 +2,6 @@
 
 Add next.config.js file variables:
 
-````md
 ```js
 const withCSS = require("@zeit/next-css");
 
@@ -20,9 +19,12 @@ module.exports = withCSS({
   }
 });
 ```
-````
 
-To run on terminal "npm run dev"
+To run on terminal
+
+```js
+npm run dev
+```
 
 Front-end:
 
@@ -101,6 +103,10 @@ Front-end:
 - active links on navbar
 
 To-Do list Bugs:
+
+Not working:
+
+- like/unlike functionality
 
 - On ProfileUpdate.js, whenever the Username is changed, the photo goes to error or disappears
 - On profile [username].js, if user has no profile, the page just keeps on loading. But when stop on browser, the default image is shown
