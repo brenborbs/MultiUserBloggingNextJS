@@ -1,13 +1,16 @@
 import Head from "next/head";
 import Link from "next/link";
+import Router, { withRouter } from "next/router";
 import Layout from "../../components/Layout";
 import { useState, useEffect } from "react";
-import { singleBlog, listRelated } from "../../actions/blog";
+import { singleBlog, listRelated, like, unlike } from "../../actions/blog";
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
 import renderHTML from "react-render-html";
 import moment from "moment";
 import SmallCard from "../../components/blog/SmallCard";
 import DisqusThread from "../../components/DisqusThread";
+// for like
+import { getCookie, isAuth } from "../../actions/auth";
 
 import {
   FacebookShareButton,
@@ -16,15 +19,45 @@ import {
   TwitterShareButton,
   TwitterIcon,
   LinkedinShareButton,
-  LinkedinIcon,
-  EmailShareButton,
-  EmailIcon,
-  WhatsappShareButton,
-  WhatsappIcon
+  LinkedinIcon
+  // EmailShareButton,
+  // EmailIcon,
+  // WhatsappShareButton,
+  // WhatsappIcon
 } from "react-share";
 
-const SingleBlog = ({ blog, query }) => {
+const SingleBlog = ({ blog, query, router }) => {
   const [related, setRelated] = useState([]);
+
+  const [liked, setLiked] = useState([]);
+  const [values, setValues] = useState({
+    like: false,
+    likes: 0
+  });
+
+  const { like, likes } = values;
+  const token = getCookie("token");
+
+  const checkLiked = likes => {
+    const userId = isAuth() && isAuth().user._id;
+    let match = likes.indexOf(userId) !== -1;
+    return match;
+  };
+  // const initLike = () => {
+  //   if (router.query.slug) {
+  //     like(router.query.slug).then(data => {
+  //       if (data.error) {
+  //         console.log(data.error);
+  //       } else {
+  //         setValues({
+  //           ...values,
+  //           like: checkLike(data.like),
+  //           likes: data.likes.length
+  //         });
+  //       }
+  //     });
+  //   }
+  // };
 
   const loadRelated = () => {
     listRelated({ blog }).then(data => {
@@ -32,12 +65,14 @@ const SingleBlog = ({ blog, query }) => {
         console.log(data.error);
       } else {
         setRelated(data);
+        setLiked({ liked: data.checkLiked });
       }
     });
   };
   // load state related blogs
   useEffect(() => {
     loadRelated();
+    // initLike();
   }, []);
 
   const head = () => (
@@ -62,6 +97,7 @@ const SingleBlog = ({ blog, query }) => {
       <meta property="fb:app_id" content={`${FB_APP_ID}`} />
     </Head>
   );
+
   const showBlogCategories = blog =>
     blog.categories.map((c, i) => (
       <Link key={i} href={`/categories/${c.slug}`}>
@@ -135,30 +171,29 @@ const SingleBlog = ({ blog, query }) => {
             <LinkedinIcon size={32} round={false} />
           </LinkedinShareButton>
         </div>
-        <div className="Demo__some-network">
-          <EmailShareButton
-            url={`${API}/blog/${blog.slug}`}
-            subject={blog.title}
-            body="body"
-            className="Demo__some-network__share-button"
-          >
-            <EmailIcon size={32} round={false} />
-          </EmailShareButton>
-        </div>
-        <div className="Demo__some-network">
-          <WhatsappShareButton
-            url={`${API}/blog/${blog.slug}`}
-            title={blog.title}
-            separator=":: "
-            className="Demo__some-network__share-button"
-          >
-            <WhatsappIcon size={32} round={false} />
-          </WhatsappShareButton>
-
-          <div className="Demo__some-network__share-count">&nbsp;</div>
-        </div>
       </div>
     );
+  };
+
+  const handleLikeToggle = () => {
+    if (!isAuth()) {
+      Router.push(`/signin`);
+    }
+    console.log("like click, still no logic!");
+
+    // let callApi =  ;
+    // const userId = isAuth().user._id;
+    // const token = isAuth().token;
+
+    // callApi(userId, token).then(data => {
+    //   if (data.error) {
+    //     console.log(data.error);
+    //   } else {
+    //     setState({
+    //       ...values
+    //     });
+    //   }
+    // });
   };
 
   return (
@@ -190,6 +225,19 @@ const SingleBlog = ({ blog, query }) => {
                     </Link>{" "}
                     | Published {moment(blog.updatedAt).fromNow()}
                   </p>
+                  {/* like */}
+                  {like ? (
+                    <h5 onClick={handleLikeToggle}>
+                      <i className="fa fa-heart-o text-success " /> {likes}{" "}
+                      likes
+                    </h5>
+                  ) : (
+                    <h5 onClick={handleLikeToggle}>
+                      <i className="fa fa-heart-o text-danger " /> {likes} likes
+                    </h5>
+                  )}
+                  <hr />
+                  {/* like */}
 
                   <div className="pb-3">
                     {/* {showBlogCategories(blog)}
@@ -212,7 +260,9 @@ const SingleBlog = ({ blog, query }) => {
             </div>
 
             <div className="container">
-              <h4 className="text-center pt-5 pb-5 h2">Related blogs</h4>
+              <h1 className="text-center pt-5 pb-5 text-caveat">
+                Related blogs
+              </h1>
               <hr />
               <div className="row">{showRelatedBlog()}</div>
             </div>
@@ -236,4 +286,4 @@ SingleBlog.getInitialProps = ({ query }) => {
   });
 };
 
-export default SingleBlog;
+export default withRouter(SingleBlog);

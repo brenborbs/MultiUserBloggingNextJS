@@ -65,12 +65,14 @@ const Index = () => {
                         "url(" + "/static/images/concert.jpg" + ")"
                     }}
                   >
-                    <h2 className="text-shadow text-center h1">Indie</h2>
+                    <h2 className="text-shadow text-caveat text-center h1">
+                      Indie
+                    </h2>
                   </div>
                   <div className="back text-center">
                     <Link href="/categories/react">
                       <a>
-                        <h3 className="h1">Indie Bands</h3>
+                        <h3 className="h1 text-caveat">Indie Bands</h3>
                       </a>
                     </Link>
                     <p className="lead">
@@ -88,12 +90,14 @@ const Index = () => {
                       backgroundImage: "url(" + "/static/images/arts.jpg" + ")"
                     }}
                   >
-                    <h2 className="text-shadow text-center h1">Art</h2>
+                    <h2 className="text-shadow text-caveat text-center h1">
+                      Art
+                    </h2>
                   </div>
                   <div className="back text-center">
                     <Link href="/categories/node">
                       <a>
-                        <h3 className="h1">Arts</h3>
+                        <h3 className="h1 text-caveat">Arts</h3>
                       </a>
                     </Link>
                     <p className="lead">
@@ -113,12 +117,14 @@ const Index = () => {
                         "url(" + "/static/images/travel.jpg" + ")"
                     }}
                   >
-                    <h2 className="text-shadow text-center h1">Travel</h2>
+                    <h2 className="text-shadow text-caveat text-center h1">
+                      Travel
+                    </h2>
                   </div>
                   <div className="back text-center">
                     <Link href="/categories/node">
                       <a>
-                        <h3 className="h1">Travel</h3>
+                        <h3 className="h1 text-caveat">Travel</h3>
                       </a>
                     </Link>
                     <p className="lead">
@@ -138,12 +144,14 @@ const Index = () => {
                         "url(" + "/static/images/movies.jpg" + ")"
                     }}
                   >
-                    <h2 className="text-shadow text-center h1">Movies</h2>
+                    <h2 className="text-shadow text-caveat text-center h1">
+                      Movies
+                    </h2>
                   </div>
                   <div className="back text-center">
                     <Link href="/categories/node">
                       <a>
-                        <h3 className="h1">Cult films</h3>
+                        <h3 className="h1 text-caveat">Cult films</h3>
                       </a>
                     </Link>
                     <p className="lead">
@@ -162,12 +170,14 @@ const Index = () => {
                       backgroundImage: "url(" + "/static/images/humor.jpg" + ")"
                     }}
                   >
-                    <h2 className="text-shadow text-center h1">Humor</h2>
+                    <h2 className="text-shadow text-caveat text-center h1">
+                      Humor
+                    </h2>
                   </div>
                   <div className="back text-center">
                     <Link href="/categories/node">
                       <a>
-                        <h3 className="h1">Comedy, Jokes</h3>
+                        <h3 className="h1 text-caveat">Comedy, Jokes</h3>
                       </a>
                     </Link>
                     <p className="lead">
@@ -186,12 +196,14 @@ const Index = () => {
                       backgroundImage: "url(" + "/static/images/food.jpg" + ")"
                     }}
                   >
-                    <h2 className="text-shadow text-center h1">Food</h2>
+                    <h2 className="text-shadow text-caveat text-center h1">
+                      Food
+                    </h2>
                   </div>
                   <div className="back text-center">
                     <Link href="/categories/node">
                       <a>
-                        <h3 className="h1">Food Cravings</h3>
+                        <h3 className="h1 text-caveat">Food Cravings</h3>
                       </a>
                     </Link>
                     <p className="lead">

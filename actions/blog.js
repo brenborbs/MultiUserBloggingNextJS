@@ -149,3 +149,36 @@ export const listSearch = params => {
     })
     .catch(err => console.log(err));
 };
+
+// like unlike
+export const like = (blog, token, slug) => {
+  return fetch(`${API}/blog/like/${slug}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`
+    },
+    body: blog
+  })
+    .then(response => {
+      handleResponse(response);
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+export const unlike = (blog, token, slug) => {
+  return fetch(`${API}/blog/unlike/${slug}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`
+    },
+    body: blog
+  })
+    .then(response => {
+      handleResponse(response);
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};

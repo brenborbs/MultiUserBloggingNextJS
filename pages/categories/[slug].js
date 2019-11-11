@@ -47,8 +47,10 @@ const Category = ({ category, blogs, query }) => {
         <main>
           <div className="container-fluid text-center">
             <header>
-              <div className="col-md-12 pt-3">
-                <h1 className="display-4 font-weight-bold">CATEGORIES</h1>
+              <div className="col-md-12 pt-5">
+                <h1 className="display-4 font-weight-bold text-caveat">
+                  CATEGORIES
+                </h1>
                 <p className="lead">
                   Below you'll find a list of all posts that have been
                   categorized as <strong>"{category.name}"</strong>

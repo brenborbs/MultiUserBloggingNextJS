@@ -19,7 +19,7 @@ const Footer = () => {
         </li>
         <li>
           <a href="/">
-            <i className="fa fa-snapchat-square fa-2x"></i>
+            <i className="fa fa-instagram fa-2x"></i>
           </a>
         </li>
       </ul>

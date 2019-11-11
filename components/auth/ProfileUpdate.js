@@ -12,6 +12,9 @@ const ProfileUpdate = () => {
     email: "",
     about: "",
     password: "",
+    facebook: "",
+    twitter: "",
+    instagram: "",
     error: false,
     success: false,
     loading: false,
@@ -26,6 +29,9 @@ const ProfileUpdate = () => {
     email,
     about,
     password,
+    facebook,
+    twitter,
+    instagram,
     error,
     success,
     loading,
@@ -43,7 +49,10 @@ const ProfileUpdate = () => {
           username: data.username,
           name: data.name,
           email: data.email,
-          about: data.about
+          about: data.about,
+          facebook: data.facebook,
+          twitter: data.twitter,
+          instagram: data.instagram
           // photo: data.photo
         });
       }
@@ -87,6 +96,9 @@ const ProfileUpdate = () => {
             name: data.name,
             email: data.email,
             about: data.about,
+            facebook: data.facebook,
+            twitter: data.twitter,
+            instagram: data.instagram,
             // photo: data.photo,
             password: "",
             success: true,
@@ -145,6 +157,51 @@ const ProfileUpdate = () => {
           value={about}
           className="form-control"
         />
+      </div>
+      <div className="form-group">
+        {/* <div className="input-group"> */}
+        <div className="input-group-prepend">
+          <span className="input-group-text">
+            <i className="fa fa-facebook" />
+          </span>
+          <input
+            onChange={handleChange("facebook")}
+            type="text"
+            value={facebook}
+            className="form-control"
+          />
+        </div>
+        {/* </div> */}
+      </div>
+      <div className="form-group">
+        {/* <div className="input-group"> */}
+        <div className="input-group-prepend">
+          <span className="input-group-text">
+            <i className="fa fa-twitter" />
+          </span>
+          <input
+            onChange={handleChange("twitter")}
+            type="text"
+            value={twitter}
+            className="form-control"
+          />
+        </div>
+        {/* </div> */}
+      </div>
+      <div className="form-group">
+        {/* <div className="input-group"> */}
+        <div className="input-group-prepend">
+          <span className="input-group-text">
+            <i className="fa fa-instagram" />
+          </span>
+          <input
+            onChange={handleChange("instagram")}
+            type="text"
+            value={instagram}
+            className="form-control"
+          />
+        </div>
+        {/* </div> */}
       </div>
       <div className="form-group">
         <label className="text-muted">Password</label>

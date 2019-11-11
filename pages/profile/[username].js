@@ -5,6 +5,7 @@ import { userPublicProfile } from "../../actions/user";
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
 import moment from "moment";
 import ContactForm from "../../components/form/ContactForm";
+import isEmpty from "../../helpers/is-empty";
 
 const UserProfile = ({ user, blogs, query }) => {
   const head = () => (
@@ -82,6 +83,33 @@ const UserProfile = ({ user, blogs, query }) => {
                   <p className="lead text-center">
                     Joined {moment(user.createdAt).fromNow()}
                   </p>
+                  {isEmpty(user.facebook && user.facebook) ? null : (
+                    <a
+                      className="text-white p-2"
+                      href={user.facebook}
+                      target="_blank"
+                    >
+                      <i className="fa fa-facebook-square fa-2x" />
+                    </a>
+                  )}
+                  {isEmpty(user.twitter && user.twitter) ? null : (
+                    <a
+                      className="text-white p-2"
+                      href={user.twitter}
+                      target="_blank"
+                    >
+                      <i className="fa fa-twitter-square fa-2x" />
+                    </a>
+                  )}
+                  {isEmpty(user.instagram && user.instagram) ? null : (
+                    <a
+                      className="text-white p-2"
+                      href={user.instagram}
+                      target="_blank"
+                    >
+                      <i className="fa fa-instagram fa-2x" />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

@@ -75,7 +75,7 @@ const Search = () => {
 
   return (
     <div className="card my-4">
-      <h5 className="card-header">Search</h5>
+      <h5 className="card-header text-caveat">Search</h5>
       {searchForm()}
       {searched && <div>{searchedBlogs(results)}</div>}
     </div>

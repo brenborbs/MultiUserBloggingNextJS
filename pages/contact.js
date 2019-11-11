@@ -8,7 +8,7 @@ const Contact = () => {
       <div className="container-fluid" style={{ marginTop: "100px" }}>
         <div className="row">
           <div className="col-md-8 offset-md-2">
-            <h2>Contact Us</h2>
+            <h1 className="text-caveat">Contact Us</h1>
             <hr />
             <ContactForm />
           </div>

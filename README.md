@@ -1,5 +1,24 @@
 ### MULTI-USER Blogging Platform with SEO
 
+Add next.config.js file variables:
+
+const withCSS = require("@zeit/next-css");
+
+module.exports = withCSS({
+publicRuntimeConfig: {
+APP_NAME: "",
+API_DEVELOPMENT: "",
+API_PRODUCTION: "",
+PRODUCTION: false,
+DOMAIN_DEVELOPMENT: "",
+DOMAIN_PRODUCTION: "",
+FB_APP_ID: "",
+DISQUS_SHORTNAME: "",
+GOOGLE_CLIENT_ID:
+""
+}
+});
+
 To run on terminal "npm run dev"
 
 Front-end:
@@ -71,6 +90,12 @@ Front-end:
 
 - deleted search.js file
 - improved UI on all pages. change colors
+
+14th commit and beyond...
+
+- update user profile added social media inputs for user
+- Social media links on user profile page
+- active links on navbar
 
 To-Do list Bugs:
 

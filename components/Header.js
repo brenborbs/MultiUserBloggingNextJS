@@ -18,6 +18,7 @@ import {
   // DropdownItem
 } from "reactstrap";
 import ".././node_modules/nprogress/nprogress.css";
+import ActiveLink from "../helpers/activeLink";
 // import Search from "./blog/Search";
 
 // Check Router(Routing) Events from NextJS docs
@@ -37,7 +38,7 @@ const Header = () => {
       <Navbar className="navbar fixed-top navbar-expand-md navbar-dark">
         <Link href="/">
           <NavLink className="font-weight-bold" style={{ color: "white" }}>
-            <h5>{APP_NAME}</h5>
+            <h3 className="brand-text">{APP_NAME}</h3>
           </NavLink>
         </Link>
         <NavbarToggler onClick={toggle} />
@@ -57,14 +58,14 @@ const Header = () => {
                 </Link>
               </NavItem> */}
               <NavItem>
-                <Link href="/blogs">
-                  <NavLink>Blogs</NavLink>
-                </Link>
+                <ActiveLink activeClassName="active" href="/blogs">
+                  <a className="nav-link">Blogs</a>
+                </ActiveLink>
               </NavItem>
               <NavItem>
-                <Link href="/contact">
-                  <NavLink>Contact</NavLink>
-                </Link>
+                <ActiveLink activeClassName="active" href="/contact">
+                  <a className="nav-link">Contact</a>
+                </ActiveLink>
               </NavItem>
             </React.Fragment>
 
@@ -78,9 +79,9 @@ const Header = () => {
 
             {isAuth() && isAuth().role === 1 && (
               <NavItem>
-                <Link href="/admin">
-                  <NavLink>{`${isAuth().name}'s Dashboard`}</NavLink>
-                </Link>
+                <ActiveLink activeClassName="active" href="/admin">
+                  <a className="nav-link">{`${isAuth().name}'s Dashboard`}</a>
+                </ActiveLink>
               </NavItem>
             )}
           </Nav>
@@ -88,9 +89,9 @@ const Header = () => {
             {!isAuth() && (
               <React.Fragment>
                 <NavItem>
-                  <Link href="/signin">
-                    <NavLink>Signin</NavLink>
-                  </Link>
+                  <ActiveLink activeClassName="active" href="/signin">
+                    <a className="nav-link">Signin</a>
+                  </ActiveLink>
                 </NavItem>
                 <NavItem>
                   <Link href="/signup">

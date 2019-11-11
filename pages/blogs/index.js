@@ -134,7 +134,7 @@ const Blogs = ({
           </div>
           {/* Blog starts here */}
           <div className="container">
-            <h1 className="mt-4">Latest Posts</h1>
+            <h1 className="mt-4 text-caveat">Latest Posts</h1>
             <hr />
             <div className="row">
               {/* main div */}
@@ -150,13 +150,13 @@ const Blogs = ({
                 <Search />
                 {/* Categories */}
                 <div className="card my-4">
-                  <h5 className="card-header">Categories</h5>
+                  <h5 className="card-header text-caveat">Categories</h5>
                   <div className="card-body">
                     <div className="row">{showAllCategories()}</div>
                   </div>
                 </div>
                 <div className="card my-4">
-                  <h5 className="card-header">Tags</h5>
+                  <h5 className="card-header text-caveat">Tags</h5>
                   <div className="card-body">
                     <div className="row">{showAllTags()}</div>
                   </div>

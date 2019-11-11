@@ -47,8 +47,10 @@ const Tag = ({ tag, blogs, query }) => {
         <main>
           <div className="container-fluid text-center">
             <header>
-              <div className="col-md-12 pt-3">
-                <h1 className="display-4 font-weight-bold">TAGS </h1>
+              <div className="col-md-12 pt-5">
+                <h1 className="display-4 font-weight-bold text-caveat">
+                  TAGS{" "}
+                </h1>
                 <p className="lead">
                   Below you'll find a list of all posts that have been tagged as{" "}
                   <strong>"{tag.name}"</strong>
