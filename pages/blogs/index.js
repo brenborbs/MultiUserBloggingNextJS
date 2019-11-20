@@ -126,9 +126,32 @@ const Blogs = ({
           <div className="container-fluid bg-camera">
             <header>
               <div className="col-md-12 pt-3">
-                <h2 className="display-4 font-weight-bold text-center fg-custom">
-                  {/*  */}
-                </h2>
+                {/* <h1 className="text-center pt-5">Title here</h1> */}
+                <div class="container-bg">
+                  <div className="showcase-container pt-5">
+                    <div
+                      className="showcase-content"
+                      style={{ color: "white" }}
+                    >
+                      {/* <div className="category category-sports">Sports</div> */}
+                      <h1>Some Sports Article</h1>
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Obcaecati ad recusandae, aliquid, quaerat sed
+                        exercitationem ratione deleniti officiis, doloribus
+                        temporibus reprehenderit. Enim odio veritatis accusamus
+                        earum minus deserunt reiciendis doloribus.
+                      </p>
+                      <a
+                        href="article.html"
+                        className="btn btn-primary"
+                        style={{ color: "black", fontWeight: "bold" }}
+                      >
+                        Read More
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </header>
           </div>

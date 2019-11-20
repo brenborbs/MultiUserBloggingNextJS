@@ -201,31 +201,29 @@ const SingleBlog = ({ blog, query, router }) => {
       {head()}
       <Layout>
         <main>
-          <article>
-            <div className="container-fluid">
-              <section>
-                <div className="row" style={{ marginTop: "-30px" }}>
+          <section id="article">
+            <div className="container-bg">
+              <div className="page-container">
+                <article className="card-bg">
                   <img
                     src={`${API}/blog/photo/${blog.slug}`}
                     alt={blog.title}
-                    className="img img-fluid featured-image"
+                    style={{ width: "100%" }}
                   />
-                </div>
-              </section>
-
-              <section>
-                <div className="container">
-                  <h1 className="display-2 pb-3 pt-3 text-center font-weight-bold">
-                    {blog.title}
-                  </h1>
-                  <p className="lead mt-3 mark-custom">
-                    Written by{" "}
-                    <Link href={`/profile/${blog.postedBy.username}`}>
-                      <a>{blog.postedBy.username}</a>
-                    </Link>{" "}
-                    | Published {moment(blog.updatedAt).fromNow()}
-                  </p>
+                  <h1 className="l-header pt-2">{blog.title}</h1>
+                  <div className="meta">
+                    <small>
+                      <i className="fa fa-user pr-2"></i>Written by{" "}
+                      <Link href={`/profile/${blog.postedBy.username}`}>
+                        <a>{blog.postedBy.username}</a>
+                      </Link>{" "}
+                      | Published {moment(blog.updatedAt).fromNow()}
+                    </small>
+                    {/* <div class="category category-ent">Category here!</div> */}
+                  </div>
+                  <div className="pt-3">{showReactShareIcons()}</div>
                   {/* like */}
+                  <hr />
                   {like ? (
                     <h5 onClick={handleLikeToggle}>
                       <i className="fa fa-heart-o text-success " /> {likes}{" "}
@@ -238,37 +236,54 @@ const SingleBlog = ({ blog, query, router }) => {
                   )}
                   <hr />
                   {/* like */}
+                  <div>{renderHTML(blog.body)}</div>
+                  {showBlogCategories(blog)}
+                  {showBlogTags(blog)}
+                </article>
+                <aside id="categories" className="card-bg">
+                  <h2>Categories</h2>
+                  <ul className="list">
+                    <li>
+                      <a href="" className="fa fa-chevron-right"></a>Sports
+                    </li>
+                    <li>
+                      <a href="" className="fa fa-chevron-right"></a>
+                      Entertainment
+                    </li>
+                    <li>
+                      <a href="" className="fa fa-chevron-right"></a>Technology
+                    </li>
+                    <li>
+                      <a href="" className="fa fa-chevron-right"></a>Fashion
+                    </li>
+                    <li>
+                      <a href="" className="fa fa-chevron-right"></a>Fashion
+                    </li>
+                  </ul>
+                </aside>
+                <aside className="card-bg bg-secondary">
+                  <h2>Join Our Blog</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Aspernatur, accusamus?
+                  </p>
 
-                  <div className="pb-3">
-                    {/* {showBlogCategories(blog)}
-                    {showBlogTags(blog)}
-                    <br /> */}
-                    {/* <br /> */}
-                    {showReactShareIcons()}
-                  </div>
-                </div>
-              </section>
-            </div>
-
-            <div className="container">
-              <section>
-                <div className="col-md-12 lead">{renderHTML(blog.body)}</div>
+                  <a href="/signup" className="btn btn-dark btn-block">
+                    Register
+                  </a>
+                </aside>
+              </div>
+              <div className="container">
+                <h1 className="text-center pt-5 pb-5 text-caveat">
+                  Related blogs
+                </h1>
                 <hr />
-                {showBlogCategories(blog)}
-                {showBlogTags(blog)}
-              </section>
-            </div>
+                <div className="row">{showRelatedBlog()}</div>
+              </div>
 
-            <div className="container">
-              <h1 className="text-center pt-5 pb-5 text-caveat">
-                Related blogs
-              </h1>
-              <hr />
-              <div className="row">{showRelatedBlog()}</div>
+              <div className="container pt-5 pb-5">{showComments()}</div>
             </div>
-
-            <div className="container pt-5 pb-5">{showComments()}</div>
-          </article>
+          </section>
         </main>
       </Layout>
     </React.Fragment>

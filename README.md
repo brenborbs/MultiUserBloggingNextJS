@@ -101,6 +101,7 @@ Front-end:
 - update user profile added social media inputs for user
 - Social media links on user profile page
 - active links on navbar
+- improved blog > slug.js (single blog page) design
 
 To-Do list Bugs:
 
