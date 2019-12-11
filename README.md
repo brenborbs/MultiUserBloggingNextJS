@@ -28,8 +28,10 @@ npm run dev
 
 ## App Screenshots
 
-<img src="app.png" alt="NextJS Blogging" >
-<img src="app2.png" alt="NextJS Blogging" >
+<tr>
+    <td> <img src="app.png" alt="NextJS Blogging" style="width: 250px;"/> </td>
+    <td> <img src="app2.png" alt="NextJS Blogging"style="width: 250px;"/> </td>
+</tr>
 
 Front-end:
 
