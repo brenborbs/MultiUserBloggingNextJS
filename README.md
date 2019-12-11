@@ -26,6 +26,11 @@ To run on terminal
 npm run dev
 ```
 
+## App Screenshots
+
+<img src="app.png" alt="NextJS Blogging" >
+<img src="app2.png" alt="NextJS Blogging" >
+
 Front-end:
 
 - React / Next.js

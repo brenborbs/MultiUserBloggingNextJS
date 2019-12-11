@@ -7,6 +7,13 @@ const Layout = ({ children }) => {
       <Header />
       <div style={{ marginTop: "4em" }}>{children}</div>
       <Footer />
+      <style global="true">
+        {`
+      
+      
+      
+      `}
+      </style>
     </React.Fragment>
   );
 };

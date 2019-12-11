@@ -29,7 +29,6 @@ import {
 const SingleBlog = ({ blog, query, router }) => {
   const [related, setRelated] = useState([]);
 
-  const [liked, setLiked] = useState([]);
   const [values, setValues] = useState({
     like: false,
     likes: 0
@@ -38,7 +37,7 @@ const SingleBlog = ({ blog, query, router }) => {
   const { like, likes } = values;
   const token = getCookie("token");
 
-  const checkLiked = likes => {
+  const checkLike = likes => {
     const userId = isAuth() && isAuth().user._id;
     let match = likes.indexOf(userId) !== -1;
     return match;
@@ -59,13 +58,23 @@ const SingleBlog = ({ blog, query, router }) => {
   //   }
   // };
 
+  // const loadSingleBlog = () => {
+  //   singleBlog({ blog }).then(data => {
+  //     if (data.error) {
+  //       console.log(error);
+  //     } else {
+  //       setValues({ like: checkLike(data.likes), likes: data.likes.length });
+  //     }
+  //   });
+  // };
+
   const loadRelated = () => {
     listRelated({ blog }).then(data => {
       if (data.error) {
         console.log(data.error);
       } else {
         setRelated(data);
-        setLiked({ liked: data.checkLiked });
+        // setValues({ like: checkLike(data.likes), likes: data.likes.length });
       }
     });
   };
@@ -181,7 +190,7 @@ const SingleBlog = ({ blog, query, router }) => {
     }
     console.log("like click, still no logic!");
 
-    // let callApi =  ;
+    // let callApi = setValues(like ? unlike : like);
     // const userId = isAuth().user._id;
     // const token = isAuth().token;
 
@@ -190,7 +199,8 @@ const SingleBlog = ({ blog, query, router }) => {
     //     console.log(data.error);
     //   } else {
     //     setState({
-    //       ...values
+    //       like: !like,
+    //       likes: data.likes.length
     //     });
     //   }
     // });
@@ -262,15 +272,23 @@ const SingleBlog = ({ blog, query, router }) => {
                   </ul>
                 </aside>
                 <aside className="card-bg bg-secondary">
-                  <h2>Join Our Blog</h2>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Aspernatur, accusamus?
-                  </p>
-
-                  <a href="/signup" className="btn btn-dark btn-block">
-                    Register
-                  </a>
+                  {isAuth() ? (
+                    <>
+                      <h2>Start Writing</h2>
+                      <p>You can search for inspiration everywhere!</p>
+                      <Link href="/admin">
+                        <a className="btn btn-dark btn-block">Write a blog</a>
+                      </Link>
+                    </>
+                  ) : (
+                    <>
+                      <h2>Join Our Blog</h2>
+                      <p>Channel your inner feelings and fly!</p>
+                      <Link href="/signup">
+                        <a className="btn btn-dark btn-block">Register</a>
+                      </Link>
+                    </>
+                  )}
                 </aside>
               </div>
               <div className="container">
@@ -286,6 +304,7 @@ const SingleBlog = ({ blog, query, router }) => {
           </section>
         </main>
       </Layout>
+      <style jsx>{``}</style>
     </React.Fragment>
   );
 };

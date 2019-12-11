@@ -116,6 +116,7 @@ const Header = () => {
         </Collapse>
       </Navbar>
       {/* <Search /> */}
+      <style jsx>{``}</style>
     </React.Fragment>
   );
 };

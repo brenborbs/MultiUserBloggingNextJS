@@ -127,7 +127,7 @@ const Blogs = ({
             <header>
               <div className="col-md-12 pt-3">
                 {/* <h1 className="text-center pt-5">Title here</h1> */}
-                <div class="container-bg">
+                <div className="container-bg">
                   <div className="showcase-container pt-5">
                     <div
                       className="showcase-content"

@@ -42,7 +42,7 @@ a {
 h1,
 h2 {
   font-family: "Prata", serif;
-  /* text-transform: uppercase; */
+  text-transform: uppercase;
 }
 /* navbar */
 .navbar {
@@ -110,7 +110,7 @@ a:hover {
   border-color: #9aacb8;
   font-weight: bold;
   letter-spacing: 0.05em;
-  /* border-radius: 0; */
+
   border-radius: 1000000px;
   padding: 9px 20px 10px;
 }
@@ -128,9 +128,8 @@ a:hover {
   border-color: #465151;
   font-weight: bold;
   letter-spacing: 0.05em;
-  /* border-radius: 0; */
+
   border-radius: 100000px;
-  /* padding: 9px 20px 10px; */
 }
 
 /* React share icons styling */
