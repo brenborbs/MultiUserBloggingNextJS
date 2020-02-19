@@ -48,7 +48,10 @@ export const update = (token, user) => {
 // get all users
 export const allUsers = () => {
   return fetch(`${API}/users`, {
-    method: "GET"
+    method: "GET",
+    headers: {
+      Accept: "application/json"
+    }
   })
     .then(response => {
       return response.json();

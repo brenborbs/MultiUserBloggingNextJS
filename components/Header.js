@@ -90,13 +90,13 @@ const Header = () => {
               <React.Fragment>
                 <NavItem>
                   <ActiveLink activeClassName="active" href="/signin">
-                    <a className="nav-link">Signin</a>
+                    <a className="nav-link">Sign in</a>
                   </ActiveLink>
                 </NavItem>
                 <NavItem>
                   <Link href="/signup">
                     <NavLink className="btn btn-head text-light">
-                      Signup
+                      Register
                     </NavLink>
                   </Link>
                 </NavItem>
@@ -108,6 +108,7 @@ const Header = () => {
                   style={{ cursor: "pointer" }}
                   onClick={() => signout(() => Router.replace(`/signin`))}
                 >
+                  <i className="fa fa-sign-out mr-2" aria-hidden="true"></i>
                   Signout
                 </NavLink>
               </NavItem>

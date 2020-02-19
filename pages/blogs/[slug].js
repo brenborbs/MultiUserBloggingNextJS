@@ -3,12 +3,13 @@ import Link from "next/link";
 import Router, { withRouter } from "next/router";
 import Layout from "../../components/Layout";
 import { useState, useEffect } from "react";
-import { singleBlog, listRelated, like, unlike } from "../../actions/blog";
+import { singleBlog, listRelated } from "../../actions/blog";
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
 import renderHTML from "react-render-html";
 import moment from "moment";
 import SmallCard from "../../components/blog/SmallCard";
 import DisqusThread from "../../components/DisqusThread";
+import Search from "../../components/blog/Search";
 // for like
 import { getCookie, isAuth } from "../../actions/auth";
 
@@ -28,45 +29,6 @@ import {
 
 const SingleBlog = ({ blog, query, router }) => {
   const [related, setRelated] = useState([]);
-
-  const [values, setValues] = useState({
-    like: false,
-    likes: 0
-  });
-
-  const { like, likes } = values;
-  const token = getCookie("token");
-
-  const checkLike = likes => {
-    const userId = isAuth() && isAuth().user._id;
-    let match = likes.indexOf(userId) !== -1;
-    return match;
-  };
-  // const initLike = () => {
-  //   if (router.query.slug) {
-  //     like(router.query.slug).then(data => {
-  //       if (data.error) {
-  //         console.log(data.error);
-  //       } else {
-  //         setValues({
-  //           ...values,
-  //           like: checkLike(data.like),
-  //           likes: data.likes.length
-  //         });
-  //       }
-  //     });
-  //   }
-  // };
-
-  // const loadSingleBlog = () => {
-  //   singleBlog({ blog }).then(data => {
-  //     if (data.error) {
-  //       console.log(error);
-  //     } else {
-  //       setValues({ like: checkLike(data.likes), likes: data.likes.length });
-  //     }
-  //   });
-  // };
 
   const loadRelated = () => {
     listRelated({ blog }).then(data => {
@@ -135,7 +97,7 @@ const SingleBlog = ({ blog, query, router }) => {
     return (
       <div>
         <DisqusThread
-          id={blog.id}
+          id={blog._id}
           title={blog.title}
           path={`/blog/${blog.slug}`}
         />
@@ -184,28 +146,6 @@ const SingleBlog = ({ blog, query, router }) => {
     );
   };
 
-  const handleLikeToggle = () => {
-    if (!isAuth()) {
-      Router.push(`/signin`);
-    }
-    console.log("like click, still no logic!");
-
-    // let callApi = setValues(like ? unlike : like);
-    // const userId = isAuth().user._id;
-    // const token = isAuth().token;
-
-    // callApi(userId, token).then(data => {
-    //   if (data.error) {
-    //     console.log(data.error);
-    //   } else {
-    //     setState({
-    //       like: !like,
-    //       likes: data.likes.length
-    //     });
-    //   }
-    // });
-  };
-
   return (
     <React.Fragment>
       {head()}
@@ -221,37 +161,27 @@ const SingleBlog = ({ blog, query, router }) => {
                     style={{ width: "100%" }}
                   />
                   <h1 className="l-header pt-2">{blog.title}</h1>
-                  <div className="meta">
+                  <div className="">
                     <small>
-                      <i className="fa fa-user pr-2"></i>Written by{" "}
                       <Link href={`/profile/${blog.postedBy.username}`}>
                         <a>{blog.postedBy.username}</a>
                       </Link>{" "}
-                      | Published {moment(blog.updatedAt).fromNow()}
+                      | Published on{" "}
+                      {moment(blog.updatedAt).format("dddd MMMM D, YYYY")}
                     </small>
                     {/* <div class="category category-ent">Category here!</div> */}
                   </div>
                   <div className="pt-3">{showReactShareIcons()}</div>
-                  {/* like */}
                   <hr />
-                  {like ? (
-                    <h5 onClick={handleLikeToggle}>
-                      <i className="fa fa-heart-o text-success " /> {likes}{" "}
-                      likes
-                    </h5>
-                  ) : (
-                    <h5 onClick={handleLikeToggle}>
-                      <i className="fa fa-heart-o text-danger " /> {likes} likes
-                    </h5>
-                  )}
-                  <hr />
-                  {/* like */}
                   <div>{renderHTML(blog.body)}</div>
                   {showBlogCategories(blog)}
                   {showBlogTags(blog)}
                 </article>
-                <aside id="categories" className="card-bg">
-                  <h2>Categories</h2>
+                <aside
+                // id="categories" className="card-bg"
+                >
+                  <Search />
+                  {/* <h2>Categories</h2> 
                   <ul className="list">
                     <li>
                       <a href="" className="fa fa-chevron-right"></a>Sports
@@ -269,7 +199,7 @@ const SingleBlog = ({ blog, query, router }) => {
                     <li>
                       <a href="" className="fa fa-chevron-right"></a>Fashion
                     </li>
-                  </ul>
+                  </ul> */}
                 </aside>
                 <aside className="card-bg bg-secondary">
                   {isAuth() ? (
@@ -292,9 +222,7 @@ const SingleBlog = ({ blog, query, router }) => {
                 </aside>
               </div>
               <div className="container">
-                <h1 className="text-center pt-5 pb-5 text-caveat">
-                  Related blogs
-                </h1>
+                <h1 className="text-center pt-5 text-caveat">Related blogs</h1>
                 <hr />
                 <div className="row">{showRelatedBlog()}</div>
               </div>

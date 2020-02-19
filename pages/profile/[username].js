@@ -81,7 +81,7 @@ const UserProfile = ({ user, blogs, query }) => {
                 <div className="text-center">
                   <h5 className="display-4 text-center pt-3">{user.name}</h5>
                   <p className="lead text-center">
-                    Joined {moment(user.createdAt).fromNow()}
+                    Joined {moment(user.createdAt).format("MMMM D YYYY")}
                   </p>
                   {isEmpty(user.facebook && user.facebook) ? null : (
                     <a

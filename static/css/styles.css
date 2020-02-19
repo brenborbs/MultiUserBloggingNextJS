@@ -12,11 +12,28 @@ body {
   content: "";
 }
 .brand-text {
-  font-family: "Caveat", cursive;
-  color: #271e2a;
+  /* font-family: "Caveat", cursive;
+  color: #271e2a; */
+  color: #fff;
+  font-family: "Odibee Sans", serif;
+  font-weight: bold;
+  text-shadow: -3px -3px 0 #222, 3px -3px 0 #222, -3px 3px 0 #222,
+    3px 3px 0 #222, 4px 4px 0 #fff, 5px 5px 0 #fff, 6px 6px 0 #fff,
+    7px 7px 0 #fff;
+  line-height: 0.8em;
+  letter-spacing: 0.1em;
+  transform: scaleY(0.7);
+  -webkit-transform: scaleY(0.7);
+  -moz-transform: scaleY(0.7);
+  margin: 0;
+  text-transform: capitalize;
+  cursor: pointer;
 }
 .text-caveat {
   font-family: "Caveat", cursive;
+}
+.card {
+  border: none !important;
 }
 /* .fg-custom {
   background: #82828287;
@@ -24,7 +41,7 @@ body {
   padding: 20px 20px;
   display: table;
 } */
-.bg-camera {
+/* .bg-camera {
   min-height: 60vh;
   background: url(../images/dawn.jpg);
   background-attachment: fixed;
@@ -32,16 +49,16 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   padding: 20px 0 80px 0;
-}
+} */
 .bg-cust {
   background: #888d90;
 }
 a {
-  color: #382a1f;
+  color: brown /* #382a1f */;
 }
-h1,
+
 h2 {
-  font-family: "Prata", serif;
+  /* font-family: "Prata", serif; */
   text-transform: uppercase;
 }
 /* navbar */
@@ -67,7 +84,7 @@ h2 {
 }
 #nprogress .bar {
   height: 4px !important;
-  background: #6f3637 !important ;
+  background: red !important ;
 }
 .signup_text {
   padding-top: 10px;
@@ -93,7 +110,7 @@ h2 {
 
 a:hover {
   text-decoration: underline;
-  color: #b35340;
+  /* color: #b35340 !important; */
 }
 
 .category {
@@ -152,7 +169,7 @@ a:hover {
 
 /* banner cover index */
 .max-height {
-  min-height: calc(100vh - 76px);
+  min-height: 80vh;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
     url("../images/seasidejpg.jpg");
   background-position: center;
@@ -207,9 +224,9 @@ a:hover {
   color: #ef7998;
 }
 /* store */
-main {
+/* main {
   background: rgb(238, 238, 238);
-}
+} */
 .store {
   background: rgb(238, 238, 238);
 }
@@ -221,6 +238,43 @@ main {
   -webkit-box-shadow: 0 10px 15px rgb(0, 0, 0);
   box-shadow: 0 10px 15px rgb(0, 0, 0);
 }
+/* .with-shadow {
+  -webkit-box-shadow: 0 10px 15px rgb(0, 0, 0);
+  box-shadow: 0 10px 15px rgb(0, 0, 0);
+} */
+.with-shadow {
+  position: relative;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.with-shadow:before,
+.with-shadow:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  top: 50%;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  -moz-border-radius: 100px / 10px;
+  border-radius: 100px / 10px;
+}
+.with-shadow:after {
+  right: 10px;
+  left: auto;
+  -webkit-transform: skew(8deg) rotate(3deg);
+  -moz-transform: skew(8deg) rotate(3deg);
+  -ms-transform: skew(8deg) rotate(3deg);
+  -o-transform: skew(8deg) rotate(3deg);
+  transform: skew(8deg) rotate(3deg);
+}
+
 .img-container {
   position: relative;
   overflow: hidden;
@@ -243,9 +297,12 @@ main {
 .title-card {
   font-size: 1.25rem;
   margin-bottom: 0.8rem;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.2;
   margin-top: 0;
+}
+.card-title {
+  font-weight: 700;
 }
 
 /* footer */
@@ -417,8 +474,8 @@ p {
 .container-bg {
   max-width: var(--max-width);
   margin: auto;
-  padding: 0 2rem;
-  overflow: hidden;
+  /* padding: 0 2rem; */
+  /* overflow: hidden; */
 }
 /* Inner page grid container */
 .page-container {
@@ -478,4 +535,14 @@ ul {
   padding: 0.5rem 0;
   border-bottom: #555 dotted 1px;
   width: 90%;
+}
+/* signin */
+.signin-wrapper {
+  border-radius: 5px;
+  padding: 30px;
+  margin: 150px;
+  background-color: whitesmoke;
+  -webkit-box-shadow: 0px 35px 20px #777;
+  -moz-box-shadow: 0px 35px 20px #777;
+  box-shadow: 0px 35px 20px #777;
 }

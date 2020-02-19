@@ -13,8 +13,8 @@ const Signin = ({ router }) => {
   };
   return (
     <Layout>
-      <div style={{ paddingBottom: "60px", paddingTop: "40px" }}>
-        <h2 className="text-center">Sign In</h2>
+      <div className="signin-wrapper">
+        <h2 className="text-center pb-4">Sign In</h2>
         <div className="row">
           <div className="col-md-6 offset-md-3">{showRedirectMessage()}</div>
         </div>

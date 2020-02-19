@@ -48,13 +48,23 @@ const BlogRead = ({ username }) => {
     if (isAuth() && isAuth().role === 0) {
       return (
         <Link href={`/user/crud/${blog.slug}`}>
-          <a className="ml-2 btn btn-sm btn-warning">Update</a>
+          {/* <a className="ml-2 btn btn-sm btn-warning">Update</a> */}
+          <i
+            className="fa fa-pencil"
+            aria-hidden="true"
+            style={{ fontSize: "28px", cursor: "pointer" }}
+          ></i>
         </Link>
       );
     } else if (isAuth() && isAuth().role === 1) {
       return (
         <Link href={`/admin/crud/${blog.slug}`}>
-          <a className="ml-2 btn btn-sm btn-warning">Update</a>
+          {/* <a className="ml-2 btn btn-sm btn-warning">Update</a> */}
+          <i
+            className="fa fa-pencil"
+            aria-hidden="true"
+            style={{ fontSize: "28px", cursor: "pointer" }}
+          ></i>
         </Link>
       );
     }
@@ -69,13 +79,19 @@ const BlogRead = ({ username }) => {
             Written by {blog.postedBy.name} | Published on{" "}
             {moment(blog.updatedAt).fromNow()}
           </p>
-          <button
+          {showUpdateButton(blog)}
+          <i
+            className="fa fa-trash-o ml-5"
+            aria-hidden="true"
+            style={{ fontSize: "28px", cursor: "pointer" }}
+            onClick={() => deleteConfirm(blog.slug)}
+          ></i>
+          {/* <button
             className="btn btn-sm btn-danger"
             onClick={() => deleteConfirm(blog.slug)}
           >
             Delete
-          </button>
-          {showUpdateButton(blog)}
+          </button> */}
         </div>
       );
     });
@@ -85,7 +101,7 @@ const BlogRead = ({ username }) => {
     <React.Fragment>
       <div className="row">
         <div className="col-md-12">
-          {message && <div className="alert alert-warning">{message}</div>}
+          {message && <div className="alert alert-success">{message}!</div>}
           {showAllBlogs()}
         </div>
       </div>

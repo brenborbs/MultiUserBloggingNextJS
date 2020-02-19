@@ -5,7 +5,7 @@ import Link from "next/link";
 const Signup = () => {
   return (
     <Layout>
-      <div style={{ paddingBottom: "40px" }}>
+      <div className="signin-wrapper">
         <h2 className="text-center pt-4 pb-4">Register</h2>
         <div className="row">
           <div className="col-md-6 offset-md-3">

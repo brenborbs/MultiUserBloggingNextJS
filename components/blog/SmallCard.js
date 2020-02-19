@@ -5,12 +5,12 @@ import { API } from "../../config";
 
 const SmallCard = ({ blog }) => {
   return (
-    <div className="card">
+    <div className="card with-shadow">
       <section>
         <Link href={`/blogs/${blog.slug}`}>
           <a>
             <img
-              className="img img-fluid"
+              className="img img-fluid store-img"
               style={{ height: "250px", width: "100%" }}
               src={`${API}/blog/photo/${blog.slug}`}
               alt={blog.title}
@@ -22,16 +22,16 @@ const SmallCard = ({ blog }) => {
       <div className="card-body">
         <section>
           <Link href={`/blogs/${blog.slug}`}>
-            <a>
-              <h5 className="card-title">{blog.title}</h5>
+            <a className="title-card" style={{ color: "black" }}>
+              {blog.title}
             </a>
           </Link>
+          <hr />
           <div className="card-text">{renderHTML(blog.excerpt)}</div>
         </section>
       </div>
-
       <div className="card-body">
-        Posted {moment(blog.updatedAt).fromNow()} by{" "}
+        Posted on {moment(blog.updatedAt).format("MMMM D, YYYY")} by{" "}
         <Link href={`/profile/${blog.postedBy.username}`}>
           <a>{blog.postedBy.username}</a>
         </Link>{" "}

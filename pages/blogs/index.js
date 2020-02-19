@@ -7,6 +7,7 @@ import { listBlogsWithCategoriesAndTags } from "../../actions/blog";
 import Card from "../../components/blog/Card";
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
 import Search from "../../components/blog/Search";
+import HorizontalCard from "../../components/blog/otherCard/HorizontalCard";
 
 const Blogs = ({
   blogs,
@@ -19,19 +20,19 @@ const Blogs = ({
 }) => {
   const head = () => (
     <Head>
-      <title>Shipbuilding News | {APP_NAME}</title>
+      <title>Lifestyle Stories, News and Updates | {APP_NAME}</title>
       <meta
         name="description"
-        content="Latest Shipbuilding and Maritime News,Shipping activities and Marine Technology Updates"
+        content="Everything under the sun. Joy, hate, laughter and love. All pack in one chocolate box."
       />
       <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
       <meta
         property="og:title"
-        content={`Latest Shipbuilding and Maritime News | ${APP_NAME}`}
+        content={`My LyfOutside. Stories and more... | ${APP_NAME}`}
       />
       <meta
         property="og:description"
-        content="Latest Shipbuilding and Maritime News,Shipping activities and Marine Technology Updates"
+        content="Everything under the sun. Joy, hate, laughter and love. All pack in one chocolate box."
       />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
@@ -81,10 +82,10 @@ const Blogs = ({
 
   const showAllBlogs = () => {
     return blogs.map((blog, i) => {
-      // ()
+      // col-sm-6 pb-4
       return (
-        <div className="col-sm-6 pb-4" key={i}>
-          <Card blog={blog} />
+        <div className="right-side" key={i}>
+          <HorizontalCard blog={blog} />
         </div>
       );
     });
@@ -112,8 +113,9 @@ const Blogs = ({
 
   const showLoadedBlogs = () => {
     return loadedBlogs.map((blog, i) => (
-      <div className="col-sm-6 pb-4" key={i}>
-        <Card blog={blog} />
+      // col-sm-6 pb-4
+      <div className="right-side" key={i}>
+        <HorizontalCard blog={blog} />
       </div>
     ));
   };
@@ -123,17 +125,15 @@ const Blogs = ({
       {head()}
       <Layout>
         <main>
-          <div className="container-fluid bg-camera">
+          {/* <div className="container-fluid bg-camera">
             <header>
               <div className="col-md-12 pt-3">
-                {/* <h1 className="text-center pt-5">Title here</h1> */}
                 <div className="container-bg">
                   <div className="showcase-container pt-5">
                     <div
                       className="showcase-content"
                       style={{ color: "white" }}
                     >
-                      {/* <div className="category category-sports">Sports</div> */}
                       <h1>Some Sports Article</h1>
                       <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -154,10 +154,11 @@ const Blogs = ({
                 </div>
               </div>
             </header>
-          </div>
+          </div> */}
+
           {/* Blog starts here */}
-          <div className="container">
-            <h1 className="mt-4 text-caveat">Latest Posts</h1>
+          <div className="container" style={{ paddingTop: "1rem" }}>
+            <h1 className="mt-4">The Latest</h1>
             <hr />
             <div className="row">
               {/* main div */}
@@ -172,13 +173,13 @@ const Blogs = ({
                 {/* Search Widget */}
                 <Search />
                 {/* Categories */}
-                <div className="card my-4">
+                <div className="card my-4 with-shadow">
                   <h5 className="card-header text-caveat">Categories</h5>
                   <div className="card-body">
                     <div className="row">{showAllCategories()}</div>
                   </div>
                 </div>
-                <div className="card my-4">
+                <div className="card my-4 with-shadow">
                   <h5 className="card-header text-caveat">Tags</h5>
                   <div className="card-body">
                     <div className="row">{showAllTags()}</div>

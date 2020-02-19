@@ -62,11 +62,13 @@ const ForgotPassword = () => {
         className="container"
         style={{ marginTop: "8em", marginBottom: "5em" }}
       >
-        <h2>Forgot password</h2>
-        <hr />
-        {showError()}
-        {showMessage()}
-        {showForm && passwordForgotForm()}
+        <div className="signin-wrapper">
+          <h2>Forgot password</h2>
+          <hr />
+          {showError()}
+          {showMessage()}
+          {showForm && passwordForgotForm()}
+        </div>
       </div>
     </Layout>
   );

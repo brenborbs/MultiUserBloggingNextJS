@@ -8,7 +8,7 @@ const Index = () => {
         <div className="row max-height justify-content-center align-items-center">
           <div className="col-10 mx-auto banner text-center">
             <h1 className="text-capitalize">
-              welcome to <strong className="banner-title">lyfinph</strong>
+              Seto <strong className="banner-title">- 1</strong>
             </h1>
           </div>
         </div>
@@ -66,17 +66,18 @@ const Index = () => {
                     }}
                   >
                     <h2 className="text-shadow text-caveat text-center h1">
-                      Indie
+                      Music
                     </h2>
                   </div>
                   <div className="back text-center">
-                    <Link href="/categories/react">
+                    <Link href="/categories/music">
                       <a>
                         <h3 className="h1 text-caveat">Indie Bands</h3>
                       </a>
                     </Link>
                     <p className="lead">
-                      The world's most popular frontend web development library
+                      Rising bands which have gained some following during the
+                      last 2 years
                     </p>
                   </div>
                 </div>
@@ -95,14 +96,13 @@ const Index = () => {
                     </h2>
                   </div>
                   <div className="back text-center">
-                    <Link href="/categories/node">
+                    <Link href="/categories/art">
                       <a>
                         <h3 className="h1 text-caveat">Arts</h3>
                       </a>
                     </Link>
                     <p className="lead">
-                      The worlds most popular backend development tool for
-                      JavaScript Ninjas
+                      Everything the world has to offer regarding arts
                     </p>
                   </div>
                 </div>
@@ -122,14 +122,14 @@ const Index = () => {
                     </h2>
                   </div>
                   <div className="back text-center">
-                    <Link href="/categories/node">
+                    <Link href="/categories/travel">
                       <a>
                         <h3 className="h1 text-caveat">Travel</h3>
                       </a>
                     </Link>
                     <p className="lead">
-                      The worlds most popular backend development tool for
-                      JavaScript Ninjas
+                      Best destinations and travelling without busting your
+                      wallet
                     </p>
                   </div>
                 </div>
@@ -149,14 +149,14 @@ const Index = () => {
                     </h2>
                   </div>
                   <div className="back text-center">
-                    <Link href="/categories/node">
+                    <Link href="/categories/movies">
                       <a>
                         <h3 className="h1 text-caveat">Cult films</h3>
                       </a>
                     </Link>
                     <p className="lead">
-                      The worlds most popular backend development tool for
-                      JavaScript Ninjas
+                      Weird movies, premiers and everything related to film
+                      addicts
                     </p>
                   </div>
                 </div>
@@ -175,14 +175,13 @@ const Index = () => {
                     </h2>
                   </div>
                   <div className="back text-center">
-                    <Link href="/categories/node">
+                    <Link href="/categories/humor">
                       <a>
                         <h3 className="h1 text-caveat">Comedy, Jokes</h3>
                       </a>
                     </Link>
                     <p className="lead">
-                      The worlds most popular backend development tool for
-                      JavaScript Ninjas
+                      Good laughs from everything in between
                     </p>
                   </div>
                 </div>
@@ -201,14 +200,14 @@ const Index = () => {
                     </h2>
                   </div>
                   <div className="back text-center">
-                    <Link href="/categories/node">
+                    <Link href="/categories/food">
                       <a>
                         <h3 className="h1 text-caveat">Food Cravings</h3>
                       </a>
                     </Link>
                     <p className="lead">
-                      The worlds most popular backend development tool for
-                      JavaScript Ninjas
+                      Best foods, exotic and non-exotic without busting your
+                      wallet. Only taste buds required for this one
                     </p>
                   </div>
                 </div>

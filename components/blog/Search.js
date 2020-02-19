@@ -64,6 +64,7 @@ const Search = () => {
             onChange={handleChange}
           />
           <span className="input-group-btn">
+            {" "}
             <button className="btn btn-head" type="submit">
               Go!
             </button>
@@ -74,7 +75,7 @@ const Search = () => {
   );
 
   return (
-    <div className="card my-4">
+    <div className="card my-4 with-shadow">
       <h5 className="card-header text-caveat">Search</h5>
       {searchForm()}
       {searched && <div>{searchedBlogs(results)}</div>}
