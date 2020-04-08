@@ -13,13 +13,13 @@ const Signin = ({ router }) => {
   };
   return (
     <Layout>
-      <div className="signin-wrapper">
-        <h2 className="text-center pb-4">Sign In</h2>
-        <div className="row">
-          <div className="col-md-6 offset-md-3">{showRedirectMessage()}</div>
-        </div>
-        <div className="row">
-          <div className="col-md-6 offset-md-3">
+      <div className="forms-margin">
+        <div className="forms-wrapper">
+          <h2 className="text-center">Sign In</h2>
+
+          <div className="">{showRedirectMessage()}</div>
+
+          <div className="p-4 pb-4">
             <SigninComponent />
             <div className="signup_text">
               Don't have an account? Register{" "}

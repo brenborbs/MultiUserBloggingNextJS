@@ -7,10 +7,22 @@ const UserProfileUpdate = () => {
   return (
     <Layout>
       <Private>
-        <div className="container-fluid">
-          <div className="row">
+        <div className="forms-margin">
+          <div className="wrapper">
             <ProfileUpdate />
           </div>
+          <style>
+            {`
+          .wrapper {
+            border-radius: 5px;
+    background-color: #fff;
+    width: 100%;
+    max-width: 620px;
+    padding: 15px;
+    margin: 0 auto;
+          }
+          `}
+          </style>
         </div>
       </Private>
     </Layout>

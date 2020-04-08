@@ -4,10 +4,10 @@ import { withRouter } from "next/router";
 import Layout from "../../components/Layout";
 import { useState } from "react";
 import { listBlogsWithCategoriesAndTags } from "../../actions/blog";
-import Card from "../../components/blog/Card";
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
+
+import NewCard from "../../components/blog/NewCard";
 import Search from "../../components/blog/Search";
-import HorizontalCard from "../../components/blog/otherCard/HorizontalCard";
 
 const Blogs = ({
   blogs,
@@ -16,7 +16,7 @@ const Blogs = ({
   totalBlogs,
   blogsLimit,
   blogSkip,
-  router
+  router,
 }) => {
   const head = () => (
     <Head>
@@ -58,7 +58,7 @@ const Blogs = ({
 
   const loadMore = () => {
     let toSkip = skip + limit;
-    listBlogsWithCategoriesAndTags(toSkip, limit).then(data => {
+    listBlogsWithCategoriesAndTags(toSkip, limit).then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -73,7 +73,7 @@ const Blogs = ({
     return (
       size > 0 &&
       size >= limit && (
-        <button onClick={loadMore} className="btn btn-outline btn-lg">
+        <button onClick={loadMore} className="btn btn-loadmore">
           Load more
         </button>
       )
@@ -84,8 +84,8 @@ const Blogs = ({
     return blogs.map((blog, i) => {
       // col-sm-6 pb-4
       return (
-        <div className="right-side" key={i}>
-          <HorizontalCard blog={blog} />
+        <div className="col-lg-4 mb-4" key={i}>
+          <NewCard blog={blog} />
         </div>
       );
     });
@@ -114,8 +114,8 @@ const Blogs = ({
   const showLoadedBlogs = () => {
     return loadedBlogs.map((blog, i) => (
       // col-sm-6 pb-4
-      <div className="right-side" key={i}>
-        <HorizontalCard blog={blog} />
+      <div className="col-lg-4 mb-4" key={i}>
+        <NewCard blog={blog} />
       </div>
     ));
   };
@@ -124,75 +124,23 @@ const Blogs = ({
     <React.Fragment>
       {head()}
       <Layout>
-        <main>
-          {/* <div className="container-fluid bg-camera">
-            <header>
-              <div className="col-md-12 pt-3">
-                <div className="container-bg">
-                  <div className="showcase-container pt-5">
-                    <div
-                      className="showcase-content"
-                      style={{ color: "white" }}
-                    >
-                      <h1>Some Sports Article</h1>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Obcaecati ad recusandae, aliquid, quaerat sed
-                        exercitationem ratione deleniti officiis, doloribus
-                        temporibus reprehenderit. Enim odio veritatis accusamus
-                        earum minus deserunt reiciendis doloribus.
-                      </p>
-                      <a
-                        href="article.html"
-                        className="btn btn-primary"
-                        style={{ color: "black", fontWeight: "bold" }}
-                      >
-                        Read More
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </header>
-          </div> */}
-
-          {/* Blog starts here */}
-          <div className="container" style={{ paddingTop: "1rem" }}>
-            <h1 className="mt-4">The Latest</h1>
-            <hr />
-            <div className="row">
-              {/* main div */}
-              <div className="col-lg-8">
-                <div className="row">{showAllBlogs()}</div>
-                <div className="row">{showLoadedBlogs()}</div>
-
-                <div className="text-center pt-5 pb-5">{loadMoreButton()}</div>
+        <Search />
+        <div className="site-section">
+          <div className="container">
+            <div className="row p-5">
+              <div className="col-12">
+                <h2 className="mb-5">Recent Posts</h2>
               </div>
 
-              <div className="col-md-4">
-                {/* Search Widget */}
-                <Search />
-                {/* Categories */}
-                <div className="card my-4 with-shadow">
-                  <h5 className="card-header text-caveat">Categories</h5>
-                  <div className="card-body">
-                    <div className="row">{showAllCategories()}</div>
-                  </div>
-                </div>
-                <div className="card my-4 with-shadow">
-                  <h5 className="card-header text-caveat">Tags</h5>
-                  <div className="card-body">
-                    <div className="row">{showAllTags()}</div>
-                  </div>
-                </div>
-                {/* Categories */}
-                {/* end right side */}
+              <div className="row">
+                {showAllBlogs()}
+                {showLoadedBlogs()}
+
+                <div className="col-12 text-center">{loadMoreButton()}</div>
               </div>
-              {/* main row ends here */}
             </div>
-            {/* Blog ends here */}
           </div>
-        </main>
+        </div>
       </Layout>
     </React.Fragment>
   );
@@ -201,8 +149,8 @@ const Blogs = ({
 // getInitialProps can only be used in pages not components! same as componentWillMount
 Blogs.getInitialProps = () => {
   let skip = 0;
-  let limit = 4;
-  return listBlogsWithCategoriesAndTags(skip, limit).then(data => {
+  let limit = 6;
+  return listBlogsWithCategoriesAndTags(skip, limit).then((data) => {
     if (data.error) {
       console.log(data.error);
     } else {
@@ -212,7 +160,7 @@ Blogs.getInitialProps = () => {
         tags: data.tags,
         totalBlogs: data.size,
         blogsLimit: limit,
-        blogSkip: skip
+        blogSkip: skip,
       };
     }
   });

@@ -39,7 +39,7 @@ const CreateBlog = ({ router }) => {
     success: "",
     formData: "",
     title: "",
-    hidePublishButton: false
+    hidePublishButton: false,
   });
 
   const {
@@ -48,7 +48,7 @@ const CreateBlog = ({ router }) => {
     success,
     formData,
     title,
-    hidePublishButton
+    hidePublishButton,
   } = values;
   const token = getCookie("token");
 
@@ -59,10 +59,10 @@ const CreateBlog = ({ router }) => {
     initTags();
   }, [router]);
 
-  const publishBlog = e => {
+  const publishBlog = (e) => {
     e.preventDefault();
     // console.log('ready to publishBlog');
-    createBlog(formData, token).then(data => {
+    createBlog(formData, token).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
@@ -70,7 +70,7 @@ const CreateBlog = ({ router }) => {
           ...values,
           title: "",
           error: "",
-          success: `A new blog titled "${data.title}" is created`
+          success: `A new blog titled "${data.title}" is created`,
         });
         setBody("");
         setCategories([]);
@@ -80,7 +80,7 @@ const CreateBlog = ({ router }) => {
   };
 
   const initCategories = () => {
-    getCategories().then(data => {
+    getCategories().then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
@@ -90,7 +90,7 @@ const CreateBlog = ({ router }) => {
   };
 
   const initTags = () => {
-    getTags().then(data => {
+    getTags().then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
@@ -99,14 +99,14 @@ const CreateBlog = ({ router }) => {
     });
   };
 
-  const handleChange = name => e => {
+  const handleChange = (name) => (e) => {
     // console.log(e.target.value);
     const value = name === "photo" ? e.target.files[0] : e.target.value;
     formData.set(name, value);
     setValues({ ...values, [name]: value, formData, error: "" });
   };
 
-  const handleBody = e => {
+  const handleBody = (e) => {
     // console.log(e);
     setBody(e);
     formData.set("body", e);
@@ -115,7 +115,7 @@ const CreateBlog = ({ router }) => {
     }
   };
 
-  const handleToggle = c => () => {
+  const handleToggle = (c) => () => {
     setValues({ ...values, error: "" });
     // return the first index or -1
     const clickedCategory = checked.indexOf(c);
@@ -131,7 +131,7 @@ const CreateBlog = ({ router }) => {
     formData.set("categories", all);
   };
 
-  const handleTagsToggle = t => () => {
+  const handleTagsToggle = (t) => () => {
     setValues({ ...values, error: "" });
     // return the first index or -1
     const clickedTag = checked.indexOf(t);
@@ -221,7 +221,7 @@ const CreateBlog = ({ router }) => {
         </div>
 
         <div>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-submit">
             Publish
           </button>
         </div>
@@ -248,11 +248,12 @@ const CreateBlog = ({ router }) => {
 
               <small className="text-muted">Max size: 1mb</small>
               <br />
-              <label className="btn btn-outline-info">
+              <label className="btn btn-info">
                 <input
                   onChange={handleChange("photo")}
                   type="file"
                   accept="image/*"
+                  required
                   // hidden
                 />
               </label>

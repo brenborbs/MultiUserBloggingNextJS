@@ -27,7 +27,7 @@ const BlogUpdate = ({ router }) => {
     success: "",
     formData: "",
     title: "",
-    body: ""
+    body: "",
   });
 
   const { error, success, formData, title } = values;
@@ -43,7 +43,7 @@ const BlogUpdate = ({ router }) => {
 
   const initBlog = () => {
     if (router.query.slug) {
-      singleBlog(router.query.slug).then(data => {
+      singleBlog(router.query.slug).then((data) => {
         if (data.error) {
           console.log(data.error);
         } else {
@@ -56,7 +56,7 @@ const BlogUpdate = ({ router }) => {
     }
   };
 
-  const setCategoriesArray = blogCategories => {
+  const setCategoriesArray = (blogCategories) => {
     let ca = [];
     blogCategories.map((c, i) => {
       ca.push(c._id);
@@ -64,7 +64,7 @@ const BlogUpdate = ({ router }) => {
     setChecked(ca);
   };
 
-  const setTagsArray = blogTags => {
+  const setTagsArray = (blogTags) => {
     let ta = [];
     blogTags.map((t, i) => {
       ta.push(t._id);
@@ -73,7 +73,7 @@ const BlogUpdate = ({ router }) => {
   };
 
   const initCategories = () => {
-    getCategories().then(data => {
+    getCategories().then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
@@ -83,7 +83,7 @@ const BlogUpdate = ({ router }) => {
   };
 
   const initTags = () => {
-    getTags().then(data => {
+    getTags().then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
@@ -92,7 +92,7 @@ const BlogUpdate = ({ router }) => {
     });
   };
 
-  const handleToggle = c => () => {
+  const handleToggle = (c) => () => {
     setValues({ ...values, error: "" });
     // return the first index or -1
     const clickedCategory = checked.indexOf(c);
@@ -108,7 +108,7 @@ const BlogUpdate = ({ router }) => {
     formData.set("categories", all);
   };
 
-  const handleTagsToggle = t => () => {
+  const handleTagsToggle = (t) => () => {
     setValues({ ...values, error: "" });
     // return the first index or -1
     const clickedTag = checkedTag.indexOf(t);
@@ -124,7 +124,7 @@ const BlogUpdate = ({ router }) => {
     formData.set("tags", all);
   };
 
-  const findOutCategory = c => {
+  const findOutCategory = (c) => {
     const result = checked.indexOf(c);
     if (result !== -1) {
       return true;
@@ -133,7 +133,7 @@ const BlogUpdate = ({ router }) => {
     }
   };
 
-  const findOutTag = t => {
+  const findOutTag = (t) => {
     const result = checkedTag.indexOf(t);
     if (result !== -1) {
       return true;
@@ -176,28 +176,28 @@ const BlogUpdate = ({ router }) => {
     );
   };
 
-  const handleChange = name => e => {
+  const handleChange = (name) => (e) => {
     // console.log(e.target.value);
     const value = name === "photo" ? e.target.files[0] : e.target.value;
     formData.set(name, value);
     setValues({ ...values, [name]: value, formData, error: "" });
   };
 
-  const handleBody = e => {
+  const handleBody = (e) => {
     setBody(e);
     formData.set("body", e);
   };
 
-  const editBlog = e => {
+  const editBlog = (e) => {
     e.preventDefault();
-    updateBlog(formData, token, router.query.slug).then(data => {
+    updateBlog(formData, token, router.query.slug).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
         setValues({
           ...values,
           title: "",
-          success: `Blog titled "${data.title}" is successfully updated`
+          success: `Blog titled "${data.title}" is successfully updated`,
         });
         if (isAuth() && isAuth().role === 1) {
           // Router.replace(`/admin/crud/${router.query.slug}`);
@@ -252,7 +252,7 @@ const BlogUpdate = ({ router }) => {
         </div>
 
         <div>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-submit">
             Update
           </button>
         </div>
@@ -286,7 +286,7 @@ const BlogUpdate = ({ router }) => {
 
               <small className="text-muted">Max size: 1mb</small>
               <br />
-              <label className="btn btn-outline-info">
+              <label className="btn btn-info">
                 Upload featured image
                 <input
                   onChange={handleChange("photo")}

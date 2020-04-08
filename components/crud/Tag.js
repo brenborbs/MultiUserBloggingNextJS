@@ -12,7 +12,7 @@ const Tag = () => {
     success: false,
     tags: [],
     removed: false,
-    reload: false
+    reload: false,
   });
 
   const { name, error, success, tags, removed, reload } = values;
@@ -23,7 +23,7 @@ const Tag = () => {
   }, [reload]);
 
   const loadTags = () => {
-    getTags().then(data => {
+    getTags().then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -39,7 +39,7 @@ const Tag = () => {
           onDoubleClick={() => deleteConfirm(t.slug)}
           title="Double click to delete"
           key={i}
-          className="btn btn-outline-primary mr-1 ml-1 mt-3"
+          className="btn btn-info mr-1 ml-1 mt-3"
         >
           {t.name}
         </button>
@@ -47,16 +47,16 @@ const Tag = () => {
     });
   };
 
-  const deleteConfirm = slug => {
+  const deleteConfirm = (slug) => {
     let answer = window.confirm("Are you sure you want to delete this tag?");
     if (answer) {
       deleteTag(slug);
     }
   };
 
-  const deleteTag = slug => {
+  const deleteTag = (slug) => {
     // console.log('delete', slug);
-    removeTag(slug, token).then(data => {
+    removeTag(slug, token).then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -66,16 +66,16 @@ const Tag = () => {
           success: false,
           name: "",
           removed: !removed,
-          reload: !reload
+          reload: !reload,
         });
       }
     });
   };
 
-  const clickSubmit = e => {
+  const clickSubmit = (e) => {
     e.preventDefault();
     // console.log('create category', name);
-    create({ name }, token).then(data => {
+    create({ name }, token).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error, success: false });
       } else {
@@ -83,7 +83,7 @@ const Tag = () => {
           ...values,
           error: false,
           success: true,
-          name: ""
+          name: "",
           // removed: !removed,
           // reload: !reload
         });
@@ -91,13 +91,13 @@ const Tag = () => {
     });
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setValues({
       ...values,
       name: e.target.value,
       error: false,
       success: false,
-      removed: ""
+      removed: "",
     });
   };
 
@@ -119,7 +119,7 @@ const Tag = () => {
     }
   };
 
-  const mouseMoveHandler = e => {
+  const mouseMoveHandler = (e) => {
     setValues({ ...values, error: false, success: false, removed: "" });
   };
 
@@ -136,8 +136,8 @@ const Tag = () => {
         />
       </div>
       <div>
-        <button type="submit" className="btn btn-primary">
-          Create
+        <button type="submit" className="btn btn-submit">
+          Add Tag
         </button>
       </div>
     </form>

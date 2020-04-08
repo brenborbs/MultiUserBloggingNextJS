@@ -10,15 +10,15 @@ const ContactForm = ({ authorEmail }) => {
     sent: false,
     buttonText: "Send Message",
     success: false,
-    error: false
+    error: false,
   });
 
   const { message, name, email, sent, buttonText, success, error } = values;
 
-  const clickSubmit = e => {
+  const clickSubmit = (e) => {
     e.preventDefault();
     setValues({ ...values, buttonText: "Sending..." });
-    emailContactForm({ authorEmail, name, email, message }).then(data => {
+    emailContactForm({ authorEmail, name, email, message }).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
@@ -29,19 +29,19 @@ const ContactForm = ({ authorEmail }) => {
           email: "",
           message: "",
           buttonText: "Sent",
-          success: data.success
+          success: data.success,
         });
       }
     });
   };
 
-  const handleChange = name => e => {
+  const handleChange = (name) => (e) => {
     setValues({
       ...values,
       [name]: e.target.value,
       error: false,
       success: false,
-      buttonText: "Send Message"
+      buttonText: "Send Message",
     });
   };
 
@@ -97,7 +97,7 @@ const ContactForm = ({ authorEmail }) => {
         </div>
 
         <div>
-          <button className="btn btn-outline">{buttonText}</button>
+          <button className="btn btn-submit">{buttonText}</button>
         </div>
       </form>
     );

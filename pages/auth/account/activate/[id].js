@@ -11,7 +11,7 @@ const ActivateAccount = ({ router }) => {
     error: "",
     loading: false,
     success: false,
-    showButton: true
+    showButton: true,
   });
 
   const { name, token, error, loading, success, showButton } = values;
@@ -24,23 +24,23 @@ const ActivateAccount = ({ router }) => {
     }
   }, [router]);
 
-  const clickSubmit = e => {
+  const clickSubmit = (e) => {
     e.preventDefault();
     setValues({ ...values, loading: true, error: false });
-    signup({ token }).then(data => {
+    signup({ token }).then((data) => {
       if (data.error) {
         setValues({
           ...values,
           error: data.error,
           loading: false,
-          showButton: false
+          showButton: false,
         });
       } else {
         setValues({
           ...values,
           loading: false,
           success: true,
-          showButton: false
+          showButton: false,
         });
       }
     });
@@ -50,20 +50,19 @@ const ActivateAccount = ({ router }) => {
 
   return (
     <Layout>
-      <div
-        className="container"
-        style={{ paddingBottom: "60px", paddingTop: "50px" }}
-      >
-        <h3 className="pb-4">Hey {name}, Ready to activate your account?</h3>
-        {showLoading()}
-        {error && error}
-        {success &&
-          "You have successfully activated your account. Please signin."}
-        {showButton && (
-          <button className="btn btn-outline" onClick={clickSubmit}>
-            Activate Account
-          </button>
-        )}
+      <div className="forms-margin">
+        <div className="forms-wrapper">
+          <h3 className="pb-4">Hey {name}, Ready to activate your account?</h3>
+          {showLoading()}
+          {error && error}
+          {success &&
+            "You have successfully activated your account. Please signin."}
+          {showButton && (
+            <button className="btn btn-submit" onClick={clickSubmit}>
+              Activate Account
+            </button>
+          )}
+        </div>
       </div>
     </Layout>
   );

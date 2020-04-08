@@ -10,6 +10,7 @@ import moment from "moment";
 import SmallCard from "../../components/blog/SmallCard";
 import DisqusThread from "../../components/DisqusThread";
 import Search from "../../components/blog/Search";
+import NewCard from "../../components/blog/NewCard";
 // for like
 import { getCookie, isAuth } from "../../actions/auth";
 
@@ -20,7 +21,7 @@ import {
   TwitterShareButton,
   TwitterIcon,
   LinkedinShareButton,
-  LinkedinIcon
+  LinkedinIcon,
   // EmailShareButton,
   // EmailIcon,
   // WhatsappShareButton,
@@ -31,7 +32,7 @@ const SingleBlog = ({ blog, query, router }) => {
   const [related, setRelated] = useState([]);
 
   const loadRelated = () => {
-    listRelated({ blog }).then(data => {
+    listRelated({ blog }).then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -69,17 +70,17 @@ const SingleBlog = ({ blog, query, router }) => {
     </Head>
   );
 
-  const showBlogCategories = blog =>
+  const showBlogCategories = (blog) =>
     blog.categories.map((c, i) => (
       <Link key={i} href={`/categories/${c.slug}`}>
-        <a className="tag category">{c.name}</a>
+        <a className="tag bg-warning">{c.name}</a>
       </Link>
     ));
 
-  const showBlogTags = blog =>
+  const showBlogTags = (blog) =>
     blog.tags.map((t, i) => (
       <Link key={i} href={`/tags/${t.slug}`}>
-        <a className="tag tags">{t.name}</a>
+        <a className="tag bg-success">#{t.name}</a>
       </Link>
     ));
 
@@ -87,7 +88,7 @@ const SingleBlog = ({ blog, query, router }) => {
     return related.map((blog, i) => (
       <div className="col-md-4" key={i}>
         <article>
-          <SmallCard blog={blog} />
+          <NewCard blog={blog} />
         </article>
       </div>
     ));
@@ -120,7 +121,7 @@ const SingleBlog = ({ blog, query, router }) => {
             url={`${API}/blog/${blog.slug}`}
             className="Demo__some-network__share-count"
           >
-            {count => count}
+            {(count) => count}
           </FacebookShareCount>
         </div>
         <div className="Demo__some-network">
@@ -150,15 +151,18 @@ const SingleBlog = ({ blog, query, router }) => {
     <React.Fragment>
       {head()}
       <Layout>
-        <main>
+        <div className="container" style={{ paddingTop: "2rem" }}>
           <section id="article">
-            <div className="container-bg">
-              <div className="page-container">
+            {/* container-bg */}
+            <div className="row">
+              {/* page-container */}
+              <div className="col-lg-8">
                 <article className="card-bg">
                   <img
                     src={`${API}/blog/photo/${blog.slug}`}
                     alt={blog.title}
                     style={{ width: "100%" }}
+                    className="img-fluid rounded"
                   />
                   <h1 className="l-header pt-2">{blog.title}</h1>
                   <div className="">
@@ -174,63 +178,46 @@ const SingleBlog = ({ blog, query, router }) => {
                   <div className="pt-3">{showReactShareIcons()}</div>
                   <hr />
                   <div>{renderHTML(blog.body)}</div>
-                  {showBlogCategories(blog)}
-                  {showBlogTags(blog)}
+                  Categories: {showBlogCategories(blog)}
+                  Tags: {showBlogTags(blog)}
                 </article>
-                <aside
-                // id="categories" className="card-bg"
-                >
-                  <Search />
-                  {/* <h2>Categories</h2> 
-                  <ul className="list">
-                    <li>
-                      <a href="" className="fa fa-chevron-right"></a>Sports
-                    </li>
-                    <li>
-                      <a href="" className="fa fa-chevron-right"></a>
-                      Entertainment
-                    </li>
-                    <li>
-                      <a href="" className="fa fa-chevron-right"></a>Technology
-                    </li>
-                    <li>
-                      <a href="" className="fa fa-chevron-right"></a>Fashion
-                    </li>
-                    <li>
-                      <a href="" className="fa fa-chevron-right"></a>Fashion
-                    </li>
-                  </ul> */}
-                </aside>
-                <aside className="card-bg bg-secondary">
-                  {isAuth() ? (
-                    <>
-                      <h2>Start Writing</h2>
-                      <p>You can search for inspiration everywhere!</p>
-                      <Link href="/admin">
-                        <a className="btn btn-dark btn-block">Write a blog</a>
-                      </Link>
-                    </>
-                  ) : (
-                    <>
-                      <h2>Join Our Blog</h2>
-                      <p>Channel your inner feelings and fly!</p>
-                      <Link href="/signup">
-                        <a className="btn btn-dark btn-block">Register</a>
-                      </Link>
-                    </>
-                  )}
-                </aside>
+                <div className="col">
+                  <h5 className="text-left text-uppercase pt-5 pb-2">
+                    Written By
+                  </h5>
+                  <div className="media">
+                    <img
+                      className="mr-3 img-fluid rounded-circle"
+                      src={`${API}/user/photo/${blog.postedBy.username}`}
+                      alt="Generic placeholder image"
+                      onError={(i) =>
+                        (i.target.src = "/static/images/avatar.jpg")
+                      }
+                      style={{ width: "50px", height: "50px" }}
+                    />
+                    <div className="media-body">
+                      <h5 className="mt-0">
+                        {" "}
+                        <Link href={`/profile/${blog.postedBy.username}`}>
+                          <a>{blog.postedBy.username}</a>
+                        </Link>
+                      </h5>
+                      {blog.postedBy.about}
+                    </div>
+                  </div>
+                </div>
               </div>
+              <div className="col-md-4">{/* Right side */}</div>
               <div className="container">
                 <h1 className="text-center pt-5 text-caveat">Related blogs</h1>
                 <hr />
-                <div className="row">{showRelatedBlog()}</div>
+                <div className="row">{showRelatedBlog(blog)}</div>
               </div>
 
               <div className="container pt-5 pb-5">{showComments()}</div>
             </div>
           </section>
-        </main>
+        </div>
       </Layout>
       <style jsx>{``}</style>
     </React.Fragment>
@@ -238,7 +225,7 @@ const SingleBlog = ({ blog, query, router }) => {
 };
 
 SingleBlog.getInitialProps = ({ query }) => {
-  return singleBlog(query.slug).then(data => {
+  return singleBlog(query.slug).then((data) => {
     if (data.error) {
       console.log(data.error);
     } else {

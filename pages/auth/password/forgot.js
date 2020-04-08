@@ -7,19 +7,19 @@ const ForgotPassword = () => {
     email: "",
     message: "",
     error: "",
-    showForm: true
+    showForm: true,
   });
 
   const { email, message, error, showForm } = values;
 
-  const handleChange = name => e => {
+  const handleChange = (name) => (e) => {
     setValues({ ...values, message: "", error: "", [name]: e.target.value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setValues({ ...values, message: "", error: "" });
-    forgotPassword({ email }).then(data => {
+    forgotPassword({ email }).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
@@ -27,7 +27,7 @@ const ForgotPassword = () => {
           ...values,
           message: data.message,
           email: "",
-          showForm: false
+          showForm: false,
         });
       }
     });
@@ -51,18 +51,15 @@ const ForgotPassword = () => {
         />
       </div>
       <div>
-        <button className="btn btn-outline">Send password reset link</button>
+        <button className="btn btn-submit">Send password reset link</button>
       </div>
     </form>
   );
 
   return (
     <Layout>
-      <div
-        className="container"
-        style={{ marginTop: "8em", marginBottom: "5em" }}
-      >
-        <div className="signin-wrapper">
+      <div className="forms-margin">
+        <div className="forms-wrapper">
           <h2>Forgot password</h2>
           <hr />
           {showError()}

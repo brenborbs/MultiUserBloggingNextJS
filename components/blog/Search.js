@@ -2,84 +2,109 @@ import Link from "next/link";
 import renderHTML from "react-render-html";
 import { useState, useEffect } from "react";
 import { listSearch } from "../../actions/blog";
+import NewCard from "./NewCard";
 
 const Search = () => {
   const [values, setValues] = useState({
     search: undefined,
     results: [],
     searched: false,
-    message: ""
+    message: "",
   });
 
   const { search, results, searched, message } = values;
 
-  const searchSubmit = e => {
+  const searchSubmit = (e) => {
     e.preventDefault();
-    listSearch({ search }).then(data => {
+    listSearch({ search }).then((data) => {
       setValues({
         ...values,
         results: data,
         searched: true,
-        message: `${data.length} blogs found`
+        message: `${data.length} blogs found`,
       });
     });
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     // console.log(e.target.value);
     setValues({
       ...values,
       search: e.target.value,
       searched: false,
-      results: []
+      results: [],
     });
   };
 
   const searchedBlogs = (results = []) => {
     return (
-      <div className="bg-white text-center pb-2">
-        {message && <p className="text-muted font-italic">{message}</p>}
-
+      <React.Fragment>
         {results.map((blog, i) => {
           return (
-            <div key={i}>
-              <Link href={`/blogs/${blog.slug}`}>
-                <a>{blog.title}</a>
-              </Link>
+            <div className="col-md-4" key={i}>
+              <NewCard blog={blog} />
             </div>
           );
         })}
-      </div>
+      </React.Fragment>
     );
   };
 
   const searchForm = () => (
-    <form onSubmit={searchSubmit}>
-      <div className="card-body">
-        <div className="input-group">
+    <form className="card card-sm mt-3" onSubmit={searchSubmit}>
+      <div className="search-body row no-gutters align-items-center">
+        <div className="col-auto">
+          <i className="fa fa-search h2 text-body"></i>
+        </div>
+
+        <div className="col">
           <input
+            className="form-control form-control-lg form-control-borderless"
             type="search"
-            className="form-control"
-            placeholder="Advance Search"
+            placeholder="Search topics or keywords"
             onChange={handleChange}
           />
-          <span className="input-group-btn">
-            {" "}
-            <button className="btn btn-head" type="submit">
-              Go!
-            </button>
-          </span>
+        </div>
+
+        <div className="col-auto">
+          <button className="btn btn-lg btn-search" type="submit">
+            Search
+          </button>
         </div>
       </div>
     </form>
   );
 
   return (
-    <div className="card my-4 with-shadow">
-      <h5 className="card-header text-caveat">Search</h5>
-      {searchForm()}
-      {searched && <div>{searchedBlogs(results)}</div>}
-    </div>
+    <React.Fragment>
+      <div className="container-fluid">
+        <div className="row search-image justify-content-center">
+          <div className="col-10 mx-auto search-text text-left">
+            <h1 className="text-light text-uppercase font-weight-bold">
+              <strong>Estoryahi ko!</strong>
+            </h1>
+            <p className="lead text-light">
+              Sabta kuno if sakto ba ko or dili?
+            </p>
+            {searchForm()}
+          </div>
+        </div>
+      </div>
+      {message && (
+        <div className="row justify-content-center pt-4">
+          <p className="text-muted font-italic justify-content-center">
+            {message}
+          </p>
+        </div>
+      )}
+      {searched && (
+        <div className="search-section">
+          <div className="container">
+            <div className="row">{searchedBlogs(results)}</div>
+          </div>
+        </div>
+      )}
+    </React.Fragment>
   );
 };
 

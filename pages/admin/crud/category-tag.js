@@ -8,18 +8,34 @@ const CategoryTag = () => {
   return (
     <Layout>
       <Admin>
-        <div className="container-fluid" style={{ marginBottom: "8em" }}>
-          <div className="row" style={{ paddingBottom: "60px" }}>
-            <div className="col-md-12 pt-4 pb-5">
-              <h2>Manage Categories and Tags</h2>
-            </div>
-            <div className="col-md-6">
+        <div className="container-fluid pt-4">
+          <h4 className="text-center mt-2">Manage Categories and Tags</h4>
+          <p className="text-center">
+            <small className="text-muted">
+              * Double click buttons to delete
+            </small>
+          </p>
+
+          <div className="wrapper">
+            <div className="col">
               <Category />
             </div>
-            <div className="col-md-6">
+            <div className="col mt-4">
               <Tag />
             </div>
           </div>
+          <style jsx>
+            {`
+              .wrapper {
+                border-radius: 5px;
+                background-color: #fff;
+                width: 100%;
+                max-width: 620px;
+                padding: 15px;
+                margin: 0 auto;
+              }
+            `}
+          </style>
         </div>
       </Admin>
     </Layout>

@@ -4,15 +4,7 @@ import Link from "next/link";
 const Index = () => {
   return (
     <Layout>
-      <div className="container-fluid">
-        <div className="row max-height justify-content-center align-items-center">
-          <div className="col-10 mx-auto banner text-center">
-            <h1 className="text-capitalize">
-              Seto <strong className="banner-title">- 1</strong>
-            </h1>
-          </div>
-        </div>
-      </div>
+      <div className="container-fluid">{/* Banner if any? */}</div>
       {/*  about  */}
       <section className="about py-5" id="about">
         <div className="container">
@@ -62,7 +54,7 @@ const Index = () => {
                     className="front"
                     style={{
                       backgroundImage:
-                        "url(" + "/static/images/concert.jpg" + ")"
+                        "url(" + "/static/images/concert.jpg" + ")",
                     }}
                   >
                     <h2 className="text-shadow text-caveat text-center h1">
@@ -88,7 +80,7 @@ const Index = () => {
                   <div
                     className="front"
                     style={{
-                      backgroundImage: "url(" + "/static/images/arts.jpg" + ")"
+                      backgroundImage: "url(" + "/static/images/arts.jpg" + ")",
                     }}
                   >
                     <h2 className="text-shadow text-caveat text-center h1">
@@ -114,7 +106,7 @@ const Index = () => {
                     className="front"
                     style={{
                       backgroundImage:
-                        "url(" + "/static/images/travel.jpg" + ")"
+                        "url(" + "/static/images/travel.jpg" + ")",
                     }}
                   >
                     <h2 className="text-shadow text-caveat text-center h1">
@@ -141,7 +133,7 @@ const Index = () => {
                     className="front"
                     style={{
                       backgroundImage:
-                        "url(" + "/static/images/movies.jpg" + ")"
+                        "url(" + "/static/images/movies.jpg" + ")",
                     }}
                   >
                     <h2 className="text-shadow text-caveat text-center h1">
@@ -167,7 +159,8 @@ const Index = () => {
                   <div
                     className="front"
                     style={{
-                      backgroundImage: "url(" + "/static/images/humor.jpg" + ")"
+                      backgroundImage:
+                        "url(" + "/static/images/humor.jpg" + ")",
                     }}
                   >
                     <h2 className="text-shadow text-caveat text-center h1">
@@ -192,7 +185,7 @@ const Index = () => {
                   <div
                     className="front"
                     style={{
-                      backgroundImage: "url(" + "/static/images/food.jpg" + ")"
+                      backgroundImage: "url(" + "/static/images/food.jpg" + ")",
                     }}
                   >
                     <h2 className="text-shadow text-caveat text-center h1">

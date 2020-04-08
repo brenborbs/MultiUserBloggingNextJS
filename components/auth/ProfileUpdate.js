@@ -19,7 +19,7 @@ const ProfileUpdate = () => {
     success: false,
     loading: false,
     photo: "",
-    userData: ""
+    userData: "",
   });
 
   const token = getCookie("token");
@@ -36,11 +36,11 @@ const ProfileUpdate = () => {
     success,
     loading,
     photo,
-    userData
+    userData,
   } = values;
   // load data to state
   const init = () => {
-    getProfile(token).then(data => {
+    getProfile(token).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
@@ -52,7 +52,7 @@ const ProfileUpdate = () => {
           about: data.about,
           facebook: data.facebook,
           twitter: data.twitter,
-          instagram: data.instagram
+          instagram: data.instagram,
           // photo: data.photo
         });
       }
@@ -63,7 +63,7 @@ const ProfileUpdate = () => {
     init();
   }, []);
 
-  const handleChange = name => e => {
+  const handleChange = (name) => (e) => {
     // console.log(e.target.value);
     const value = name === "photo" ? e.target.files[0] : e.target.value;
     let userFormData = new FormData();
@@ -73,20 +73,20 @@ const ProfileUpdate = () => {
       [name]: value,
       userData: userFormData,
       error: false,
-      success: false
+      success: false,
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setValues({ ...values, loading: true });
-    update(token, userData).then(data => {
+    update(token, userData).then((data) => {
       if (data.error) {
         setValues({
           ...values,
           error: data.error,
           success: false,
-          loading: false
+          loading: false,
         });
       } else {
         updateUser(data, () => {
@@ -102,7 +102,7 @@ const ProfileUpdate = () => {
             // photo: data.photo,
             password: "",
             success: true,
-            loading: false
+            loading: false,
           });
         });
       }
@@ -159,7 +159,6 @@ const ProfileUpdate = () => {
         />
       </div>
       <div className="form-group">
-        {/* <div className="input-group"> */}
         <div className="input-group-prepend">
           <span className="input-group-text">
             <i className="fa fa-facebook" />
@@ -171,10 +170,8 @@ const ProfileUpdate = () => {
             className="form-control"
           />
         </div>
-        {/* </div> */}
       </div>
       <div className="form-group">
-        {/* <div className="input-group"> */}
         <div className="input-group-prepend">
           <span className="input-group-text">
             <i className="fa fa-twitter" />
@@ -186,10 +183,8 @@ const ProfileUpdate = () => {
             className="form-control"
           />
         </div>
-        {/* </div> */}
       </div>
       <div className="form-group">
-        {/* <div className="input-group"> */}
         <div className="input-group-prepend">
           <span className="input-group-text">
             <i className="fa fa-instagram" />
@@ -201,7 +196,6 @@ const ProfileUpdate = () => {
             className="form-control"
           />
         </div>
-        {/* </div> */}
       </div>
       <div className="form-group">
         <label className="text-muted">Password</label>
@@ -213,7 +207,7 @@ const ProfileUpdate = () => {
         />
       </div>
       <div>
-        <button type="submit" className="btn btn-outline">
+        <button type="submit" className="btn btn-submit">
           Submit
         </button>
       </div>
@@ -253,27 +247,21 @@ const ProfileUpdate = () => {
 
   return (
     <React.Fragment>
-      <div
-        className="container"
-        style={{ marginTop: "30px", marginBottom: "30px" }}
-      >
-        <div className="row">
-          <div className="col-md-4">
-            <img
-              src={photoURL}
-              className="img img-fluid img-thumbnail mb-3"
-              style={{ maxHeight: "auto", maxWidth: "100%" }}
-              alt="user profile"
-              onError={i => (i.target.src = "/static/images/avatar.jpg")}
-            />
-          </div>
-          <div className="col-md-8">
-            {showSuccess()}
-            {showError()}
-            {showLoading()}
-            {profileUpdateForm()}
-          </div>
+      <div className="col">
+        <div className="text-center">
+          <img
+            src={photoURL}
+            className="img img-fluid img-thumbnail"
+            style={{ maxHeight: "auto", maxWidth: "100%" }}
+            alt="user profile"
+            onError={(i) => (i.target.src = "/static/images/avatar.jpg")}
+          />
         </div>
+
+        {showSuccess()}
+        {showError()}
+        {showLoading()}
+        {profileUpdateForm()}
       </div>
     </React.Fragment>
   );

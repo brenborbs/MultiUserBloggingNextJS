@@ -10,7 +10,7 @@ const SignupComponent = () => {
     error: "",
     loading: false,
     message: "",
-    showForm: true
+    showForm: true,
   });
 
   const { name, email, password, error, loading, message, showForm } = values;
@@ -20,13 +20,13 @@ const SignupComponent = () => {
     isAuth() && Router.push(`/`);
   }, []);
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     // console.table({ name, email, password, error, loading, message, showForm });
     setValues({ ...values, loading: true, error: false });
     const user = { name, email, password };
 
-    preSignup(user).then(data => {
+    preSignup(user).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error, loading: false });
       } else {
@@ -38,13 +38,13 @@ const SignupComponent = () => {
           error: "",
           loading: false,
           message: data.message,
-          showForm: false
+          showForm: false,
         });
       }
     });
   };
 
-  const handleChange = name => e => {
+  const handleChange = (name) => (e) => {
     setValues({ ...values, error: false, [name]: e.target.value });
   };
 
@@ -92,7 +92,7 @@ const SignupComponent = () => {
         </div>
 
         <div>
-          <button className="btn btn-outline">Sign Up</button>
+          <button className="btn btn-submit">Sign Up</button>
         </div>
       </form>
     );

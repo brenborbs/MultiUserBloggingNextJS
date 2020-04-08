@@ -9,23 +9,23 @@ const ResetPassword = ({ router }) => {
     newPassword: "",
     error: "",
     message: "",
-    showForm: true
+    showForm: true,
   });
 
   const { showForm, name, newPassword, error, message } = values;
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     resetPassword({
       newPassword,
-      resetPasswordLink: router.query.id
-    }).then(data => {
+      resetPasswordLink: router.query.id,
+    }).then((data) => {
       if (data.error) {
         setValues({
           ...values,
           error: data.error,
           showForm: false,
-          newPassword: ""
+          newPassword: "",
         });
       } else {
         setValues({
@@ -33,7 +33,7 @@ const ResetPassword = ({ router }) => {
           message: data.message,
           showForm: false,
           newPassword: "",
-          error: false
+          error: false,
         });
       }
     });
@@ -44,7 +44,9 @@ const ResetPassword = ({ router }) => {
       <div className="form-group pt-5">
         <input
           type="password"
-          onChange={e => setValues({ ...values, newPassword: e.target.value })}
+          onChange={(e) =>
+            setValues({ ...values, newPassword: e.target.value })
+          }
           className="form-control"
           value={newPassword}
           placeholder="Type new password"
@@ -52,7 +54,7 @@ const ResetPassword = ({ router }) => {
         />
       </div>
       <div>
-        <button className="btn btn-outline">Change password</button>
+        <button className="btn btn-submit">Change password</button>
       </div>
     </form>
   );
@@ -64,15 +66,14 @@ const ResetPassword = ({ router }) => {
 
   return (
     <Layout>
-      <div
-        className="container"
-        style={{ marginTop: "8em", marginBottom: "5em" }}
-      >
-        <h2>Reset password</h2>
-        <hr />
-        {showError()}
-        {showMessage()}
-        {passwordResetForm()}
+      <div className="forms-margin">
+        <div className="forms-wrapper">
+          <h2>Reset password</h2>
+          <hr />
+          {showError()}
+          {showMessage()}
+          {passwordResetForm()}
+        </div>
       </div>
     </Layout>
   );

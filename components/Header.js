@@ -11,20 +11,20 @@ import {
   // NavbarBrand,
   Nav,
   NavItem,
-  NavLink
+  NavLink,
   // UncontrolledDropdown,
   // DropdownToggle,
   // DropdownMenu,
   // DropdownItem
 } from "reactstrap";
-import ".././node_modules/nprogress/nprogress.css";
+// import "../node_modules/nprogress/nprogress.css";
 import ActiveLink from "../helpers/activeLink";
 // import Search from "./blog/Search";
 
 // Check Router(Routing) Events from NextJS docs
-Router.onRouteChangeStart = url => NProgress.start();
-Router.onRouteChangeComplete = url => NProgress.done();
-Router.onRouteChangeError = url => NProgress.done();
+// Router.onRouteChangeStart = url => NProgress.start();
+// Router.onRouteChangeComplete = url => NProgress.done();
+// Router.onRouteChangeError = url => NProgress.done();
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,28 +35,16 @@ const Header = () => {
 
   return (
     <React.Fragment>
-      <Navbar className="navbar fixed-top navbar-expand-md navbar-dark">
+      <Navbar className="navbar fixed-top navbar-expand-md navbartext-black navbar-light">
         <Link href="/">
-          <NavLink className="font-weight-bold" style={{ color: "white" }}>
-            <h3 className="brand-text">{APP_NAME}</h3>
+          <NavLink>
+            <h4 className="brand-text">{APP_NAME}</h4>
           </NavLink>
         </Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="navbar-nav ml-auto" navbar>
-            {/* {isAuth() && (
-              <NavItem>
-                <a href="/user/crud/blog" className="btn btn-info text-light">
-                  Write a blog
-                </a>
-              </NavItem>
-            )} */}
             <React.Fragment>
-              {/* <NavItem>
-                <Link href="/search">
-                  <NavLink>Search</NavLink>
-                </Link>
-              </NavItem> */}
               <NavItem>
                 <ActiveLink activeClassName="active" href="/blogs">
                   <a className="nav-link">Blogs</a>
@@ -95,9 +83,7 @@ const Header = () => {
                 </NavItem>
                 <NavItem>
                   <Link href="/signup">
-                    <NavLink className="btn btn-head text-light">
-                      Register
-                    </NavLink>
+                    <NavLink className="btn btn-head">Register</NavLink>
                   </Link>
                 </NavItem>
               </React.Fragment>

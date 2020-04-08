@@ -20,7 +20,7 @@ const Card = ({ blog }) => {
 
   return (
     <React.Fragment>
-      <div className="card with-shadow">
+      <div className="card">
         <div className="img-container">
           <img
             style={{ height: "200px", width: "100%" }}
@@ -30,29 +30,25 @@ const Card = ({ blog }) => {
           />
         </div>
         <div className="card-body">
-          <div className="card-text text-capitalize">
+          <div className="card-text">
             <Link href={`/blogs/${blog.slug}`}>
               <a className="title-card" style={{ color: "black" }}>
                 {blog.title}
               </a>
             </Link>
             <h6 className="card-subtitle mt-1 mb-2 text-muted">
-              {/* Author:{" "} */}
-              {/* <i className="fa fa-user mr-2" aria-hidden="true"></i> */}
               <Link href={`/profile/${blog.postedBy.username}`}>
                 <a>{blog.postedBy.username}</a>
-              </Link>{" "}
+              </Link>
             </h6>
-            <hr />
-            {/* <div className="card-text"> */}
+
             {renderHTML(blog.excerpt)}
-            {/* </div> */}
           </div>
-          <p className="card-text pt-2">
-            <small className="text-muted">
-              Published on {moment(blog.updatedAt).format("MMMM D, YYYY")}
-            </small>
-          </p>
+        </div>
+        <div className="card-footer">
+          <small className="text-muted">
+            Published on {moment(blog.updatedAt).format("MMMM D, YYYY")}
+          </small>
         </div>
       </div>
     </React.Fragment>

@@ -12,7 +12,7 @@ const Category = () => {
     success: false,
     categories: [],
     removed: false,
-    reload: false
+    reload: false,
   });
 
   const { name, error, success, categories, removed, reload } = values;
@@ -25,7 +25,7 @@ const Category = () => {
 
   // loadCategories() function
   const loadCategories = () => {
-    getCategories().then(data => {
+    getCategories().then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -41,7 +41,7 @@ const Category = () => {
           onDoubleClick={() => deleteConfirm(c.slug)}
           title="Double click to delete"
           key={i}
-          className="btn btn-outline-primary mr-1 ml-1 mt-3"
+          className="btn btn-info mr-1 ml-1 mt-3"
         >
           {c.name}
         </button>
@@ -49,7 +49,7 @@ const Category = () => {
     });
   };
 
-  const deleteConfirm = slug => {
+  const deleteConfirm = (slug) => {
     let answer = window.confirm(
       "Are you sure you want to delete this category?"
     );
@@ -58,9 +58,9 @@ const Category = () => {
     }
   };
 
-  const deleteCategory = slug => {
+  const deleteCategory = (slug) => {
     // console.log('delete', slug);
-    removeCategory(slug, token).then(data => {
+    removeCategory(slug, token).then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -70,16 +70,16 @@ const Category = () => {
           success: false,
           name: "",
           removed: !removed,
-          reload: !reload
+          reload: !reload,
         });
       }
     });
   };
 
-  const clickSubmit = e => {
+  const clickSubmit = (e) => {
     e.preventDefault();
     // console.log('create category', name);
-    create({ name }, token).then(data => {
+    create({ name }, token).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error, success: false });
       } else {
@@ -87,7 +87,7 @@ const Category = () => {
           ...values,
           error: false,
           success: true,
-          name: ""
+          name: "",
           // removed: !removed,
           // reload: !reload
         });
@@ -95,13 +95,13 @@ const Category = () => {
     });
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setValues({
       ...values,
       name: e.target.value,
       error: false,
       success: false,
-      removed: ""
+      removed: "",
     });
   };
 
@@ -124,7 +124,7 @@ const Category = () => {
     }
   };
 
-  const mouseMoveHandler = e => {
+  const mouseMoveHandler = (e) => {
     setValues({ ...values, error: false, success: false, removed: "" });
   };
 
@@ -141,8 +141,8 @@ const Category = () => {
         />
       </div>
       <div>
-        <button type="submit" className="btn btn-primary">
-          Create
+        <button type="submit" className="btn btn-submit">
+          Add Category
         </button>
       </div>
     </form>

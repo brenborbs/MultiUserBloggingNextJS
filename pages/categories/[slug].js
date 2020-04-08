@@ -5,7 +5,7 @@ import { singleCategory } from "../../actions/category";
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
 import renderHTML from "react-render-html";
 import moment from "moment";
-import Card from "../../components/blog/Card";
+import NewCard from "../../components/blog/NewCard";
 
 const Category = ({ category, blogs, query }) => {
   const head = () => (
@@ -45,13 +45,13 @@ const Category = ({ category, blogs, query }) => {
       {head()}
       <Layout>
         <main>
-          <div className="container-fluid text-center">
+          <div className="container-fluid">
             <header>
               <div className="col-md-12 pt-5">
-                <h1 className="display-4 font-weight-bold text-caveat">
+                <h1 className="display-4 font-weight-bold text-center">
                   CATEGORIES
                 </h1>
-                <p className="lead">
+                <p className="lead text-center">
                   Below you'll find a list of all posts that have been
                   categorized as <strong>"{category.name}"</strong>
                 </p>
@@ -60,7 +60,7 @@ const Category = ({ category, blogs, query }) => {
                   <div className="row">
                     {blogs.map((b, i) => (
                       <div className="col-sm-4 pb-3" key={i}>
-                        <Card key={i} blog={b} />
+                        <NewCard key={i} blog={b} />
                       </div>
                     ))}
                   </div>
@@ -75,7 +75,7 @@ const Category = ({ category, blogs, query }) => {
 };
 
 Category.getInitialProps = ({ query }) => {
-  return singleCategory(query.slug).then(data => {
+  return singleCategory(query.slug).then((data) => {
     if (data.error) {
       console.log(data.error);
     } else {

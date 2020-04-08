@@ -8,11 +8,9 @@ const Blog = () => {
     <Layout>
       <Admin>
         <div className="container-fluid">
-          <div className="row">
-            <div className="col-md-12 pt-5 pb-5">
-              <h2>Create a new blog</h2>
-            </div>
+          <div className="row pt-4">
             <div className="col-md-12">
+              <h2 className="ml-3">Create blog</h2>
               <BlogCreate />
             </div>
           </div>

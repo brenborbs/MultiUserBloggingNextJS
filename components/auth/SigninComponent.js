@@ -11,7 +11,7 @@ const SigninComponent = () => {
     error: "",
     loading: false,
     message: "",
-    showForm: true
+    showForm: true,
   });
 
   const { email, password, error, loading, message, showForm } = values;
@@ -21,13 +21,13 @@ const SigninComponent = () => {
     isAuth() && Router.push(`/`);
   }, []);
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     // console.table({ name, email, password, error, loading, message, showForm });
     setValues({ ...values, loading: true, error: false });
     const user = { email, password };
 
-    signin(user).then(data => {
+    signin(user).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error, loading: false });
       } else {
@@ -45,7 +45,7 @@ const SigninComponent = () => {
     });
   };
 
-  const handleChange = name => e => {
+  const handleChange = (name) => (e) => {
     setValues({ ...values, error: false, [name]: e.target.value });
   };
 
@@ -68,9 +68,6 @@ const SigninComponent = () => {
             className="form-control"
             placeholder="Type your email"
           />
-          <small className="form-text text-muted">
-            We'll never share your email with anyone else.
-          </small>
         </div>
 
         <div className="form-group">
@@ -85,7 +82,7 @@ const SigninComponent = () => {
         </div>
 
         <div>
-          <button className="btn btn-outline">Sign In</button>
+          <button className="btn btn-submit">Sign In</button>
         </div>
       </form>
     );
