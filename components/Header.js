@@ -60,16 +60,16 @@ const Header = () => {
             {isAuth() && isAuth().role === 0 && (
               <NavItem>
                 <Link href="/user">
-                  <NavLink>{`${isAuth().name}'s Dashboard`}</NavLink>
+                  <a className="nav-link"> {`${isAuth().name}'s Dashboard`}</a>
                 </Link>
               </NavItem>
             )}
 
             {isAuth() && isAuth().role === 1 && (
               <NavItem>
-                <ActiveLink activeClassName="active" href="/admin">
+                <Link href="/admin">
                   <a className="nav-link">{`${isAuth().name}'s Dashboard`}</a>
-                </ActiveLink>
+                </Link>
               </NavItem>
             )}
           </Nav>

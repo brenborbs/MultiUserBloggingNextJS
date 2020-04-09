@@ -7,7 +7,7 @@ const Contact = () => {
     <Layout>
       <div className="container-fluid pt-4">
         <div className="wrapper">
-          <h1>Contact Us</h1>
+          <h1 className="text-dark">Contact Us</h1>
           <hr />
           <ContactForm />
         </div>

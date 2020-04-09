@@ -4,15 +4,17 @@ import Router, { withRouter } from "next/router";
 import Layout from "../../components/Layout";
 import { useState, useEffect } from "react";
 import { singleBlog, listRelated } from "../../actions/blog";
+import { getCategories } from "../../actions/category";
+import { getTags } from "../../actions/tag";
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
 import renderHTML from "react-render-html";
 import moment from "moment";
-import SmallCard from "../../components/blog/SmallCard";
+// import SmallCard from "../../components/blog/SmallCard";
 import DisqusThread from "../../components/DisqusThread";
-import Search from "../../components/blog/Search";
+// import Search from "../../components/blog/Search";
 import NewCard from "../../components/blog/NewCard";
 // for like
-import { getCookie, isAuth } from "../../actions/auth";
+// import { getCookie, isAuth } from "../../actions/auth";
 
 import {
   FacebookShareButton,
@@ -30,6 +32,27 @@ import {
 
 const SingleBlog = ({ blog, query, router }) => {
   const [related, setRelated] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [tags, setTags] = useState([]);
+
+  const initCategories = () => {
+    getCategories().then((data) => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        setCategories(data);
+      }
+    });
+  };
+  const initTags = () => {
+    getTags().then((data) => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        setTags(data);
+      }
+    });
+  };
 
   const loadRelated = () => {
     listRelated({ blog }).then((data) => {
@@ -44,8 +67,30 @@ const SingleBlog = ({ blog, query, router }) => {
   // load state related blogs
   useEffect(() => {
     loadRelated();
+    initCategories();
+    initTags();
     // initLike();
   }, []);
+
+  const showAllCategories = () => {
+    return categories.map((c, i) => (
+      <li key={i}>
+        <Link href={`/categories/${c.slug}`} key={i}>
+          <a>{c.name}</a>
+        </Link>
+      </li>
+    ));
+  };
+
+  const showAllTags = () => {
+    return tags.map((t, i) => (
+      <li key={i}>
+        <Link href={`/tags/${t.slug}`} key={i}>
+          <a className="">{t.name}</a>
+        </Link>
+      </li>
+    ));
+  };
 
   const head = () => (
     <Head>
@@ -73,14 +118,18 @@ const SingleBlog = ({ blog, query, router }) => {
   const showBlogCategories = (blog) =>
     blog.categories.map((c, i) => (
       <Link key={i} href={`/categories/${c.slug}`}>
-        <a className="tag bg-warning">{c.name}</a>
+        <span className="post-category text-white bg-warning mr-2">
+          {c.name}
+        </span>
       </Link>
     ));
 
   const showBlogTags = (blog) =>
     blog.tags.map((t, i) => (
       <Link key={i} href={`/tags/${t.slug}`}>
-        <a className="tag bg-success">#{t.name}</a>
+        <span className="post-category text-white bg-success mr-2">
+          #{t.name}
+        </span>
       </Link>
     ));
 
@@ -151,75 +200,117 @@ const SingleBlog = ({ blog, query, router }) => {
     <React.Fragment>
       {head()}
       <Layout>
-        <div className="container" style={{ paddingTop: "2rem" }}>
-          <section id="article">
-            {/* container-bg */}
-            <div className="row">
-              {/* page-container */}
-              <div className="col-lg-8">
-                <article className="card-bg">
-                  <img
-                    src={`${API}/blog/photo/${blog.slug}`}
-                    alt={blog.title}
-                    style={{ width: "100%" }}
-                    className="img-fluid rounded"
-                  />
-                  <h1 className="l-header pt-2">{blog.title}</h1>
-                  <div className="">
-                    <small>
+        <div
+          className="site-cover site-cover-sm same-height overlay single-page"
+          style={{
+            background: `url(${API}/blog/photo/${blog.slug})`,
+          }}
+        >
+          <div className="container">
+            <div className="row same-height justify-content-center">
+              <div className="col-md-12 col-lg-10">
+                <div className="post-entry text-center">
+                  {showBlogCategories(blog)}
+                  <h1 className="mb-4 text-light">{blog.title}</h1>
+                  <div className="post-meta align-items-center text-center">
+                    <figure className="author-figure mb-0 mr-3 d-inline-block">
+                      <img
+                        className="img-fluid rounded-circle"
+                        src={`${API}/user/photo/${blog.postedBy.username}`}
+                        alt="Generic placeholder image"
+                        onError={(i) =>
+                          (i.target.src = "/static/images/avatar.jpg")
+                        }
+                        style={{ width: "50px", height: "50px" }}
+                      />
+                    </figure>
+                    <span className="d-inline-block mt-1">
+                      By{" "}
                       <Link href={`/profile/${blog.postedBy.username}`}>
-                        <a>{blog.postedBy.username}</a>
-                      </Link>{" "}
-                      | Published on{" "}
-                      {moment(blog.updatedAt).format("dddd MMMM D, YYYY")}
-                    </small>
-                    {/* <div class="category category-ent">Category here!</div> */}
+                        <a>{blog.postedBy.username} </a>
+                      </Link>
+                    </span>
+                    <span>
+                      {" "}
+                      - {moment(blog.updatedAt).format("MMMM D, YYYY")}
+                    </span>
+                    <div className="mt-3">{showReactShareIcons()}</div>
                   </div>
-                  <div className="pt-3">{showReactShareIcons()}</div>
-                  <hr />
-                  <div>{renderHTML(blog.body)}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="singleblog-section py-lg">
+          <div className="container">
+            <div className="row blog-entries element-animate">
+              <div className="col-md-12 col-lg-8 main-content">
+                <div className="post-content-body text-dark">
+                  {renderHTML(blog.body)}
+                  <div className="row mb-5 mt-5">
+                    <div className="col-md-12 mb-4">
+                      <img
+                        src={`${API}/blog/photo/${blog.slug}`}
+                        alt={blog.title}
+                        style={{ width: "100%" }}
+                        className="img-fluid rounded"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="pt-3">
                   Categories: {showBlogCategories(blog)}
                   Tags: {showBlogTags(blog)}
-                </article>
-                <div className="col">
-                  <h5 className="text-left text-uppercase pt-5 pb-2">
-                    Written By
-                  </h5>
-                  <div className="media">
-                    <img
-                      className="mr-3 img-fluid rounded-circle"
-                      src={`${API}/user/photo/${blog.postedBy.username}`}
-                      alt="Generic placeholder image"
-                      onError={(i) =>
-                        (i.target.src = "/static/images/avatar.jpg")
-                      }
-                      style={{ width: "50px", height: "50px" }}
-                    />
-                    <div className="media-body">
-                      <h5 className="mt-0">
-                        {" "}
-                        <Link href={`/profile/${blog.postedBy.username}`}>
-                          <a>{blog.postedBy.username}</a>
-                        </Link>
-                      </h5>
-                      {blog.postedBy.about}
+                </div>
+                <div className="pt-5">
+                  <div className="col">
+                    <h5 className="text-left text-uppercase pt-3 pb-2 text-dark">
+                      Written By
+                    </h5>
+                    <div className="media">
+                      <img
+                        className="mr-3 img-fluid rounded-circle"
+                        src={`${API}/user/photo/${blog.postedBy.username}`}
+                        alt="Generic placeholder image"
+                        onError={(i) =>
+                          (i.target.src = "/static/images/avatar.jpg")
+                        }
+                        style={{ width: "50px", height: "50px" }}
+                      />
+                      <div className="media-body">
+                        <h5 className="mt-0">
+                          {" "}
+                          <Link href={`/profile/${blog.postedBy.username}`}>
+                            <a>{blog.postedBy.username}</a>
+                          </Link>
+                        </h5>
+                        {blog.postedBy.about}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="col-md-4">{/* Right side */}</div>
+              <div className="col-md-12 col-lg-4 sidebar">
+                <div className="sidebar-box">
+                  <h3 className="heading text-dark">Categories</h3>
+                  <ul className="categories">{showAllCategories()}</ul>
+                </div>
+                <div className="sidebar-box">
+                  <h3 className="heading text-dark">Tags</h3>
+                  <ul className="tags">{showAllTags()}</ul>
+                </div>
+              </div>
               <div className="container">
-                <h1 className="text-center pt-5 text-caveat">Related blogs</h1>
+                <h1 className="text-center pt-5 text-dark">Related blogs</h1>
                 <hr />
                 <div className="row">{showRelatedBlog(blog)}</div>
               </div>
 
               <div className="container pt-5 pb-5">{showComments()}</div>
             </div>
-          </section>
+          </div>
         </div>
       </Layout>
-      <style jsx>{``}</style>
     </React.Fragment>
   );
 };

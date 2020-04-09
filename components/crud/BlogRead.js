@@ -4,6 +4,7 @@ import Router from "next/router";
 import { getCookie, isAuth } from "../../actions/auth";
 import { list, removeBlog } from "../../actions/blog";
 import moment from "moment";
+import { Table } from "reactstrap";
 
 const BlogRead = ({ username }) => {
   // define state
@@ -48,7 +49,6 @@ const BlogRead = ({ username }) => {
     if (isAuth() && isAuth().role === 0) {
       return (
         <Link href={`/user/crud/${blog.slug}`}>
-          {/* <a className="ml-2 btn btn-sm btn-warning">Update</a> */}
           <i
             className="fa fa-pencil text-info"
             aria-hidden="true"
@@ -59,7 +59,6 @@ const BlogRead = ({ username }) => {
     } else if (isAuth() && isAuth().role === 1) {
       return (
         <Link href={`/admin/crud/${blog.slug}`}>
-          {/* <a className="ml-2 btn btn-sm btn-warning">Update</a> */}
           <i
             className="fa fa-pencil text-info"
             aria-hidden="true"
@@ -95,9 +94,15 @@ const BlogRead = ({ username }) => {
   return (
     <React.Fragment>
       <div className="row">
-        {message && <div className="alert alert-success">{message}!</div>}
+        {message && (
+          <div className="col">
+            <div className="alert alert-success">
+              <div className="text-center">{message}!</div>
+            </div>
+          </div>
+        )}
         <div className="col-md-12">
-          <table className="table">
+          <Table hover>
             <thead>
               <tr>
                 <th scope="col">Title</th>
@@ -108,7 +113,7 @@ const BlogRead = ({ username }) => {
               </tr>
             </thead>
             <tbody>{showAllBlogs()}</tbody>
-          </table>
+          </Table>
         </div>
       </div>
     </React.Fragment>

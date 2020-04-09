@@ -68,7 +68,7 @@ const ResetPassword = ({ router }) => {
     <Layout>
       <div className="forms-margin">
         <div className="forms-wrapper">
-          <h2>Reset password</h2>
+          <h2 className="text-dark">Reset password</h2>
           <hr />
           {showError()}
           {showMessage()}

@@ -15,13 +15,13 @@ const Tag = ({ tag, blogs, query }) => {
       </title>
       <meta
         name="description"
-        content={`Shipbuilding and Maritime News ${tag.name}`}
+        content={`Estoryahi ko Stories, Music and Humor ${tag.name}`}
       />
       <link rel="canonical" href={`${DOMAIN}/categories/${query.slug}`} />
       <meta property="og:title" content={`${tag.name}| ${APP_NAME}`} />
       <meta
         property="og:description"
-        content={`Shipbuilding and Maritime News ${tag.name}`}
+        content={`Estoryahi ko Stories, Music and Humor ${tag.name}`}
       />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={`${DOMAIN}/categories/${query.slug}`} />
@@ -29,11 +29,11 @@ const Tag = ({ tag, blogs, query }) => {
 
       <meta
         property="og:image"
-        content={`${DOMAIN}/static/images/marineblogger.jpg`}
+        content={`${DOMAIN}/static/images/estoryahi.png`}
       />
       <meta
         property="og:image:secure_url"
-        content={`${DOMAIN}/static/images/marineblogger.jpg`}
+        content={`${DOMAIN}/static/images/estoryahi.png`}
       />
       <meta property="og:image:type" content="image/jpg" />
       <meta property="fb:app_id" content={`${FB_APP_ID}`} />
@@ -48,10 +48,10 @@ const Tag = ({ tag, blogs, query }) => {
           <div className="container-fluid">
             <header>
               <div className="col-md-12 pt-5">
-                <h1 className="display-4 font-weight-bold text-center">
+                <h1 className="display-4 font-weight-bold text-center text-dark">
                   TAGS{" "}
                 </h1>
-                <p className="lead text-center">
+                <p className="lead text-center text-dark">
                   Below you'll find a list of all posts that have been tagged as{" "}
                   <strong>"{tag.name}"</strong>
                 </p>

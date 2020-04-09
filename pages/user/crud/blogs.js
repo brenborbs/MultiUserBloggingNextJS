@@ -11,7 +11,7 @@ const Blog = () => {
       <Private>
         <div className="container-fluid pt-4">
           <div className="col">
-            <h2>Manage blogs</h2>
+            <h2 className="text-dark">Manage blogs</h2>
           </div>
           <BlogRead username={username} />
         </div>

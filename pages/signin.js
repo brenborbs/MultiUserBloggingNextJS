@@ -15,7 +15,7 @@ const Signin = ({ router }) => {
     <Layout>
       <div className="forms-margin">
         <div className="forms-wrapper">
-          <h2 className="text-center">Sign In</h2>
+          <h2 className="text-center text-dark">Sign In</h2>
 
           <div className="">{showRedirectMessage()}</div>
 

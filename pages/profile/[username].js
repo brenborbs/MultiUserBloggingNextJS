@@ -35,6 +35,22 @@ const UserProfile = ({ user, blogs, query }) => {
     </Head>
   );
 
+  const showBlogCategories = (blog) =>
+    blog.categories.map((c, i) => (
+      <Link key={i} href={`/categories/${c.slug}`}>
+        <span className="post-category text-white bg-warning mr-2 mb-1">
+          {c.name}
+        </span>
+      </Link>
+    ));
+
+  const showBlogTags = (blog) =>
+    blog.tags.map((t, i) => (
+      <Link key={i} href={`/tags/${t.slug}`}>
+        <a className="post-category text-white bg-success mr-2">#{t.name}</a>
+      </Link>
+    ));
+
   const showUserBlogs = () => {
     return blogs.map((blog, i) => {
       return (
@@ -48,7 +64,8 @@ const UserProfile = ({ user, blogs, query }) => {
                 style={{ width: "50px", height: "50px" }}
               />
               <div className="media-body font-weight-light">
-                <h5 className="mt-0">{blog.title} </h5>
+                {showBlogCategories(blog)} {showBlogTags(blog)}
+                <h5 className="mt-0 text-dark">{blog.title} </h5>
                 {renderHTML(blog.excerpt)}
               </div>
             </div>
@@ -57,10 +74,6 @@ const UserProfile = ({ user, blogs, query }) => {
       );
     });
   };
-
-  const photoURL = user.username
-    ? `${API}/user/photo/${user.username}`
-    : "/static/images/avatar.jpg";
 
   return (
     <React.Fragment>
@@ -74,7 +87,7 @@ const UserProfile = ({ user, blogs, query }) => {
                   <div className="leftprofirst">
                     <div className="image-wrapper">
                       <img
-                        src={photoURL}
+                        src={`${API}/user/photo/${user.username}`}
                         style={{ width: "100%" }}
                         alt="user profile"
                         onError={(i) =>
@@ -88,7 +101,7 @@ const UserProfile = ({ user, blogs, query }) => {
                   <div className="rightprofirst">
                     <div className="colright">
                       <div className="colrightfirst">
-                        <div className="username">{user.name}</div>
+                        <div className="username text-dark">{user.name}</div>
                         <div className="controlbuttons"></div>
                       </div>
                     </div>

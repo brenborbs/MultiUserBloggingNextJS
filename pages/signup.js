@@ -7,7 +7,7 @@ const Signup = () => {
     <Layout>
       <div className="forms-margin">
         <div className="forms-wrapper">
-          <h2 className="text-center">Register</h2>
+          <h2 className="text-center text-dark">Register</h2>
           <div className="p-4 pb-4">
             <SignupComponent />
             <div className="signup_text">

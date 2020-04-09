@@ -3,7 +3,7 @@ import React from "react";
 const DashInfo = () => {
   return (
     <div className="card mt-4">
-      <div className="card-header">Starter Guidelines</div>
+      <div className="card-header text-dark">Starter Guidelines</div>
       <div className="card-body">
         <ul className="list-group list-group-flush">
           <li className="list-group-item text-danger">

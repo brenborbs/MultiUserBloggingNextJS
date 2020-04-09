@@ -9,7 +9,7 @@ const UserIndex = () => {
       <Private>
         <div className="container-fluid pt-4">
           <div className="wrapper">
-            <h3>
+            <h3 className="text-dark">
               <i className="fa fa-info-circle mr-2" aria-hidden="true"></i> User
               Controls
             </h3>

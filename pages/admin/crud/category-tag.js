@@ -9,8 +9,10 @@ const CategoryTag = () => {
     <Layout>
       <Admin>
         <div className="container-fluid pt-4">
-          <h4 className="text-center mt-2">Manage Categories and Tags</h4>
-          <p className="text-center">
+          <h4 className="text-center mt-2 text-dark">
+            Manage Categories and Tags
+          </h4>
+          <p className="text-center text-dark">
             <small className="text-muted">
               * Double click buttons to delete
             </small>

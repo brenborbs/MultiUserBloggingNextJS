@@ -60,7 +60,7 @@ const ForgotPassword = () => {
     <Layout>
       <div className="forms-margin">
         <div className="forms-wrapper">
-          <h2>Forgot password</h2>
+          <h2 className="text-dark">Forgot password</h2>
           <hr />
           {showError()}
           {showMessage()}

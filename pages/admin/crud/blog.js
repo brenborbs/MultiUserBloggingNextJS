@@ -10,7 +10,7 @@ const Blog = () => {
         <div className="container-fluid">
           <div className="row pt-4">
             <div className="col-md-12">
-              <h2 className="ml-3">Create blog</h2>
+              <h2 className="ml-3 text-dark">Create blog</h2>
               <BlogCreate />
             </div>
           </div>

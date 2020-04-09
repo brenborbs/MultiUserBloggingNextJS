@@ -40,11 +40,11 @@ const Blogs = ({
 
       <meta
         property="og:image"
-        content={`${DOMAIN}/static/images/marineblogger.jpg`}
+        content={`${DOMAIN}/static/images/estoryahi.png`}
       />
       <meta
         property="og:image:secure_url"
-        ccontent={`${DOMAIN}/static/images/marineblogger.jpg`}
+        ccontent={`${DOMAIN}/static/images/estoryahi.png`}
       />
       <meta property="og:image:type" content="image/jpg" />
       <meta property="fb:app_id" content={`${FB_APP_ID}`} />
@@ -91,25 +91,25 @@ const Blogs = ({
     });
   };
 
-  const showAllCategories = () => {
-    return categories.map((c, i) => (
-      <div className="col-lg-6" key={i}>
-        <Link href={`/categories/${c.slug}`} key={i}>
-          <a className="tag category">{c.name}</a>
-        </Link>
-      </div>
-    ));
-  };
+  // const showAllCategories = () => {
+  //   return categories.map((c, i) => (
+  //     <div className="col-lg-6" key={i}>
+  //       <Link href={`/categories/${c.slug}`} key={i}>
+  //         <a className="tag category">{c.name}</a>
+  //       </Link>
+  //     </div>
+  //   ));
+  // };
 
-  const showAllTags = () => {
-    return tags.map((t, i) => (
-      <div className="col-lg-6" key={i}>
-        <Link href={`/tags/${t.slug}`} key={i}>
-          <a className="tag tags">{t.name}</a>
-        </Link>
-      </div>
-    ));
-  };
+  // const showAllTags = () => {
+  //   return tags.map((t, i) => (
+  //     <div className="col-lg-6" key={i}>
+  //       <Link href={`/tags/${t.slug}`} key={i}>
+  //         <a className="tag tags">{t.name}</a>
+  //       </Link>
+  //     </div>
+  //   ));
+  // };
 
   const showLoadedBlogs = () => {
     return loadedBlogs.map((blog, i) => (
@@ -129,7 +129,7 @@ const Blogs = ({
           <div className="container">
             <div className="row p-5">
               <div className="col-12">
-                <h2 className="mb-5">Recent Posts</h2>
+                <h2 className="mb-5 text-dark">Recent Posts</h2>
               </div>
 
               <div className="row">

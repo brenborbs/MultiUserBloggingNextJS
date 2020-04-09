@@ -52,7 +52,9 @@ const ActivateAccount = ({ router }) => {
     <Layout>
       <div className="forms-margin">
         <div className="forms-wrapper">
-          <h3 className="pb-4">Hey {name}, Ready to activate your account?</h3>
+          <h3 className="pb-4 text-dark">
+            Hey {name}, Ready to activate your account?
+          </h3>
           {showLoading()}
           {error && error}
           {success &&

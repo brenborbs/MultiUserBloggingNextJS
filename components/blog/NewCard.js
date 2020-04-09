@@ -34,7 +34,7 @@ const Card = ({ blog }) => {
           {showBlogCategories(blog)}
           {showBlogTags(blog)}
           <Link href={`/blogs/${blog.slug}`}>
-            <h2 className="mt-3">{blog.title}</h2>
+            <h2 className="mt-3 text-dark">{blog.title}</h2>
           </Link>
           <div className="post-meta align-items-center text-left clearfix">
             <figure className="author-figure mb-0 mr-3 float-left">

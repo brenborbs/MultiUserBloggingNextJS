@@ -9,6 +9,7 @@ const ProfileUpdate = () => {
   const [values, setValues] = useState({
     username: "",
     name: "",
+    username_for_photo: "",
     email: "",
     about: "",
     password: "",
@@ -19,12 +20,13 @@ const ProfileUpdate = () => {
     success: false,
     loading: false,
     photo: "",
-    userData: "",
+    userData: process.browser && new FormData(),
   });
 
   const token = getCookie("token");
   const {
     username,
+    username_for_photo,
     name,
     email,
     about,
@@ -47,6 +49,7 @@ const ProfileUpdate = () => {
         setValues({
           ...values,
           username: data.username,
+          username_for_photo: data.username,
           name: data.name,
           email: data.email,
           about: data.about,
@@ -61,17 +64,18 @@ const ProfileUpdate = () => {
   // init data using useEffect method
   useEffect(() => {
     init();
+    setValues({ ...values, userData: new FormData() });
   }, []);
 
   const handleChange = (name) => (e) => {
     // console.log(e.target.value);
     const value = name === "photo" ? e.target.files[0] : e.target.value;
-    let userFormData = new FormData();
-    userFormData.set(name, value);
+    // let userFormData = new FormData();
+    userData.set(name, value);
     setValues({
       ...values,
       [name]: value,
-      userData: userFormData,
+      userData,
       error: false,
       success: false,
     });
@@ -104,6 +108,13 @@ const ProfileUpdate = () => {
             success: true,
             loading: false,
           });
+          if (isAuth() && isAuth().role === 1) {
+            // Router.replace(`/admin/crud/${router.query.slug}`);
+            Router.replace(`/profile/${username}`);
+          } else if (isAuth() && isAuth().role === 0) {
+            // Router.replace(`/user/crud/${router.query.slug}`);
+            Router.replace(`/profile/${username}`);
+          }
         });
       }
     });
@@ -112,7 +123,7 @@ const ProfileUpdate = () => {
   const profileUpdateForm = () => (
     <form onSubmit={handleSubmit}>
       <div className="form-group">
-        <label className="btn btn-outline-info">
+        <label className="btn btn-info">
           Profile photo
           <input
             onChange={handleChange("photo")}
@@ -241,16 +252,12 @@ const ProfileUpdate = () => {
     </div>
   );
 
-  const photoURL = username
-    ? `${API}/user/photo/${username}`
-    : "/static/images/avatar.jpg";
-
   return (
     <React.Fragment>
       <div className="col">
         <div className="text-center">
           <img
-            src={photoURL}
+            src={`${API}/user/photo/${username_for_photo}`}
             className="img img-fluid img-thumbnail"
             style={{ maxHeight: "auto", maxWidth: "100%" }}
             alt="user profile"
