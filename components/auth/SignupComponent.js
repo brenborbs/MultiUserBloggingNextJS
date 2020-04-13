@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { signup, isAuth, preSignup } from "../../actions/auth";
 import Router from "next/router";
+import InputForm from "../../components/form/InputForm";
 
 const SignupComponent = () => {
   const [values, setValues] = useState({
@@ -58,42 +59,31 @@ const SignupComponent = () => {
   const signupForm = () => {
     return (
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="NameInput">Name</label>
-          <input
-            value={name}
-            onChange={handleChange("name")}
-            type="text"
-            className="form-control"
-            placeholder="Type your name"
-          />
-        </div>
+        <InputForm
+          value={name}
+          onChange={handleChange("name")}
+          type="text"
+          label="Name"
+          placeholder="Type your name"
+        />
 
-        <div className="form-group">
-          <label htmlFor="EmailInput">Email</label>
-          <input
-            value={email}
-            onChange={handleChange("email")}
-            type="email"
-            className="form-control"
-            placeholder="Type your email"
-          />
-        </div>
+        <InputForm
+          value={email}
+          onChange={handleChange("email")}
+          type="email"
+          label="Email"
+          placeholder="Type your email"
+        />
 
-        <div className="form-group">
-          <label htmlFor="PasswordInput">Password</label>
-          <input
-            value={password}
-            onChange={handleChange("password")}
-            type="password"
-            className="form-control"
-            placeholder="Type your password"
-          />
-        </div>
+        <InputForm
+          value={password}
+          onChange={handleChange("password")}
+          type="password"
+          label="Password"
+          placeholder="Type your password"
+        />
 
-        <div>
-          <button className="btn btn-submit">Sign Up</button>
-        </div>
+        <button className="btn btn-submit">Sign Up</button>
       </form>
     );
   };

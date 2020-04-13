@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import Router from "next/router";
+// import Link from "next/link";
+// import Router from "next/router";
 import { getCookie } from "../../actions/auth";
 import { create, getTags, removeTag } from "../../actions/tag";
 import { Alert } from "reactstrap";
+import InputForm from "../form/InputForm";
 
 const Tag = () => {
   const [values, setValues] = useState({
@@ -39,7 +40,7 @@ const Tag = () => {
           onDoubleClick={() => deleteConfirm(t.slug)}
           title="Double click to delete"
           key={i}
-          className="btn btn-info mr-1 ml-1 mt-3"
+          className="btn btn-info mr-1 ml-1 mt-3 text-capitalize"
         >
           {t.name}
         </button>
@@ -125,21 +126,18 @@ const Tag = () => {
 
   const newTagFom = () => (
     <form onSubmit={clickSubmit}>
-      <div className="form-group">
-        <label className="text-muted">Name</label>
-        <input
-          type="text"
-          className="form-control"
-          onChange={handleChange}
-          value={name}
-          required
-        />
-      </div>
-      <div>
-        <button type="submit" className="btn btn-submit">
-          Add Tag
-        </button>
-      </div>
+      <InputForm
+        label="Name"
+        type="text"
+        onChange={handleChange}
+        value={name}
+        placeholder="Write name..."
+        required
+      />
+
+      <button type="submit" className="btn btn-submit">
+        Add Tag
+      </button>
     </form>
   );
 

@@ -15,6 +15,7 @@ import DisqusThread from "../../components/DisqusThread";
 import NewCard from "../../components/blog/NewCard";
 // for like
 // import { getCookie, isAuth } from "../../actions/auth";
+import { listPopular } from "../../actions/blog";
 
 import {
   FacebookShareButton,
@@ -34,6 +35,18 @@ const SingleBlog = ({ blog, query, router }) => {
   const [related, setRelated] = useState([]);
   const [categories, setCategories] = useState([]);
   const [tags, setTags] = useState([]);
+
+  const [popular, setPopular] = useState([]);
+
+  const initPopular = () => {
+    listPopular().then((data) => {
+      if (data.error) {
+        console.log(error);
+      } else {
+        setPopular(data);
+      }
+    });
+  };
 
   const initCategories = () => {
     getCategories().then((data) => {
@@ -69,8 +82,35 @@ const SingleBlog = ({ blog, query, router }) => {
     loadRelated();
     initCategories();
     initTags();
+    initPopular();
     // initLike();
   }, []);
+
+  // undefined and error on front end, getting photo becomes error
+  const showPopularBlogs = () => {
+    return popular.map((blog, i) => (
+      <li key={i}>
+        <Link href={`/blogs/${blog.slug}`} key={i}>
+          <a>
+            <img
+              // style={{ width: "100%" }}
+              className="mr-4"
+              src={`${API}/blog/photo/${blog.slug}`}
+              alt={blog.title}
+            />
+            <div className="text">
+              <h4 className="text-dark">{blog.title}</h4>
+              <div className="post-meta">
+                <span className="mr-2">
+                  {moment(blog.createdAt).format("MMMM D, YYYY")}
+                </span>
+              </div>
+            </div>
+          </a>
+        </Link>
+      </li>
+    ));
+  };
 
   const showAllCategories = () => {
     return categories.map((c, i) => (
@@ -235,6 +275,7 @@ const SingleBlog = ({ blog, query, router }) => {
                       - {moment(blog.updatedAt).format("MMMM D, YYYY")}
                     </span>
                     <div className="mt-3">{showReactShareIcons()}</div>
+                    <div className="mt-3 text-light">{blog.views} Views</div>
                   </div>
                 </div>
               </div>
@@ -292,9 +333,16 @@ const SingleBlog = ({ blog, query, router }) => {
               </div>
               <div className="col-md-12 col-lg-4 sidebar">
                 <div className="sidebar-box">
+                  <h3 className="heading text-dark">Popular Posts</h3>
+                  <div className="post-entry-sidebar">
+                    <ul>{showPopularBlogs()}</ul>
+                  </div>
+                </div>
+                <div className="sidebar-box">
                   <h3 className="heading text-dark">Categories</h3>
                   <ul className="categories">{showAllCategories()}</ul>
                 </div>
+
                 <div className="sidebar-box">
                   <h3 className="heading text-dark">Tags</h3>
                   <ul className="tags">{showAllTags()}</ul>

@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import Router from "next/router";
+// import Link from "next/link";
+// import Router from "next/router";
 import { getCookie } from "../../actions/auth";
 import { create, getCategories, removeCategory } from "../../actions/category";
 import { Alert } from "reactstrap";
+import InputForm from "../form/InputForm";
 
 const Category = () => {
   const [values, setValues] = useState({
@@ -41,7 +42,7 @@ const Category = () => {
           onDoubleClick={() => deleteConfirm(c.slug)}
           title="Double click to delete"
           key={i}
-          className="btn btn-info mr-1 ml-1 mt-3"
+          className="btn btn-info mr-1 ml-1 mt-3 text-capitalize"
         >
           {c.name}
         </button>
@@ -130,21 +131,18 @@ const Category = () => {
 
   const newCategoryForm = () => (
     <form onSubmit={clickSubmit}>
-      <div className="form-group">
-        <label className="text-muted">Name</label>
-        <input
-          type="text"
-          className="form-control"
-          onChange={handleChange}
-          value={name}
-          required
-        />
-      </div>
-      <div>
-        <button type="submit" className="btn btn-submit">
-          Add Category
-        </button>
-      </div>
+      <InputForm
+        label="Name"
+        type="text"
+        onChange={handleChange}
+        value={name}
+        placeholder="Write name..."
+        required
+      />
+
+      <button type="submit" className="btn btn-submit">
+        Add Category
+      </button>
     </form>
   );
 

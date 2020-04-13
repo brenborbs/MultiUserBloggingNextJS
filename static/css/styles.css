@@ -18,7 +18,8 @@ body {
   font-family: "Montserrat", sans-serif;
   color: gray;
 }
-ul {
+ul,
+li {
   list-style: none;
 }
 
@@ -92,6 +93,7 @@ a:hover {
   margin: 0 10px;
   font-weight: bold;
 }
+
 #nprogress .bar {
   height: 4px !important;
   background: red !important ;
@@ -105,9 +107,9 @@ a:hover {
 }
 /* Blogs */
 .search-image {
-  min-height: 60vh;
+  min-height: 95vh;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("../images/humor.jpg");
+    url("../images/dawn.jpg");
   background-position: (25% 75%);
   background-size: cover;
   background-attachment: fixed;
@@ -119,8 +121,9 @@ a:hover {
   padding: 6px;
 }
 .search-text {
-  margin-top: 6rem;
+  margin-top: 10rem;
 }
+
 .form-control-borderless {
   border: none;
 }
@@ -222,6 +225,33 @@ a:hover {
   margin-bottom: 30px;
   padding-bottom: 20px;
   border-bottom: 1px solid #e6e6e6;
+}
+.post-entry-sidebar ul {
+  padding: 0;
+  margin: 0;
+}
+.post-entry-sidebar ul li {
+  list-style: none;
+  padding: 0 0 20px;
+  margin: 0 0 20px;
+}
+.post-entry-sidebar ul li a {
+  display: table;
+}
+.post-entry-sidebar ul li a img,
+.post-entry-sidebar ul li a .text {
+  display: table-cell;
+  vertical-align: middle;
+}
+.post-entry-sidebar ul li a img {
+  width: 90px;
+}
+.post-entry-sidebar ul li a .text h4 {
+  font-size: 18px;
+}
+.post-entry-sidebar .post-meta {
+  font-size: 14px;
+  color: #b3b3b3;
 }
 /* .sidebar-box *:last-child {
   margin-bottom: 0;

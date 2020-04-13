@@ -16,62 +16,77 @@ export const createBlog = (blog, token) => {
     method: "POST",
     headers: {
       Accept: "application/json",
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     },
-    body: blog
+    body: blog,
   })
-    .then(response => {
+    .then((response) => {
       handleResponse(response);
       return response.json();
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
 
 export const listBlogsWithCategoriesAndTags = (skip, limit) => {
   const data = {
     limit,
-    skip
+    skip,
   };
   return fetch(`${API}/blogs-categories-tags`, {
     method: "POST",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(data),
   })
-    .then(response => {
+    .then((response) => {
       return response.json();
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
 
-export const singleBlog = slug => {
+export const singleBlog = (slug) => {
   return fetch(`${API}/blog/${slug}`, {
-    method: "GET"
+    method: "GET",
   })
-    .then(response => {
+    .then((response) => {
       return response.json();
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
 
-export const listRelated = blog => {
+export const listPopular = (blogs) => {
+  return fetch(`${API}/blogs/popular`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(blogs),
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+
+export const listRelated = (blog) => {
   return fetch(`${API}/blogs/related`, {
     method: "POST",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(blog)
+    body: JSON.stringify(blog),
   })
-    .then(response => {
+    .then((response) => {
       return response.json();
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
 
-export const list = username => {
+export const list = (username) => {
   let listBlogsEndpoint;
 
   if (username) {
@@ -81,12 +96,12 @@ export const list = username => {
   }
 
   return fetch(`${listBlogsEndpoint}`, {
-    method: "GET"
+    method: "GET",
   })
-    .then(response => {
+    .then((response) => {
       return response.json();
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
 
 export const removeBlog = (slug, token) => {
@@ -103,14 +118,14 @@ export const removeBlog = (slug, token) => {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`
-    }
+      Authorization: `Bearer ${token}`,
+    },
   })
-    .then(response => {
+    .then((response) => {
       handleResponse(response);
       return response.json();
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
 
 export const updateBlog = (blog, token, slug) => {
@@ -126,28 +141,28 @@ export const updateBlog = (blog, token, slug) => {
     method: "PUT",
     headers: {
       Accept: "application/json",
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     },
-    body: blog
+    body: blog,
   })
-    .then(response => {
+    .then((response) => {
       handleResponse(response);
       return response.json();
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
 
-export const listSearch = params => {
+export const listSearch = (params) => {
   console.log("search params", params);
   let query = QueryString.stringify(params); // value on search input at front-end
   console.log("query params", query);
   return fetch(`${API}/blogs/search?${query}`, {
-    method: "GET"
+    method: "GET",
   })
-    .then(response => {
+    .then((response) => {
       return response.json();
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
 
 // like unlike
@@ -156,15 +171,15 @@ export const like = (blog, token, slug) => {
     method: "PUT",
     headers: {
       Accept: "application/json",
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     },
-    body: blog
+    body: blog,
   })
-    .then(response => {
+    .then((response) => {
       handleResponse(response);
       return response.json();
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
 
 export const unlike = (blog, token, slug) => {
@@ -172,13 +187,28 @@ export const unlike = (blog, token, slug) => {
     method: "PUT",
     headers: {
       Accept: "application/json",
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     },
-    body: blog
+    body: blog,
   })
-    .then(response => {
+    .then((response) => {
       handleResponse(response);
       return response.json();
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
+};
+
+// Not Used All backend
+export const clickView = (slug) => {
+  return (`${API}/blog-count/${slug}`,
+  {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+    },
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
 };

@@ -38,16 +38,16 @@ const UserProfile = ({ user, blogs, query }) => {
   const showBlogCategories = (blog) =>
     blog.categories.map((c, i) => (
       <Link key={i} href={`/categories/${c.slug}`}>
-        <span className="post-category text-white bg-warning mr-2 mb-1">
+        <a className="post-category text-white bg-warning mr-1 mb-1">
           {c.name}
-        </span>
+        </a>
       </Link>
     ));
 
   const showBlogTags = (blog) =>
     blog.tags.map((t, i) => (
       <Link key={i} href={`/tags/${t.slug}`}>
-        <a className="post-category text-white bg-success mr-2">#{t.name}</a>
+        <a className="post-category text-white bg-success mr-1">#{t.name}</a>
       </Link>
     ));
 
@@ -56,7 +56,7 @@ const UserProfile = ({ user, blogs, query }) => {
       return (
         <div className="col" key={i}>
           <Link href={`/blogs/${blog.slug}`}>
-            <div className="media">
+            <div className="media mt-5">
               <img
                 className="mr-3 img-fluid"
                 src={`${API}/blog/photo/${blog.slug}`}
@@ -64,9 +64,10 @@ const UserProfile = ({ user, blogs, query }) => {
                 style={{ width: "50px", height: "50px" }}
               />
               <div className="media-body font-weight-light">
-                {showBlogCategories(blog)} {showBlogTags(blog)}
                 <h5 className="mt-0 text-dark">{blog.title} </h5>
                 {renderHTML(blog.excerpt)}
+                {showBlogCategories(blog)} {showBlogTags(blog)}
+                <hr />
               </div>
             </div>
           </Link>
@@ -210,6 +211,12 @@ const UserProfile = ({ user, blogs, query }) => {
 
             .userprofile-first {
               padding: 12px;
+              margin-top: 4rem;
+            }
+            @media (min-width: 768px) {
+              .userprofile-first {
+                margin-top: 0.5rem;
+              }
             }
             .userprofile-second {
               margin-bottom: -16px;
@@ -387,7 +394,7 @@ UserProfile.getInitialProps = ({ query }) => {
     if (data.error) {
       console.log(data.error);
     } else {
-      console.log(data);
+      // console.log(data);
       return { user: data.user, blogs: data.blogs, query };
     }
   });

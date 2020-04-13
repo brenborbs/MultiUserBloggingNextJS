@@ -2,12 +2,14 @@ import Head from "next/head";
 import Link from "next/link";
 import { withRouter } from "next/router";
 import Layout from "../../components/Layout";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { listBlogsWithCategoriesAndTags } from "../../actions/blog";
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
 
 import NewCard from "../../components/blog/NewCard";
 import Search from "../../components/blog/Search";
+
+import { clickView } from "../../actions/blog";
 
 const Blogs = ({
   blogs,
@@ -69,6 +71,10 @@ const Blogs = ({
     });
   };
 
+  // const handleClick = () => {
+  //   console.log("I was click");
+  // };
+
   const loadMoreButton = () => {
     return (
       size > 0 &&
@@ -82,7 +88,6 @@ const Blogs = ({
 
   const showAllBlogs = () => {
     return blogs.map((blog, i) => {
-      // col-sm-6 pb-4
       return (
         <div className="col-lg-4 mb-4" key={i}>
           <NewCard blog={blog} />

@@ -7,9 +7,7 @@ const Card = ({ blog }) => {
   const showBlogCategories = (blog) =>
     blog.categories.map((c, i) => (
       <Link key={i} href={`/categories/${c.slug}`}>
-        <span className="post-category text-white bg-warning mr-2">
-          {c.name}
-        </span>
+        <a className="post-category text-white bg-warning mr-2">{c.name}</a>
       </Link>
     ));
 
@@ -22,7 +20,7 @@ const Card = ({ blog }) => {
 
   return (
     <React.Fragment>
-      <div className="entry2">
+      <div className="entry2" onClick={(e) => handleClick()}>
         <img
           style={{ width: "100%" }}
           className="img-fluid rounded"
@@ -52,7 +50,7 @@ const Card = ({ blog }) => {
                 <a> {blog.postedBy.username}</a>
               </Link>
             </span>
-            <span> - {moment(blog.updatedAt).format("MMMM D, YYYY")}</span>
+            <span> - {moment(blog.createdAt).format("MMMM D, YYYY")}</span>
           </div>
           {renderHTML(blog.excerpt)}
           <p>

@@ -10,7 +10,7 @@ const Index = () => {
         <div className="container">
           <div className="row">
             <div className="col-10 mx-auto col-md-6 my-5">
-              <h1 className="text-capitalize">
+              <h1 className="text-capitalize text-dark">
                 about <strong className="banner-title">us</strong>
               </h1>
               <p className="my-4 text-muted w-75">
@@ -39,7 +39,7 @@ const Index = () => {
           {/* start section title */}
           <div className="row">
             <div className="col-10 mx-auto col-sm-6 text-center">
-              <h1 className="text-capitalize">
+              <h1 className="text-capitalize text-dark">
                 read our <strong className="banner-title">stories</strong>
               </h1>
             </div>

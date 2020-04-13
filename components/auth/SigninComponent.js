@@ -3,6 +3,8 @@ import { signin, authenticate, isAuth } from "../../actions/auth";
 import Router from "next/router";
 import Link from "next/link";
 import LoginGoogle from "./LoginGoogle";
+// import LoginFacebook from "./LoginFacebook";
+import InputForm from "../../components/form/InputForm";
 
 const SigninComponent = () => {
   const [values, setValues] = useState({
@@ -59,31 +61,23 @@ const SigninComponent = () => {
   const signinForm = () => {
     return (
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="EmailInput">Email</label>
-          <input
-            value={email}
-            onChange={handleChange("email")}
-            type="email"
-            className="form-control"
-            placeholder="Type your email"
-          />
-        </div>
+        <InputForm
+          label="Email"
+          value={email}
+          onChange={handleChange("email")}
+          type="email"
+          placeholder="Type your email"
+        />
 
-        <div className="form-group">
-          <label htmlFor="PasswordInput">Password</label>
-          <input
-            value={password}
-            onChange={handleChange("password")}
-            type="password"
-            className="form-control"
-            placeholder="Type your password"
-          />
-        </div>
+        <InputForm
+          label="Password"
+          value={password}
+          onChange={handleChange("password")}
+          type="password"
+          placeholder="Type your password"
+        />
 
-        <div>
-          <button className="btn btn-submit">Sign In</button>
-        </div>
+        <button className="btn btn-submit">Sign In</button>
       </form>
     );
   };
@@ -93,7 +87,11 @@ const SigninComponent = () => {
       {showError()}
       {showLoading()}
       {showMessage()}
-      <LoginGoogle />
+      <div className="social-login d-flex justify-content-between">
+        <LoginGoogle />
+        {/* <LoginFacebook /> */}
+      </div>
+
       {showForm && signinForm()}
       <br />
       <Link href="/auth/password/forgot">

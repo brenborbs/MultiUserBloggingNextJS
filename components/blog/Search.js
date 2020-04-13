@@ -2,6 +2,7 @@ import Link from "next/link";
 import renderHTML from "react-render-html";
 import { useState, useEffect } from "react";
 import { listSearch } from "../../actions/blog";
+import { getTags } from "../../actions/tag";
 import NewCard from "./NewCard";
 
 const Search = () => {
@@ -11,6 +12,24 @@ const Search = () => {
     searched: false,
     message: "",
   });
+
+  // Get all Tags
+  const [tags, setTags] = useState([]);
+
+  const initTags = () => {
+    getTags().then((data) => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        setTags(data);
+      }
+    });
+  };
+
+  // load state all Tags
+  useEffect(() => {
+    initTags();
+  }, []);
 
   const { search, results, searched, message } = values;
 
@@ -24,6 +43,16 @@ const Search = () => {
         message: `${data.length} blogs found`,
       });
     });
+  };
+
+  const showAllTags = () => {
+    return tags.map((t, i) => (
+      <li className="list-inline-item" key={i}>
+        <Link href={`/tags/${t.slug}`} key={i}>
+          <a className="text-light">#{t.name}</a>
+        </Link>
+      </li>
+    ));
   };
 
   const handleChange = (e) => {
@@ -80,13 +109,16 @@ const Search = () => {
       <div className="container-fluid">
         <div className="row search-image justify-content-center">
           <div className="col-10 mx-auto search-text text-left">
-            <h1 className="text-light text-uppercase font-weight-bold">
-              <strong>Estoryahi ko!</strong>
+            <h1 className="text-light font-weight-bold">
+              <strong>Estoryahi Ko!</strong>
             </h1>
             <p className="lead text-light">
               Sabta kuno if sakto ba ko or dili?
             </p>
             {searchForm()}
+            <ul className="list-inline text-light mt-3">
+              Trending: {showAllTags()}
+            </ul>
           </div>
         </div>
       </div>

@@ -122,14 +122,13 @@ const ProfileUpdate = () => {
 
   const profileUpdateForm = () => (
     <form onSubmit={handleSubmit}>
-      <div className="form-group">
+      <div className="form-group mt-3">
         <label className="btn btn-info">
-          Profile photo
           <input
             onChange={handleChange("photo")}
             type="file"
             accept="image/*"
-            hidden
+            // hidden
           />
         </label>
       </div>
@@ -258,8 +257,7 @@ const ProfileUpdate = () => {
         <div className="text-center">
           <img
             src={`${API}/user/photo/${username_for_photo}`}
-            className="img img-fluid img-thumbnail"
-            style={{ maxHeight: "auto", maxWidth: "100%" }}
+            className="img-fluid rounded-circle"
             alt="user profile"
             onError={(i) => (i.target.src = "/static/images/avatar.jpg")}
           />
