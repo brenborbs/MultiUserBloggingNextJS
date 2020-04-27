@@ -17,42 +17,68 @@ const AdminIndex = () => {
               <div className="col">
                 <ul className="list-group">
                   <li className="list-group-item">
-                    <i className="fa fa-plus mr-1" aria-hidden="true"></i>
                     <Link href="/admin/crud/category-tag">
-                      <a>Create Category</a>
+                      <a className="btn btn-secondary btn-sm btn-block">
+                        <span>
+                          {" "}
+                          <i className="fa fa-plus mr-1" aria-hidden="true"></i>
+                        </span>{" "}
+                        Create Category
+                      </a>
                     </Link>
                   </li>
 
                   <li className="list-group-item">
-                    <i
-                      className="fa fa-plus-square-o mr-1"
-                      aria-hidden="true"
-                    ></i>
                     <Link href="/admin/crud/category-tag">
-                      <a>Create Tag</a>
+                      <a className="btn btn-secondary btn-sm btn-block">
+                        <span>
+                          {" "}
+                          <i
+                            className="fa fa-plus-square-o mr-1"
+                            aria-hidden="true"
+                          ></i>
+                        </span>{" "}
+                        Create Tag
+                      </a>
                     </Link>
                   </li>
 
                   <li className="list-group-item">
-                    <i
-                      className="fa fa-pencil-square-o mr-1"
-                      aria-hidden="true"
-                    ></i>
-                    <a href="/admin/crud/blog">Create Blog</a>
+                    <a
+                      className="btn btn-secondary btn-sm btn-block"
+                      href="/admin/crud/blog"
+                    >
+                      <span>
+                        {" "}
+                        <i
+                          className="fa fa-pencil-square-o mr-1"
+                          aria-hidden="true"
+                        ></i>
+                      </span>
+                      Create Blog
+                    </a>
                   </li>
                   <li className="list-group-item">
-                    <i className="fa fa-wrench mr-2" aria-hidden="true"></i>
                     <Link href="/admin/crud/blogs">
-                      <a>Update or Delete Blog</a>
+                      <a className="btn btn-secondary btn-sm btn-block">
+                        <span>
+                          <i className="fa fa-database" aria-hidden="true"></i>
+                        </span>{" "}
+                        Update or Delete Blog
+                      </a>
                     </Link>
                   </li>
                   <li className="list-group-item">
-                    <i
-                      className="fa fa-user-circle-o mr-2"
-                      aria-hidden="true"
-                    ></i>
                     <Link href="/user/update">
-                      <a>Update Profile</a>
+                      <a className="btn btn-secondary btn-sm btn-block">
+                        <span>
+                          <i
+                            className="fa fa-user-circle-o mr-2"
+                            aria-hidden="true"
+                          ></i>
+                        </span>
+                        Update Profile
+                      </a>
                     </Link>
                   </li>
                 </ul>

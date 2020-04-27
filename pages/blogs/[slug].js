@@ -9,9 +9,7 @@ import { getTags } from "../../actions/tag";
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
 import renderHTML from "react-render-html";
 import moment from "moment";
-// import SmallCard from "../../components/blog/SmallCard";
 import DisqusThread from "../../components/DisqusThread";
-// import Search from "../../components/blog/Search";
 import NewCard from "../../components/blog/NewCard";
 // for like
 // import { getCookie, isAuth } from "../../actions/auth";
@@ -73,7 +71,6 @@ const SingleBlog = ({ blog, query, router }) => {
         console.log(data.error);
       } else {
         setRelated(data);
-        // setValues({ like: checkLike(data.likes), likes: data.likes.length });
       }
     });
   };
@@ -83,7 +80,6 @@ const SingleBlog = ({ blog, query, router }) => {
     initCategories();
     initTags();
     initPopular();
-    // initLike();
   }, []);
 
   // undefined and error on front end, getting photo becomes error
@@ -333,7 +329,7 @@ const SingleBlog = ({ blog, query, router }) => {
               </div>
               <div className="col-md-12 col-lg-4 sidebar">
                 <div className="sidebar-box">
-                  <h3 className="heading text-dark">Popular Posts</h3>
+                  <h3 className="heading text-dark">Trending</h3>
                   <div className="post-entry-sidebar">
                     <ul>{showPopularBlogs()}</ul>
                   </div>
@@ -349,7 +345,7 @@ const SingleBlog = ({ blog, query, router }) => {
                 </div>
               </div>
               <div className="container">
-                <h1 className="text-center pt-5 text-dark">Related blogs</h1>
+                <h2 className="text-center pt-5 text-dark">Related Stories</h2>
                 <hr />
                 <div className="row">{showRelatedBlog(blog)}</div>
               </div>
@@ -369,7 +365,11 @@ SingleBlog.getInitialProps = ({ query }) => {
       console.log(data.error);
     } else {
       // console.log('GET INITIAL PROPS IN SINGLE BLOG', data);
-      return { blog: data, query };
+      return {
+        blog: data,
+        query,
+        comments: data.comments,
+      };
     }
   });
 };

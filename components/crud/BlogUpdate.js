@@ -28,9 +28,10 @@ const BlogUpdate = ({ router }) => {
     formData: "",
     title: "",
     body: "",
+    loading: false,
   });
 
-  const { error, success, formData, title } = values;
+  const { error, success, formData, title, loading } = values;
   const token = getCookie("token");
 
   // loading the state
@@ -190,9 +191,10 @@ const BlogUpdate = ({ router }) => {
 
   const editBlog = (e) => {
     e.preventDefault();
+    setValues({ ...values, loading: true, error: false });
     updateBlog(formData, token, router.query.slug).then((data) => {
       if (data.error) {
-        setValues({ ...values, error: data.error });
+        setValues({ ...values, error: data.error, loading: false });
       } else {
         setValues({
           ...values,
@@ -215,7 +217,14 @@ const BlogUpdate = ({ router }) => {
       className="alert alert-danger"
       style={{ display: error ? "" : "none" }}
     >
-      {error}
+      <div className="alert-icon">
+        <i
+          className="fa fa-exclamation-circle"
+          aria-hidden="true"
+          style={{ color: "#f44336" }}
+        ></i>
+      </div>
+      <div className="alert-message"> {error}</div>
     </div>
   );
 
@@ -224,7 +233,14 @@ const BlogUpdate = ({ router }) => {
       className="alert alert-success"
       style={{ display: success ? "" : "none" }}
     >
-      {success}
+      <div className="alert-icon">
+        <i
+          className="fa fa-check-circle-o"
+          aria-hidden="true"
+          style={{ color: "#4caf50" }}
+        ></i>
+      </div>
+      <div className="alert-message">{success}</div>
     </div>
   );
 
@@ -253,7 +269,9 @@ const BlogUpdate = ({ router }) => {
 
         <div>
           <button type="submit" className="btn btn-submit">
-            Update
+            {loading && <i className="fa fa-refresh fa-spin"></i>}
+            {loading && <span> Updating...</span>}
+            {!loading && <span> Update</span>}
           </button>
         </div>
       </form>

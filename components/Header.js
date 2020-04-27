@@ -17,14 +17,14 @@ import {
   // DropdownMenu,
   // DropdownItem
 } from "reactstrap";
-// import "../node_modules/nprogress/nprogress.css";
+import "../node_modules/nprogress/nprogress.css";
 import ActiveLink from "../helpers/activeLink";
 // import Search from "./blog/Search";
 
 // Check Router(Routing) Events from NextJS docs
-// Router.onRouteChangeStart = url => NProgress.start();
-// Router.onRouteChangeComplete = url => NProgress.done();
-// Router.onRouteChangeError = url => NProgress.done();
+Router.onRouteChangeStart = (url) => NProgress.start();
+Router.onRouteChangeComplete = (url) => NProgress.done();
+Router.onRouteChangeError = (url) => NProgress.done();
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -83,7 +83,7 @@ const Header = () => {
                 </NavItem>
                 <NavItem>
                   <Link href="/signup">
-                    <NavLink className="btn btn-head">Register</NavLink>
+                    <a className="nav-link">Register</a>
                   </Link>
                 </NavItem>
               </React.Fragment>

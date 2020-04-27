@@ -112,12 +112,10 @@ const Search = () => {
             <h1 className="text-light font-weight-bold">
               <strong>Estoryahi Ko!</strong>
             </h1>
-            <p className="lead text-light">
-              Sabta kuno if sakto ba ko or dili?
-            </p>
+            <p className="lead text-light">Write and share your story today</p>
             {searchForm()}
             <ul className="list-inline text-light mt-3">
-              Trending: {showAllTags()}
+              Tags: {showAllTags()}
             </ul>
           </div>
         </div>

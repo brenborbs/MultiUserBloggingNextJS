@@ -49,12 +49,38 @@ const SignupComponent = () => {
     setValues({ ...values, error: false, [name]: e.target.value });
   };
 
-  const showLoading = () =>
-    loading ? <div className="alert alert-info">Loading...</div> : "";
+  // const showLoading = () =>
+  //   loading ? <div className="alert alert-info">Loading...</div> : "";
   const showError = () =>
-    error ? <div className="alert alert-danger">{error}</div> : "";
+    error ? (
+      <div className="alert-danger">
+        <div className="alert-icon">
+          <i
+            className="fa fa-exclamation-circle"
+            aria-hidden="true"
+            style={{ color: "#f44336" }}
+          ></i>
+        </div>
+        <div className="alert-message">{error}</div>
+      </div>
+    ) : (
+      ""
+    );
   const showMessage = () =>
-    message ? <div className="alert alert-info">{message}</div> : "";
+    message ? (
+      <div className="alert-info">
+        <div className="alert-icon">
+          <i
+            className="fa fa-check-circle-o"
+            aria-hidden="true"
+            style={{ color: "#4caf50" }}
+          ></i>
+        </div>
+        <div className="alert-message"> {message}</div>
+      </div>
+    ) : (
+      ""
+    );
 
   const signupForm = () => {
     return (
@@ -83,7 +109,11 @@ const SignupComponent = () => {
           placeholder="Type your password"
         />
 
-        <button className="btn btn-submit">Sign Up</button>
+        <button className="btn btn-submit">
+          {loading && <i className="fa fa-refresh fa-spin"></i>}
+          {loading && <span> Logging in...</span>}
+          {!loading && <span> Login</span>}
+        </button>
       </form>
     );
   };
@@ -91,7 +121,6 @@ const SignupComponent = () => {
   return (
     <React.Fragment>
       {showError()}
-      {showLoading()}
       {showMessage()}
       {showForm && signupForm()}
     </React.Fragment>

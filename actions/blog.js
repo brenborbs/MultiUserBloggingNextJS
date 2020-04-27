@@ -166,14 +166,14 @@ export const listSearch = (params) => {
 };
 
 // like unlike
-export const like = (blog, token, slug) => {
-  return fetch(`${API}/blog/like/${slug}`, {
+export const like = (userId, token, slug) => {
+  return fetch(`${API}/blog/like`, {
     method: "PUT",
     headers: {
       Accept: "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: blog,
+    body: JSON.stringify({ userId, slug }),
   })
     .then((response) => {
       handleResponse(response);
@@ -182,14 +182,14 @@ export const like = (blog, token, slug) => {
     .catch((err) => console.log(err));
 };
 
-export const unlike = (blog, token, slug) => {
-  return fetch(`${API}/blog/unlike/${slug}`, {
+export const unlike = (userId, token, slug) => {
+  return fetch(`${API}/blog/unlike`, {
     method: "PUT",
     headers: {
       Accept: "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: blog,
+    body: JSON.stringify({ userId, slug }),
   })
     .then((response) => {
       handleResponse(response);

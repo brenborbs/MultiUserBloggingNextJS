@@ -5,6 +5,7 @@ import Link from "next/link";
 import LoginGoogle from "./LoginGoogle";
 // import LoginFacebook from "./LoginFacebook";
 import InputForm from "../../components/form/InputForm";
+import { Alert } from "reactstrap";
 
 const SigninComponent = () => {
   const [values, setValues] = useState({
@@ -51,12 +52,46 @@ const SigninComponent = () => {
     setValues({ ...values, error: false, [name]: e.target.value });
   };
 
-  const showLoading = () =>
-    loading ? <div className="alert alert-info">Loading...</div> : "";
+  // const showLoading = () =>
+  //   loading ? (
+  //     <div className="lds-circle">
+  //       <div></div>
+  //     </div>
+  //   ) : (
+  //     ""
+  //   );
+
   const showError = () =>
-    error ? <div className="alert alert-danger">{error}</div> : "";
+    error ? (
+      <div className="alert-danger">
+        <div className="alert-icon">
+          <i
+            className="fa fa-exclamation-circle"
+            aria-hidden="true"
+            style={{ color: "#f44336" }}
+          ></i>
+        </div>
+        <div className="alert-message">{error}</div>
+      </div>
+    ) : (
+      ""
+    );
+
   const showMessage = () =>
-    message ? <div className="alert alert-info">{message}</div> : "";
+    message ? (
+      <div className="alert-info">
+        <div className="alert-icon">
+          <i
+            className="fa fa-check-circle-o"
+            aria-hidden="true"
+            style={{ color: "#4caf50" }}
+          ></i>
+        </div>
+        <div className="alert-message"> {message}</div>
+      </div>
+    ) : (
+      ""
+    );
 
   const signinForm = () => {
     return (
@@ -77,7 +112,11 @@ const SigninComponent = () => {
           placeholder="Type your password"
         />
 
-        <button className="btn btn-submit">Sign In</button>
+        <button className="btn btn-submit">
+          {loading && <i className="fa fa-refresh fa-spin"></i>}
+          {loading && <span> Logging in...</span>}
+          {!loading && <span> Login</span>}
+        </button>
       </form>
     );
   };
@@ -85,7 +124,6 @@ const SigninComponent = () => {
   return (
     <React.Fragment>
       {showError()}
-      {showLoading()}
       {showMessage()}
       <div className="social-login d-flex justify-content-between">
         <LoginGoogle />

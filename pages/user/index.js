@@ -17,26 +17,44 @@ const UserIndex = () => {
               <div className="col">
                 <ul className="list-group">
                   <li className="list-group-item">
-                    <i className="fa fa-plus mr-1" aria-hidden="true"></i>
-                    <a href="/user/crud/blog">Create Blog</a>
+                    <a
+                      className="btn btn-submit btn-sm btn-block"
+                      href="/user/crud/blog"
+                    >
+                      <span>
+                        {" "}
+                        <i className="fa fa-plus mr-1" aria-hidden="true"></i>
+                      </span>{" "}
+                      Create Blog
+                    </a>
                   </li>
 
                   <li className="list-group-item">
-                    <i
-                      className="fa fa-pencil-square-o mr-1"
-                      aria-hidden="true"
-                    ></i>
                     <Link href="/user/crud/blogs">
-                      <a>Update/Delete Blog</a>
+                      <a className="btn btn-submit btn-sm btn-block">
+                        <span>
+                          <i
+                            className="fa fa-pencil-square-o mr-1"
+                            aria-hidden="true"
+                          ></i>
+                        </span>{" "}
+                        Update/Delete Blog
+                      </a>
                     </Link>
                   </li>
 
                   <li className="list-group-item">
-                    <i
-                      className="fa fa-user-circle-o mr-2"
-                      aria-hidden="true"
-                    ></i>
-                    <a href="/user/update">Update profile</a>
+                    <Link href="/user/update">
+                      <a className="btn btn-submit btn-sm btn-block">
+                        <span>
+                          <i
+                            className="fa fa-user-circle-o mr-2"
+                            aria-hidden="true"
+                          ></i>
+                        </span>{" "}
+                        Update profile
+                      </a>
+                    </Link>
                   </li>
                 </ul>
               </div>

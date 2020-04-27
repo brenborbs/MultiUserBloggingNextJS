@@ -22,6 +22,9 @@ ul,
 li {
   list-style: none;
 }
+a {
+  color: #3eb0ef;
+}
 
 /* Override bootstrap 4 styles */
 .btn {
@@ -38,14 +41,50 @@ li {
   border-radius: 0;
 }
 /* Override bootstrap 4 styles */
-
-.btn-block {
-  display: block;
-  width: 100%;
-  text-align: center;
+.alert-danger {
+  color: rgb(97, 26, 21);
+  background-color: rgb(253, 236, 234);
+  display: flex;
+  padding: 6px 16px;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.43;
+  border-radius: 4px;
+  letter-spacing: 0.01071em;
+  box-shadow: none;
+  margin-bottom: 16px;
 }
-.btn-dark {
-  background: var(--dark-color) !important;
+.alert-info {
+  color: rgb(30, 70, 32);
+  background-color: rgb(237, 247, 237);
+  display: flex;
+  padding: 6px 16px;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.43;
+  border-radius: 4px;
+  letter-spacing: 0.01071em;
+  box-shadow: none;
+  margin-bottom: 16px;
+}
+
+.alert-icon {
+  display: flex;
+  opacity: 0.9;
+  padding: 7px 0;
+  font-size: 22px;
+  margin-right: 12px;
+}
+.alert-icon .fa {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+}
+.alert-message {
+  display: flex;
+  padding: 8px 0;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .active:after {
@@ -60,6 +99,12 @@ li {
   cursor: pointer;
   padding: 6px;
   background-color: black;
+}
+.brand-text:hover {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 .forms-wrapper {
   border-radius: 5px;
@@ -96,7 +141,6 @@ a:hover {
 
 #nprogress .bar {
   height: 4px !important;
-  background: red !important ;
 }
 .signup_text {
   padding-top: 10px;
@@ -303,9 +347,22 @@ a:hover {
   width: 100%;
   text-transform: uppercase;
 }
+.btn-submit:hover,
+.btn-search:hover,
+.btn-loadmore:hover {
+  color: deeppink;
+  background-color: #f9d9eb;
+}
 .btn-search {
   background: deeppink;
 }
+.btn-submit:hover {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
 /* React share icons styling */
 .Demo__some-network {
   vertical-align: top;
@@ -325,52 +382,73 @@ a:hover {
 }
 
 /* banner cover index */
-
-/* about section */
-.about-img__container {
-  position: relative;
+.viewport-80 {
+  min-height: 80vh;
 }
-.about-img__container::before {
+#banner {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../images/alexis-brown--Xv7k95vOFA-unsplash.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#banner::after {
   content: "";
-  position: absolute;
-  top: -24px;
-  top: -1.5rem;
-  left: -27.2px;
-  left: -1.7rem;
   width: 100%;
   height: 100%;
-  outline: 8px solid #465151;
-  outline: 0.5rem solid #465151;
+  position: absolute;
+  background: rgb(36, 42, 51);
   z-index: -1;
-  -webkit-transition: all 1s linear;
-  transition: all 1s linear;
+  bottom: 0;
+  transform-origin: left bottom;
+  transform: skewY(3deg);
 }
-.about-img__container:hover:before {
-  top: 0;
-  left: 0;
+
+#banner .banner-link {
+  text-decoration: none;
+  font-size: 20px;
+  padding: 15px 25px;
+  border: 2px solid deeppink;
+  background-color: transparent;
+  border-radius: 0;
+  color: deeppink;
+}
+
+#banner .banner-link:hover {
+  border: 2px solid #f5f3f5;
+  background-color: #f5f3f5;
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
 
 .store {
   background: rgb(238, 238, 238);
-}
-
-.img-container {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-}
-.store-img {
-  -webkit-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
-}
-.img-container:hover .store-img {
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
-}
-
-.img-container:hover {
-  -webkit-transform: translate(0, 0);
-  transform: translate(0, 0);
 }
 
 /* index card flip */
@@ -451,4 +529,4 @@ a:hover {
     19px 19px rgba(0, 0, 0, 0.04), 1.25rem 1.25rem rgba(0, 0, 0, 0.04);
 }
 
-/* signin */
+/* Comments */

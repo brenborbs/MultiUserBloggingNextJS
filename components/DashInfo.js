@@ -11,7 +11,7 @@ const DashInfo = () => {
             in for the first time. Please add your profile photo and change your
             profile username before adding/creating your first hugot line.
           </li>
-          <li className="list-group-item text-info">
+          <li className="list-group-item">
             For profile completeness, we suggest to add your social media
             accounts/links so when going to your profile page, you can have a
             more complete profile. Not adding any links/accounts will be showing

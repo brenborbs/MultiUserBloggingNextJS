@@ -67,6 +67,7 @@ const UserProfile = ({ user, blogs, query }) => {
                 <h5 className="mt-0 text-dark">{blog.title} </h5>
                 {renderHTML(blog.excerpt)}
                 {showBlogCategories(blog)} {showBlogTags(blog)}
+                <p className="mt-3">{blog.views} Views</p>
                 <hr />
               </div>
             </div>

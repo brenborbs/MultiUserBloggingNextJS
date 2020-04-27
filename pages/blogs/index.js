@@ -9,8 +9,6 @@ import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
 import NewCard from "../../components/blog/NewCard";
 import Search from "../../components/blog/Search";
 
-import { clickView } from "../../actions/blog";
-
 const Blogs = ({
   blogs,
   categories,
@@ -22,7 +20,7 @@ const Blogs = ({
 }) => {
   const head = () => (
     <Head>
-      <title>Lifestyle Stories, News and Updates | {APP_NAME}</title>
+      <title>Latest Stories | {APP_NAME}</title>
       <meta
         name="description"
         content="Everything under the sun. Joy, hate, laughter and love. All pack in one chocolate box."
@@ -30,7 +28,7 @@ const Blogs = ({
       <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
       <meta
         property="og:title"
-        content={`My LyfOutside. Stories and more... | ${APP_NAME}`}
+        content={`Estoryahi Ko! Stories and more... | ${APP_NAME}`}
       />
       <meta
         property="og:description"
@@ -130,6 +128,7 @@ const Blogs = ({
       {head()}
       <Layout>
         <Search />
+
         <div className="site-section">
           <div className="container">
             <div className="row p-5">

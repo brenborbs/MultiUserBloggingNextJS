@@ -20,7 +20,7 @@ const Card = ({ blog }) => {
 
   return (
     <React.Fragment>
-      <div className="entry2" onClick={(e) => handleClick()}>
+      <div className="entry2">
         <img
           style={{ width: "100%" }}
           className="img-fluid rounded"
