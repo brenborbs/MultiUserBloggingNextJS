@@ -10,6 +10,7 @@ import { createBlog } from "../../actions/blog";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false }); // text editor
 // import "../../node_modules/react-quill/dist/quill.snow.css"; // error, cannot show the page
 import { QuillModules, QuillFormats } from "../../helpers/quill";
+import { Toast, ToastBody, ToastHeader } from "reactstrap";
 
 const CreateBlog = ({ router }) => {
   // grab blog body from local storage
@@ -182,35 +183,67 @@ const CreateBlog = ({ router }) => {
     );
   };
 
+  // const showError = () => (
+  //   <div
+  //     className="alert alert-danger"
+  //     style={{ display: error ? "" : "none" }}
+  //   >
+  //     <div className="alert-icon">
+  //       <i
+  //         className="fa fa-exclamation-circle"
+  //         aria-hidden="true"
+  //         style={{ color: "#f44336" }}
+  //       ></i>
+  //     </div>
+  //     <div className="alert-message"> {error}</div>
+  //   </div>
+  // );
+
   const showError = () => (
-    <div
-      className="alert alert-danger"
-      style={{ display: error ? "" : "none" }}
-    >
-      <div className="alert-icon">
-        <i
-          className="fa fa-exclamation-circle"
-          aria-hidden="true"
-          style={{ color: "#f44336" }}
-        ></i>
-      </div>
-      <div className="alert-message"> {error}</div>
+    <div className="toast-position" style={{ display: error ? "" : "none" }}>
+      <Toast className="danger">
+        <ToastHeader className="danger">
+          <i
+            className="fa fa-exclamation-circle"
+            aria-hidden="true"
+            style={{ color: "#fff" }}
+          ></i>{" "}
+          Error
+        </ToastHeader>
+        <ToastBody>{error}</ToastBody>
+      </Toast>
     </div>
   );
 
+  // const showSuccess = () => (
+  //   <div
+  //     className="alert alert-success"
+  //     style={{ display: success ? "" : "none" }}
+  //   >
+  //     <div className="alert-icon">
+  //       <i
+  //         className="fa fa-check-circle-o"
+  //         aria-hidden="true"
+  //         style={{ color: "#4caf50" }}
+  //       ></i>
+  //     </div>
+  //     <div className="alert-message">{success}</div>
+  //   </div>
+  // );
+
   const showSuccess = () => (
-    <div
-      className="alert alert-success"
-      style={{ display: success ? "" : "none" }}
-    >
-      <div className="alert-icon">
-        <i
-          className="fa fa-check-circle-o"
-          aria-hidden="true"
-          style={{ color: "#4caf50" }}
-        ></i>
-      </div>
-      <div className="alert-message">{success}</div>
+    <div className="toast-position" style={{ display: success ? "" : "none" }}>
+      <Toast className="success">
+        <ToastHeader className="success">
+          <i
+            className="fa fa-check-circle-o"
+            aria-hidden="true"
+            style={{ color: "#fff" }}
+          ></i>{" "}
+          Success
+        </ToastHeader>
+        <ToastBody>{success}</ToastBody>
+      </Toast>
     </div>
   );
 
@@ -272,7 +305,7 @@ const CreateBlog = ({ router }) => {
                   onChange={handleChange("photo")}
                   type="file"
                   accept="image/*"
-                  required
+                  required={true}
                   // hidden
                 />
               </label>

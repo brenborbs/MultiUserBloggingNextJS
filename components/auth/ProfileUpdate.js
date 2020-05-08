@@ -4,6 +4,7 @@ import Router from "next/router";
 import { getCookie, isAuth, updateUser } from "../../actions/auth";
 import { getProfile, update } from "../../actions/user";
 import { API } from "../../config";
+import { Toast, ToastBody, ToastHeader } from "reactstrap";
 
 const ProfileUpdate = () => {
   const [values, setValues] = useState({
@@ -224,21 +225,53 @@ const ProfileUpdate = () => {
     </form>
   );
 
+  // const showError = () => (
+  //   <div
+  //     className="alert alert-danger"
+  //     style={{ display: error ? "" : "none" }}
+  //   >
+  //     {error}
+  //   </div>
+  // );
+
   const showError = () => (
-    <div
-      className="alert alert-danger"
-      style={{ display: error ? "" : "none" }}
-    >
-      {error}
+    <div className="toast-position" style={{ display: error ? "" : "none" }}>
+      <Toast className="danger">
+        <ToastHeader className="danger">
+          <i
+            className="fa fa-exclamation-circle"
+            aria-hidden="true"
+            style={{ color: "#fff" }}
+          ></i>{" "}
+          Error
+        </ToastHeader>
+        <ToastBody>{error}</ToastBody>
+      </Toast>
     </div>
   );
 
+  // const showSuccess = () => (
+  //   <div
+  //     className="alert alert-success"
+  //     style={{ display: success ? "" : "none" }}
+  //   >
+  //     Profile updated
+  //   </div>
+  // );
+
   const showSuccess = () => (
-    <div
-      className="alert alert-success"
-      style={{ display: success ? "" : "none" }}
-    >
-      Profile updated
+    <div className="toast-position" style={{ display: success ? "" : "none" }}>
+      <Toast className="success">
+        <ToastHeader className="success">
+          <i
+            className="fa fa-check-circle-o"
+            aria-hidden="true"
+            style={{ color: "#fff" }}
+          ></i>{" "}
+          Success
+        </ToastHeader>
+        <ToastBody>Profile Updated!</ToastBody>
+      </Toast>
     </div>
   );
 

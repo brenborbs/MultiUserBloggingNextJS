@@ -25,7 +25,38 @@ li {
 a {
   color: #3eb0ef;
 }
-
+/* Toast notifications */
+.toast {
+  max-width: 400px !important;
+  overflow: hidden;
+  font-size: 15px !important;
+  background-color: none !important;
+  background-clip: padding-box;
+  border: none !important;
+  box-shadow: 0 0 10px #999;
+  /* box-shadow: none !important; */
+  backdrop-filter: blur(10px);
+  border-radius: 0.25rem;
+}
+.danger {
+  color: white;
+  background-color: #d9534f;
+  border-bottom: none !important;
+}
+.success {
+  color: white;
+  background-color: #5cb85c;
+  border-bottom: none !important;
+}
+.toast-position {
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 999999;
+  bottom: 12px;
+  left: 12px;
+  transition: transform 0.6s ease-in;
+  animation: toast-in-left 0.7s;
+}
 /* Override bootstrap 4 styles */
 .btn {
   display: inline-block;

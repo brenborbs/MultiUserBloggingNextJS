@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { signup, isAuth, preSignup } from "../../actions/auth";
 import Router from "next/router";
 import InputForm from "../../components/form/InputForm";
+import { Toast, ToastBody, ToastHeader } from "reactstrap";
 
 const SignupComponent = () => {
   const [values, setValues] = useState({
@@ -51,32 +52,71 @@ const SignupComponent = () => {
 
   // const showLoading = () =>
   //   loading ? <div className="alert alert-info">Loading...</div> : "";
+  // const showError = () =>
+  //   error ? (
+  //     <div className="alert-danger">
+  //       <div className="alert-icon">
+  //         <i
+  //           className="fa fa-exclamation-circle"
+  //           aria-hidden="true"
+  //           style={{ color: "#f44336" }}
+  //         ></i>
+  //       </div>
+  //       <div className="alert-message">{error}</div>
+  //     </div>
+  //   ) : (
+  //     ""
+  //   );
+
   const showError = () =>
     error ? (
-      <div className="alert-danger">
-        <div className="alert-icon">
-          <i
-            className="fa fa-exclamation-circle"
-            aria-hidden="true"
-            style={{ color: "#f44336" }}
-          ></i>
-        </div>
-        <div className="alert-message">{error}</div>
+      <div className="toast-position">
+        <Toast className="danger">
+          <ToastHeader className="danger">
+            <i
+              className="fa fa-exclamation-circle"
+              aria-hidden="true"
+              style={{ color: "#fff" }}
+            ></i>{" "}
+            Error
+          </ToastHeader>
+          <ToastBody>{error}</ToastBody>
+        </Toast>
       </div>
     ) : (
       ""
     );
+
+  // const showMessage = () =>
+  //   message ? (
+  //     <div className="alert-info">
+  //       <div className="alert-icon">
+  //         <i
+  //           className="fa fa-check-circle-o"
+  //           aria-hidden="true"
+  //           style={{ color: "#4caf50" }}
+  //         ></i>
+  //       </div>
+  //       <div className="alert-message"> {message}</div>
+  //     </div>
+  //   ) : (
+  //     ""
+  //   );
+
   const showMessage = () =>
     message ? (
-      <div className="alert-info">
-        <div className="alert-icon">
-          <i
-            className="fa fa-check-circle-o"
-            aria-hidden="true"
-            style={{ color: "#4caf50" }}
-          ></i>
-        </div>
-        <div className="alert-message"> {message}</div>
+      <div className="toast-position">
+        <Toast className="success">
+          <ToastHeader className="success">
+            <i
+              className="fa fa-check-circle-o"
+              aria-hidden="true"
+              style={{ color: "#fff" }}
+            ></i>{" "}
+            Success
+          </ToastHeader>
+          <ToastBody>{message}</ToastBody>
+        </Toast>
       </div>
     ) : (
       ""

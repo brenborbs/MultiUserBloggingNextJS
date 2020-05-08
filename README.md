@@ -15,8 +15,8 @@ module.exports = withCSS({
     DOMAIN_PRODUCTION: "",
     FB_APP_ID: "",
     DISQUS_SHORTNAME: "",
-    GOOGLE_CLIENT_ID: ""
-  }
+    GOOGLE_CLIENT_ID: "",
+  },
 });
 ```
 
@@ -109,13 +109,3 @@ Front-end:
 - Social media links on user profile page
 - active links on navbar
 - improved blog > slug.js (single blog page) design
-
-To-Do list Bugs:
-
-Not working:
-
-- like/unlike functionality
-
-- On ProfileUpdate.js, whenever the Username is changed, the photo goes to error or disappears
-- On profile [username].js, if user has no profile, the page just keeps on loading. But when stop on browser, the default image is shown
-- On Categories & Tags [slug].js, username profile is undefined

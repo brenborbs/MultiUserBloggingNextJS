@@ -4,7 +4,7 @@ import Router from "next/router";
 import { getCookie, isAuth } from "../../actions/auth";
 import { list, removeBlog } from "../../actions/blog";
 import moment from "moment";
-import { Table } from "reactstrap";
+import { Table, Toast, ToastBody, ToastHeader } from "reactstrap";
 
 const BlogRead = ({ username }) => {
   // define state
@@ -93,14 +93,31 @@ const BlogRead = ({ username }) => {
 
   return (
     <React.Fragment>
-      <div className="row">
+      {/* <div className="row">
         {message && (
           <div className="col">
             <div className="alert alert-success">
               <div className="text-center">{message}!</div>
             </div>
           </div>
+        )} */}
+      <div className="row">
+        {message && (
+          <div className="toast-position">
+            <Toast className="success">
+              <ToastHeader className="success">
+                <i
+                  className="fa fa-check-circle-o"
+                  aria-hidden="true"
+                  style={{ color: "#fff" }}
+                ></i>{" "}
+                Success
+              </ToastHeader>
+              <ToastBody>{message}</ToastBody>
+            </Toast>
+          </div>
         )}
+
         <div className="col-md-12">
           <Table hover>
             <thead>

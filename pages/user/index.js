@@ -2,10 +2,46 @@ import Layout from "../../components/Layout";
 import Private from "../../components/auth/Private";
 import Link from "next/link";
 import DashInfo from "../../components/DashInfo";
+import { withRouter } from "next/router";
+import Head from "next/head";
+import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
 
-const UserIndex = () => {
+const UserIndex = ({ router }) => {
+  const head = () => (
+    <Head>
+      <title>Dashboard | {APP_NAME}</title>
+      <meta
+        name="description"
+        content="Everything under the sun. Joy, hate, laughter and love. All pack in one chocolate box."
+      />
+      <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
+      <meta
+        property="og:title"
+        content={`Estoryahi Ko! Stories and more... | ${APP_NAME}`}
+      />
+      <meta
+        property="og:description"
+        content="Everything under the sun. Joy, hate, laughter and love. All pack in one chocolate box."
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
+      <meta property="og:site_name" content={`${APP_NAME}`} />
+
+      <meta
+        property="og:image"
+        content={`${DOMAIN}/static/images/estoryahi.png`}
+      />
+      <meta
+        property="og:image:secure_url"
+        ccontent={`${DOMAIN}/static/images/estoryahi.png`}
+      />
+      <meta property="og:image:type" content="image/jpg" />
+      <meta property="fb:app_id" content={`${FB_APP_ID}`} />
+    </Head>
+  );
   return (
     <Layout>
+      {head()}
       <Private>
         <div className="container-fluid pt-4">
           <div className="wrapper">
@@ -18,7 +54,7 @@ const UserIndex = () => {
                 <ul className="list-group">
                   <li className="list-group-item">
                     <a
-                      className="btn btn-submit btn-sm btn-block"
+                      className="btn btn-secondary btn-sm btn-block"
                       href="/user/crud/blog"
                     >
                       <span>
@@ -31,7 +67,7 @@ const UserIndex = () => {
 
                   <li className="list-group-item">
                     <Link href="/user/crud/blogs">
-                      <a className="btn btn-submit btn-sm btn-block">
+                      <a className="btn btn-secondary btn-sm btn-block">
                         <span>
                           <i
                             className="fa fa-pencil-square-o mr-1"
@@ -45,7 +81,7 @@ const UserIndex = () => {
 
                   <li className="list-group-item">
                     <Link href="/user/update">
-                      <a className="btn btn-submit btn-sm btn-block">
+                      <a className="btn btn-secondary btn-sm btn-block">
                         <span>
                           <i
                             className="fa fa-user-circle-o mr-2"
@@ -79,4 +115,4 @@ const UserIndex = () => {
   );
 };
 
-export default UserIndex;
+export default withRouter(UserIndex);

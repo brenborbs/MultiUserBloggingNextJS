@@ -5,7 +5,7 @@ import Link from "next/link";
 import LoginGoogle from "./LoginGoogle";
 // import LoginFacebook from "./LoginFacebook";
 import InputForm from "../../components/form/InputForm";
-import { Alert } from "reactstrap";
+import { Toast, ToastBody, ToastHeader } from "reactstrap";
 
 const SigninComponent = () => {
   const [values, setValues] = useState({
@@ -61,33 +61,71 @@ const SigninComponent = () => {
   //     ""
   //   );
 
+  // const showError = () =>
+  //   error ? (
+  //     <div className="alert-danger">
+  //       <div className="alert-icon">
+  //         <i
+  //           className="fa fa-exclamation-circle"
+  //           aria-hidden="true"
+  //           style={{ color: "#f44336" }}
+  //         ></i>
+  //       </div>
+  //       <div className="alert-message">{error}</div>
+  //     </div>
+  //   ) : (
+  //     ""
+  //   );
+
   const showError = () =>
     error ? (
-      <div className="alert-danger">
-        <div className="alert-icon">
-          <i
-            className="fa fa-exclamation-circle"
-            aria-hidden="true"
-            style={{ color: "#f44336" }}
-          ></i>
-        </div>
-        <div className="alert-message">{error}</div>
+      <div className="toast-position">
+        <Toast className="danger">
+          <ToastHeader className="danger">
+            <i
+              className="fa fa-exclamation-circle"
+              aria-hidden="true"
+              style={{ color: "#fff" }}
+            ></i>{" "}
+            Error
+          </ToastHeader>
+          <ToastBody>{error}</ToastBody>
+        </Toast>
       </div>
     ) : (
       ""
     );
 
+  // const showMessage = () =>
+  //   message ? (
+  //     <div className="alert-info">
+  //       <div className="alert-icon">
+  //         <i
+  //           className="fa fa-check-circle-o"
+  //           aria-hidden="true"
+  //           style={{ color: "#4caf50" }}
+  //         ></i>
+  //       </div>
+  //       <div className="alert-message"> {message}</div>
+  //     </div>
+  //   ) : (
+  //     ""
+  //   );
+
   const showMessage = () =>
     message ? (
-      <div className="alert-info">
-        <div className="alert-icon">
-          <i
-            className="fa fa-check-circle-o"
-            aria-hidden="true"
-            style={{ color: "#4caf50" }}
-          ></i>
-        </div>
-        <div className="alert-message"> {message}</div>
+      <div className="toast-position">
+        <Toast className="success">
+          <ToastHeader className="success">
+            <i
+              className="fa fa-check-circle-o"
+              aria-hidden="true"
+              style={{ color: "#fff" }}
+            ></i>{" "}
+            Success
+          </ToastHeader>
+          <ToastBody>{message}</ToastBody>
+        </Toast>
       </div>
     ) : (
       ""
