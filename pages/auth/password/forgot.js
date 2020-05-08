@@ -1,8 +1,43 @@
 import { useState } from "react";
+import { withRouter } from "next/router";
+import Head from "next/head";
 import Layout from "../../../components/Layout";
 import { forgotPassword } from "../../../actions/auth";
+import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../../config";
 
-const ForgotPassword = () => {
+const ForgotPassword = ({ router }) => {
+  const head = () => (
+    <Head>
+      <title>Forgot Password | {APP_NAME}</title>
+      <meta
+        name="description"
+        content="Everything under the sun. Joy, hate, laughter and love. All pack in one chocolate box."
+      />
+      <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
+      <meta
+        property="og:title"
+        content={`Estoryahi Ko! Stories and more... | ${APP_NAME}`}
+      />
+      <meta
+        property="og:description"
+        content="Everything under the sun. Joy, hate, laughter and love. All pack in one chocolate box."
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
+      <meta property="og:site_name" content={`${APP_NAME}`} />
+
+      <meta
+        property="og:image"
+        content={`${DOMAIN}/static/images/estoryahi.png`}
+      />
+      <meta
+        property="og:image:secure_url"
+        ccontent={`${DOMAIN}/static/images/estoryahi.png`}
+      />
+      <meta property="og:image:type" content="image/jpg" />
+      <meta property="fb:app_id" content={`${FB_APP_ID}`} />
+    </Head>
+  );
   const [values, setValues] = useState({
     email: "",
     message: "",
@@ -84,10 +119,10 @@ const ForgotPassword = () => {
 
   return (
     <Layout>
+      {head()}
       <div className="forms-margin">
         <div className="forms-wrapper">
           <h2 className="text-dark">Forgot password</h2>
-          <hr />
           {showError()}
           {showMessage()}
           {showForm && passwordForgotForm()}
@@ -97,4 +132,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default withRouter(ForgotPassword);

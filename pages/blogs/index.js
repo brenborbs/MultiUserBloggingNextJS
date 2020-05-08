@@ -9,6 +9,8 @@ import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
 import NewCard from "../../components/blog/NewCard";
 import Search from "../../components/blog/Search";
 
+import InfiniteScroll from "react-infinite-scroller";
+
 const Blogs = ({
   blogs,
   categories,
@@ -73,16 +75,16 @@ const Blogs = ({
   //   console.log("I was click");
   // };
 
-  const loadMoreButton = () => {
-    return (
-      size > 0 &&
-      size >= limit && (
-        <button onClick={loadMore} className="btn btn-loadmore">
-          Load more
-        </button>
-      )
-    );
-  };
+  // const loadMoreButton = () => {
+  //   return (
+  //     size > 0 &&
+  //     size >= limit && (
+  //       <button onClick={loadMore} className="btn btn-loadmore">
+  //         Load more
+  //       </button>
+  //     )
+  //   );
+  // };
 
   const showAllBlogs = () => {
     return blogs.map((blog, i) => {
@@ -116,7 +118,6 @@ const Blogs = ({
 
   const showLoadedBlogs = () => {
     return loadedBlogs.map((blog, i) => (
-      // col-sm-6 pb-4
       <div className="col-lg-4 mb-4" key={i}>
         <NewCard blog={blog} />
       </div>
@@ -136,12 +137,28 @@ const Blogs = ({
                 <h2 className="mb-5 text-dark">Recent Posts</h2>
               </div>
 
-              <div className="row">
+              {/* <div className="row">
                 {showAllBlogs()}
                 {showLoadedBlogs()}
 
                 <div className="col-12 text-center">{loadMoreButton()}</div>
-              </div>
+              </div> */}
+
+              <InfiniteScroll
+                pageStart={0}
+                loadMore={loadMore}
+                hasMore={size > 0 && size >= limit}
+                loader={
+                  <div className="text-center" key={0}>
+                    <img src="/static/images/loading.gif" alt="loading" />
+                  </div>
+                }
+              >
+                <div className="row">
+                  {showAllBlogs()}
+                  {showLoadedBlogs()}
+                </div>
+              </InfiniteScroll>
             </div>
           </div>
         </div>
